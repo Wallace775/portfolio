@@ -242,8 +242,24 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, 3500);
     } else {
-        // If user has seen intro, hide it immediately
+        // If user has seen intro, hide it immediately and scroll to 'sobre'
         introModal.style.display = 'none';
+
+        // Scroll to 'sobre' section after intro is hidden
+        setTimeout(() => {
+            const sobreSection = document.getElementById('sobre');
+            if (sobreSection) {
+                sobreSection.scrollIntoView({ behavior: 'auto' });
+            }
+
+            // Highlight 'Sobre' link as active
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#sobre') {
+                    link.classList.add('active');
+                }
+            });
+        }, 100);
     }
 
     // Function to hide the intro modal
@@ -251,6 +267,22 @@ document.addEventListener('DOMContentLoaded', function() {
         introModal.style.opacity = '0';
         setTimeout(() => {
             introModal.style.display = 'none';
+
+            // Após ocultar a intro, rolar para a seção "sobre"
+            setTimeout(() => {
+                const sobreSection = document.getElementById('sobre');
+                if (sobreSection) {
+                    sobreSection.scrollIntoView({ behavior: 'auto' }); // 'auto' para scroll instantâneo
+                }
+
+                // Destacar o link "Sobre" como ativo
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#sobre') {
+                        link.classList.add('active');
+                    }
+                });
+            }, 100);
         }, 500);
         localStorage.setItem('hasSeenIntro', 'true');
     }
@@ -461,3 +493,4 @@ window.addEventListener('scroll', function() {
         handleSectionChange();
     }, 150);
 });
+
