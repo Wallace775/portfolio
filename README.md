@@ -30,6 +30,10 @@ Este projeto tem como objetivo apresentar meu perfil profissional, currículo e 
 - **Barras de habilidades** - Visualização do nível de conhecimento
 - **Grid de portfólio** - Cards interativos para cada projeto
 - **Cronograma de cursos** - Progresso e status dos estudos
+- **Intro interativa profissional** - Tela inicial estilo "inicialização de sistema" que impressiona nos primeiros segundos
+- **Background animado sutil** - Partículas leves que não impactam performance
+- **Contador global de visitantes** - Mostra número real de visitantes usando API pública
+- **Jogo da Adivinhação** - Jogo interativo e divertido que qualquer pessoa pode jogar
 
 ## Estrutura do Projeto
 ```
@@ -39,6 +43,15 @@ Este projeto tem como objetivo apresentar meu perfil profissional, currículo e 
 ├── script.js           # Funcionalidades JavaScript e validações
 └── README.md           # Documentação do projeto
 ```
+
+## Novo Jogo Interativo
+O portfólio agora inclui um jogo interativo do tipo "Adivinhe o Número" que demonstra habilidades técnicas de forma divertida e acessível:
+
+- Jogo de adivinhação simples e intuitivo
+- Interface amigável para todos os usuários
+- Feedback visual e textual imediato
+- Barra de progresso que mostra aproximação do número correto
+- Sistema de tentativas e dificuldade
 
 ## Seções do Site
 
@@ -102,6 +115,8 @@ Para hospedar este site no GitHub Pages siga os passos abaixo:
 - Melhorar design com base em feedbacks recebidos
 - Adicionar funcionalidades de back-end (Node.js, banco de dados)
 - Integrar com APIs de redes sociais
+- Aprimorar acessibilidade (a11y) para melhor experiência de usuário
+- Otimizar performance e tempo de carregamento
 
 ## Contribuições
 Contribuições são bem-vindas! Se você tiver sugestões ou melhorias:
@@ -130,3 +145,5 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 - PWA (Progressive Web App) para funcionamento offline
 - Tema escuro/claro alternativo
 - Análise de desempenho e otimização de carregamento
+- Animações e micro-interações adicionais
+- Seção de depoimentos de colegas e clientes
