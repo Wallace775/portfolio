@@ -8,6 +8,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Canvas para background animado -->
+    <canvas id="animated-background"></canvas>
+
+    <!-- Intro Modal -->
+    <div id="intro-modal" class="intro-modal">
+        <div class="intro-content">
+            <div class="intro-text">
+                <div class="intro-line" id="intro-line-1">Inicializando sistema...</div>
+                <div class="intro-line" id="intro-line-2">Carregando perfil profissional...</div>
+                <div class="intro-line" id="intro-line-3">Conectando ao portfólio...</div>
+                <div class="intro-line" id="intro-line-4">Sistema online</div>
+            </div>
+            <div class="intro-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+            <button id="enter-btn" class="enter-btn">Entrar</button>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -20,7 +41,7 @@
                     <p class="subtitle">Desenvolvedor Front-end Júnior | Em transição para desenvolvimento</p>
                 </div>
             </div>
-            
+
             <nav>
                 <div class="menu-toggle" id="mobile-menu">
                     <span class="bar"></span>
@@ -33,6 +54,7 @@
                     <li><a href="#formacao"><i class="fas fa-graduation-cap"></i> Formação</a></li>
                     <li><a href="#cursos"><i class="fas fa-book"></i> Cursos</a></li>
                     <li><a href="#habilidades"><i class="fas fa-code"></i> Habilidades</a></li>
+                    <li><a href="#jogo"><i class="fas fa-gamepad"></i> Jogo da Adivinhação</a></li>
                     <li><a href="#portifolio"><i class="fas fa-folder"></i> Portfólio</a></li>
                     <li><a href="#contato"><i class="fas fa-envelope"></i> Contato</a></li>
                 </ul>
@@ -308,6 +330,62 @@
             </div>
         </section>
 
+        <!-- Seção Jogo Interativo -->
+        <section id="jogo" class="section">
+            <div class="container">
+                <h2><i class="fas fa-gamepad"></i> Jogo da Adivinhação</h2>
+
+                <div class="game-container">
+                    <div class="game-intro">
+                        <h3>Adivinhe o Número</h3>
+                        <p>Estou pensando em um número entre 1 e 100. Você consegue adivinhar qual é?</p>
+                    </div>
+
+                    <div class="game-ui">
+                        <div class="game-display">
+                            <div class="game-status">
+                                <div class="status-item">
+                                    <span class="status-label">Tentativas:</span>
+                                    <span id="attempts" class="status-value">0</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-label">Dificuldade:</span>
+                                    <span id="difficulty" class="status-value">Fácil</span>
+                                </div>
+                            </div>
+
+                            <div class="input-area">
+                                <input type="number" id="guess-input" placeholder="Digite um número..." min="1" max="100">
+                                <button id="submit-guess">Adivinhar</button>
+                            </div>
+
+                            <div class="feedback-container">
+                                <div id="feedback" class="feedback">Faça sua primeira tentativa!</div>
+                                <div id="clues" class="clues">O número está entre 1 e 100</div>
+                            </div>
+
+                            <div class="progress-container">
+                                <div class="progress-bar">
+                                    <div id="progress-fill" class="progress-fill"></div>
+                                </div>
+                                <div id="progress-text" class="progress-text">0% de precisão</div>
+                            </div>
+                        </div>
+
+                        <div class="game-instructions">
+                            <h4>Como Jogar:</h4>
+                            <ol>
+                                <li>Eu estou pensando em um número entre 1 e 100</li>
+                                <li>Chute um número e veja se está perto ou longe</li>
+                                <li>Use as dicas para adivinhar o número correto</li>
+                                <li>Quanto menos tentativas, melhor sua pontuação!</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Seção Portfólio -->
         <section id="portifolio" class="section">
             <div class="container">
@@ -475,9 +553,134 @@
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
+
+                <p id="visitor-counter">Visitante nº <span id="visitor-count">0</span></p>
             </div>
         </div>
     </footer>
+
+    <!-- Adicionando script para background animado com partículas leves -->
+    <script>
+        // Configurações do background animado - Partículas Leves
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('animated-background');
+            const ctx = canvas.getContext('2d');
+
+            // Ajustar tamanho do canvas
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            // Array para armazenar as partículas
+            const particles = [];
+            const particleCount = 80; // Reduzido para melhor performance
+
+            // Classe para partículas
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 1.5 + 0.5; // Tamanho ainda menor
+                    this.speedX = (Math.random() - 0.5) * 0.5; // Velocidade reduzida
+                    this.speedY = (Math.random() - 0.5) * 0.5;
+                    this.color = `rgba(255, 255, 255, ${Math.random() * 0.3 + 0.1})`; // Transparência reduzida
+                    this.brightness = Math.random() * 0.5 + 0.3;
+                    this.twinkleSpeed = Math.random() * 0.01 + 0.005; // Velocidade de cintilação mais lenta
+                    this.originalBrightness = this.brightness;
+                    this.twinkleOffset = Math.random() * Math.PI * 2;
+                }
+
+                update() {
+                    // Movimento lento
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    // Resetar posição se sair dos limites
+                    if (this.x > canvas.width || this.x < 0) {
+                        this.speedX = -this.speedX;
+                    }
+                    if (this.y > canvas.height || this.y < 0) {
+                        this.speedY = -this.speedY;
+                    }
+
+                    // Efeito de cintilação suave
+                    this.brightness = this.originalBrightness + Math.sin(Date.now() * this.twinkleSpeed + this.twinkleOffset) * 0.2;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 255, 255, ${this.brightness})`;
+                    ctx.fill();
+
+                    // Efeito de brilho sutil
+                    const gradient = ctx.createRadialGradient(
+                        this.x, this.y, 0,
+                        this.x, this.y, this.size * 3
+                    );
+                    gradient.addColorStop(0, `rgba(255, 255, 255, ${this.brightness})`);
+                    gradient.addColorStop(1, 'transparent');
+
+                    ctx.fillStyle = gradient;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            // Conectar partículas próximas
+            function connectParticles() {
+                for (let a = 0; a < particles.length; a++) {
+                    for (let b = a; b < particles.length; b++) {
+                        const distance = Math.sqrt((particles[a].x - particles[b].x) ** 2 + (particles[a].y - particles[b].y) ** 2);
+
+                        if (distance < 120) { // Aumentei a distância para menos linhas
+                            const opacity = 0.2 * (1 - distance / 120); // Menor opacidade
+                            ctx.strokeStyle = `rgba(100, 100, 255, ${opacity})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[a].x, particles[a].y);
+                            ctx.lineTo(particles[b].x, particles[b].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            // Inicializar partículas
+            function initParticles() {
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            // Animação principal
+            function animate() {
+                // Limpar canvas com cor de fundo escura e transparência
+                ctx.fillStyle = 'rgba(5, 5, 25, 0.05)'; // Menor transparência para melhor desempenho
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Atualizar e desenhar partículas
+                particles.forEach(particle => {
+                    particle.update();
+                    particle.draw();
+                });
+
+                // Conectar partículas próximas
+                connectParticles();
+
+                requestAnimationFrame(animate);
+            }
+
+            // Inicializar e começar animação
+            initParticles();
+            animate();
+        });
+    </script>
 
     <script src="script.js"></script>
 </body>

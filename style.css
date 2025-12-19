@@ -9,7 +9,29 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #fff;
+    background-color: transparent; /* Tornando o background do body transparente para ver o canvas */
+    position: relative;
+    overflow-x: hidden; /* Evitar rolagem horizontal desnecessária */
+}
+
+/* Estilo para canvas do background animado */
+#animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -9999 !important; /* Definindo z-index muito baixo para garantir que fique atrás de tudo */
+    pointer-events: none;
+    background: linear-gradient(135deg, #000011, #000022, #0f0c29, #302b63, #24243e);
+    background-size: 400% 400%;
+    animation: gradientBG 20s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .container {
@@ -18,22 +40,24 @@ body {
     padding: 0 20px;
 }
 
-/* Header */
+/* Header com tema astronômico */
 header {
-    background: linear-gradient(135deg, #003366 0%, #00509e 100%);
+    background: linear-gradient(135deg, rgba(25, 25, 60, 0.85) 0%, rgba(15, 15, 40, 0.9) 100%);
     color: white;
     padding: 1rem 0;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 20px rgba(100, 80, 255, 0.15);
     transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(100, 100, 255, 0.2);
 }
 
 header.scrolled {
     padding: 0.5rem 0;
-    background: linear-gradient(135deg, #002244 0%, #00397a 100%);
+    background: linear-gradient(135deg, rgba(15, 15, 40, 0.95) 0%, rgba(10, 10, 30, 0.95) 100%);
 }
 
 header .container {
@@ -137,19 +161,22 @@ nav a {
 }
 
 nav a:hover, nav a.active {
-    background-color: rgba(255, 255, 255, 0.2);
+    background: rgba(100, 100, 255, 0.2);
     transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(100, 100, 255, 0.3);
 }
 
 nav a.active {
-    background-color: rgba(255, 255, 255, 0.3);
+    background: rgba(100, 100, 255, 0.3);
     font-weight: bold;
+    box-shadow: 0 0 20px rgba(100, 100, 255, 0.5);
 }
 
 /* Main content */
 main {
     margin-top: 220px;
     position: relative;
+    background: transparent; /* Garantindo que o main não tenha fundo */
 }
 
 /* Transições de página/section */
@@ -163,6 +190,9 @@ main {
     transform: none;
     transition: transform 0.8s ease, opacity 0.8s ease;
     overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.85); /* Fundo semi-transparente para legibilidade */
+    margin: 0;
+    border-radius: 0;
 }
 
 .section.page-enter {
@@ -186,7 +216,7 @@ main {
 }
 
 .section:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: rgba(249, 249, 249, 0.9); /* Mantendo o fundo claro mas com transparência */
 }
 
 .section h2 {
@@ -305,7 +335,7 @@ main {
 }
 
 .timeline-content {
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -380,7 +410,7 @@ main {
 .education-item {
     display: flex;
     align-items: center;
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -490,6 +520,196 @@ main {
     gap: 0.5rem;
 }
 
+/* Jogo Interativo - Adivinhe o Número */
+.game-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.game-intro h3 {
+    color: #00509e;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.game-intro p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.game-ui {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.game-display {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border: 1px solid #007bff;
+    position: relative;
+}
+
+.game-status {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.status-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.status-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.25rem;
+}
+
+.status-value {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #00509e;
+    font-family: 'Arial', sans-serif;
+}
+
+.input-area {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+#guess-input {
+    padding: 0.8rem 1.2rem;
+    font-size: 1.1rem;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    width: 200px;
+    background: white;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+}
+
+#guess-input:focus {
+    outline: none;
+    border-color: #0056b3;
+    box-shadow: 0 0 10px rgba(0, 86, 179, 0.3);
+}
+
+#submit-guess {
+    padding: 0.8rem 1.5rem;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background 0.3s;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+}
+
+#submit-guess:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.feedback-container {
+    margin: 1.5rem 0;
+}
+
+.feedback {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.clues {
+    font-size: 1.1rem;
+    color: #666;
+    font-style: italic;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-container {
+    margin-top: 2rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #007bff, #00d4ff);
+    width: 0%;
+    transition: width 0.5s ease;
+    border-radius: 10px;
+}
+
+.progress-text {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.feedback.success {
+    color: #28a745;
+}
+
+.feedback.error {
+    color: #dc3545;
+}
+
+.game-instructions {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.game-instructions h4 {
+    color: #00509e;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.game-instructions ol {
+    padding-left: 1.5rem;
+}
+
+.game-instructions li {
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+}
+
 /* Habilidades */
 .skills-grid {
     display: grid;
@@ -498,7 +718,7 @@ main {
 }
 
 .skills-category {
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -551,7 +771,7 @@ main {
 }
 
 .portfolio-card {
-    background: white;
+    background: rgba(255, 255, 255, 0.95); /* Fundo branco semi-transparente */
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
@@ -619,7 +839,7 @@ main {
 }
 
 .contact-info, .contact-form {
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -713,12 +933,14 @@ main {
     background-color: #00397a;
 }
 
-/* Footer */
+/* Footer com tema astronômico */
 footer {
-    background: linear-gradient(135deg, #003366 0%, #00509e 100%);
+    background: linear-gradient(135deg, rgba(25, 25, 60, 0.85) 0%, rgba(15, 15, 40, 0.9) 100%);
     color: white;
     text-align: center;
     padding: 3rem 0;
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(100, 100, 255, 0.2);
 }
 
 .footer-content {
@@ -748,6 +970,14 @@ footer {
 .social-links a:hover {
     background-color: rgba(255, 255, 255, 0.3);
     transform: translateY(-3px);
+}
+
+/* Visitor Counter */
+#visitor-counter {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #aaa;
+    text-align: center;
 }
 
 /* Animações e transições */
@@ -801,6 +1031,102 @@ footer {
 @keyframes slideIn {
     0% { transform: scaleX(1); transform-origin: left; }
     100% { transform: scaleX(0); transform-origin: left; }
+}
+
+/* Intro Modal */
+.intro-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    overflow: hidden;
+}
+
+.intro-content {
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+}
+
+.intro-line {
+    font-family: 'Courier New', monospace;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s forwards;
+}
+
+.intro-line:nth-child(1) { animation-delay: 0.5s; }
+.intro-line:nth-child(2) { animation-delay: 1.2s; }
+.intro-line:nth-child(3) { animation-delay: 1.9s; }
+.intro-line:nth-child(4) { animation-delay: 2.6s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.intro-progress {
+    margin: 2rem 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0;
+    background: #007bff;
+    border-radius: 2px;
+    animation: fillProgress 3s linear forwards;
+}
+
+@keyframes fillProgress {
+    to {
+        width: 100%;
+    }
+}
+
+.enter-btn {
+    background: transparent;
+    color: white;
+    border: 2px solid #007bff;
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    outline: none;
+    margin-top: 1.5rem;
+}
+
+.enter-btn:hover {
+    background: #007bff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+}
+
+.enter-btn:active {
+    transform: translateY(0);
 }
 
 /* Optimize images for mobile */

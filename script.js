@@ -219,6 +219,217 @@ document.addEventListener('DOMContentLoaded', () => {
     updateScrollState();
 });
 
+// Intro Modal functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const introModal = document.getElementById('intro-modal');
+    const enterBtn = document.getElementById('enter-btn');
+    const progressFill = document.getElementById('progress-fill');
+
+    // Check if modal has been shown in this session
+    const hasSeenIntro = localStorage.getItem('hasSeenIntro');
+
+    if (!hasSeenIntro) {
+        // Start the progress animation
+        setTimeout(() => {
+            progressFill.style.transition = 'width 3s linear';
+            progressFill.style.width = '100%';
+        }, 500);
+
+        // Auto-hide after 3.5 seconds if not already clicked
+        setTimeout(() => {
+            if (introModal.style.display !== 'none') {
+                hideIntroModal();
+            }
+        }, 3500);
+    } else {
+        // If user has seen intro, hide it immediately
+        introModal.style.display = 'none';
+    }
+
+    // Function to hide the intro modal
+    function hideIntroModal() {
+        introModal.style.opacity = '0';
+        setTimeout(() => {
+            introModal.style.display = 'none';
+        }, 500);
+        localStorage.setItem('hasSeenIntro', 'true');
+    }
+
+    // Event listener for the Enter button
+    enterBtn.addEventListener('click', hideIntroModal);
+
+    // Also allow clicking anywhere on the modal to enter
+    introModal.addEventListener('click', function(e) {
+        if (e.target === introModal) {
+            hideIntroModal();
+        }
+    });
+});
+
+// Visitor counter functionality using CountAPI
+document.addEventListener('DOMContentLoaded', function() {
+    // Using CountAPI (free service) to track visitors
+    const visitorCountElement = document.getElementById('visitor-count');
+
+    if (visitorCountElement) {
+        // Using a unique ID for this portfolio site - you can change this to your own if desired
+        const endpoint = 'https://api.countapi.xyz/hit/wallacephellipe.portfolio/visitors';
+
+        fetch(endpoint)
+            .then(response => response.json())
+            .then(data => {
+                if (data && data.value) {
+                    // Update the visitor count with proper number formatting
+                    visitorCountElement.textContent = data.value.toLocaleString();
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching visitor count:', error);
+                // Fallback to a local counter if the API fails
+                const localCount = localStorage.getItem('localVisitorCount');
+                let count = 1;
+                if (localCount) {
+                    count = parseInt(localCount) + 1;
+                }
+                localStorage.setItem('localVisitorCount', count);
+                visitorCountElement.textContent = count.toLocaleString();
+            });
+    }
+});
+
+// Jogo Interativo - Adivinhe o Número
+document.addEventListener('DOMContentLoaded', function() {
+    // Elementos do jogo
+    const guessInputEl = document.getElementById('guess-input');
+    const submitBtn = document.getElementById('submit-guess');
+    const attemptsEl = document.getElementById('attempts');
+    const difficultyEl = document.getElementById('difficulty');
+    const feedbackEl = document.getElementById('feedback');
+    const cluesEl = document.getElementById('clues');
+    const progressFillEl = document.getElementById('progress-fill');
+    const progressTextEl = document.getElementById('progress-text');
+
+    // Variáveis do jogo
+    let targetNumber = 0;
+    let attempts = 0;
+    let maxAttempts = 10; // Dificuldade padrão
+    let gameActive = true;
+
+    // Função para iniciar o jogo
+    function startGame() {
+        targetNumber = Math.floor(Math.random() * 100) + 1;
+        attempts = 0;
+        gameActive = true;
+
+        // Determinar dificuldade baseada no número de tentativas
+        if (maxAttempts <= 5) {
+            difficultyEl.textContent = 'Difícil';
+        } else if (maxAttempts <= 7) {
+            difficultyEl.textContent = 'Médio';
+        } else {
+            difficultyEl.textContent = 'Fácil';
+        }
+
+        updateDisplay();
+
+        feedbackEl.textContent = 'Faça sua primeira tentativa!';
+        feedbackEl.className = 'feedback';
+        cluesEl.textContent = 'O número está entre 1 e 100';
+
+        guessInputEl.focus();
+    }
+
+    // Função para atualizar a interface
+    function updateDisplay() {
+        attemptsEl.textContent = attempts;
+
+        // Atualizar barra de progresso (quanto mais tentativas, menor a precisão)
+        const precision = Math.max(0, 100 - (attempts * 10));
+        progressFillEl.style.width = `${precision}%`;
+        progressTextEl.textContent = `${precision}% de precisão`;
+    }
+
+    // Função para verificar o palpite
+    function checkGuess() {
+        if (!gameActive) return;
+
+        const userGuess = parseInt(guessInputEl.value);
+
+        // Validação de entrada
+        if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+            feedbackEl.textContent = 'Por favor, digite um número entre 1 e 100';
+            feedbackEl.className = 'feedback error';
+            return;
+        }
+
+        attempts++;
+        updateDisplay();
+
+        if (userGuess === targetNumber) {
+            // Jogador venceu!
+            feedbackEl.textContent = `Parabéns! O número era ${targetNumber}`;
+            feedbackEl.className = 'feedback success';
+            cluesEl.textContent = `Você acertou em ${attempts} tentativa${attempts > 1 ? 's' : ''}!`;
+
+            gameActive = false;
+
+            // Celebrar com uma pequena animação
+            feedbackEl.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                feedbackEl.style.transform = 'scale(1)';
+            }, 500);
+
+        } else if (attempts >= maxAttempts) {
+            // Jogador perdeu por exceder tentativas
+            feedbackEl.textContent = `Fim de jogo! O número era ${targetNumber}`;
+            feedbackEl.className = 'feedback error';
+            cluesEl.textContent = `Você usou todas as ${maxAttempts} tentativas`;
+            gameActive = false;
+
+        } else {
+            // Jogador ainda está tentando
+            if (userGuess < targetNumber) {
+                feedbackEl.textContent = 'Muito baixo! Tente um número maior';
+                feedbackEl.className = 'feedback';
+                cluesEl.textContent = `O número é maior que ${userGuess}`;
+            } else {
+                feedbackEl.textContent = 'Muito alto! Tente um número menor';
+                feedbackEl.className = 'feedback';
+                cluesEl.textContent = `O número é menor que ${userGuess}`;
+            }
+
+            // Atualizar a barra de progresso com base em quão perto está
+            const difference = Math.abs(userGuess - targetNumber);
+            const proximityPercent = Math.max(0, 100 - (difference * 2));
+            progressFillEl.style.width = `${proximityPercent}%`;
+            progressTextEl.textContent = `Aproximação: ${(100 - difference * 2).toFixed(0)}%`;
+        }
+
+        // Limpar campo de entrada
+        guessInputEl.value = '';
+        guessInputEl.focus();
+    }
+
+    // Eventos
+    submitBtn.addEventListener('click', checkGuess);
+
+    guessInputEl.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            checkGuess();
+        }
+    });
+
+    // Permitir reiniciar o jogo ao pressionar "R" ou "N" após terminar
+    document.addEventListener('keydown', function(e) {
+        if (!gameActive && (e.key === 'r' || e.key === 'R' || e.key === 'n' || e.key === 'N')) {
+            startGame();
+        }
+    });
+
+    // Iniciar o jogo automaticamente
+    startGame();
+});
+
 // Adicionar funcionalidade de transição suave ao rolar para seções
 let lastScrollTop = 0;
 let scrollTimeout;
