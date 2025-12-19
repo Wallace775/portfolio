@@ -1057,19 +1057,51 @@ footer {
     position: relative;
 }
 
-.intro-line {
-    font-family: 'Courier New', monospace;
-    font-size: 1.2rem;
+.welcome-text {
+    font-size: 2.5rem;
     margin-bottom: 1rem;
     opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.5s forwards;
+    animation: fadeInUp 1s 0.5s forwards;
+    font-family: 'Arial', sans-serif;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
-.intro-line:nth-child(1) { animation-delay: 0.5s; }
-.intro-line:nth-child(2) { animation-delay: 1.2s; }
-.intro-line:nth-child(3) { animation-delay: 1.9s; }
-.intro-line:nth-child(4) { animation-delay: 2.6s; }
+.intro-description {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeInUp 1s 1s forwards;
+    font-family: 'Arial', sans-serif;
+    color: #ddd;
+}
+
+.enter-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    outline: none;
+    opacity: 0;
+    animation: fadeInUp 1s 1.5s forwards;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+    min-height: 44px; /* Garantir área de toque adequada para mobile */
+}
+
+.enter-btn:hover {
+    background: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6);
+}
+
+.enter-btn:active {
+    transform: translateY(0);
+}
 
 @keyframes fadeInUp {
     to {
@@ -1078,55 +1110,15 @@ footer {
     }
 }
 
-.intro-progress {
-    margin: 2rem 0;
+/* Animation for moving text */
+.welcome-text {
+    animation: moveText 2s ease-in-out, fadeInUp 1s 0.5s forwards;
 }
 
-.progress-bar {
-    width: 100%;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 2px;
-    overflow: hidden;
-}
-
-.progress-fill {
-    height: 100%;
-    width: 0;
-    background: #007bff;
-    border-radius: 2px;
-    animation: fillProgress 3s linear forwards;
-}
-
-@keyframes fillProgress {
-    to {
-        width: 100%;
-    }
-}
-
-.enter-btn {
-    background: transparent;
-    color: white;
-    border: 2px solid #007bff;
-    padding: 0.8rem 2rem;
-    font-size: 1.1rem;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'Courier New', monospace;
-    font-weight: bold;
-    outline: none;
-    margin-top: 1.5rem;
-}
-
-.enter-btn:hover {
-    background: #007bff;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
-}
-
-.enter-btn:active {
-    transform: translateY(0);
+@keyframes moveText {
+    0% { transform: translateY(30px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
 }
 
 /* Optimize images for mobile */

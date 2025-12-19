@@ -223,60 +223,41 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', function() {
     const introModal = document.getElementById('intro-modal');
     const enterBtn = document.getElementById('enter-btn');
-    const progressFill = document.getElementById('progress-fill');
 
     // Function to scroll to 'sobre' section
     function scrollToSobre() {
-        // Use a abordagem mais robusta para garantir o scroll
-        setTimeout(() => {
-            const sobreSection = document.getElementById('sobre');
-            if (sobreSection) {
-                // Para garantir no mobile, tentar diferentes métodos
-                sobreSection.scrollIntoView({
-                    behavior: 'instant',  // instant em vez de 'auto' para garantir
-                    block: 'start'
-                });
+        const sobreSection = document.getElementById('sobre');
+        if (sobreSection) {
+            // Rolar diretamente para a seção 'sobre'
+            sobreSection.scrollIntoView({
+                behavior: 'smooth',  // smooth em vez de instant para melhor experiência
+                block: 'start'
+            });
 
-                // Como fallback, também definir scrollTop
-                window.scrollTo({
-                    top: sobreSection.offsetTop,
-                    behavior: 'instant'
-                });
-            }
-
-            // Highlight 'Sobre' link as active
+            // Destacar o link 'Sobre' como ativo
             document.querySelectorAll('nav a').forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === '#sobre') {
                     link.classList.add('active');
                 }
             });
-        }, 100);
+        }
     }
 
     // Check if modal has been shown in this session
     const hasSeenIntro = localStorage.getItem('hasSeenIntro');
 
     if (!hasSeenIntro) {
-        // Start the progress animation
-        setTimeout(() => {
-            progressFill.style.transition = 'width 3s linear';
-            progressFill.style.width = '100%';
-        }, 500);
-
-        // Auto-hide after 3.5 seconds if not already clicked
-        setTimeout(() => {
-            if (introModal.style.display !== 'none') {
-                hideIntroModal();
-            }
-        }, 3500);
+        // Mostrar a intro para novos visitantes
+        // Não fazer nada, a intro já está visível
     } else {
-        // If user has seen intro, hide it immediately and scroll to 'sobre'
+        // Se o usuário já viu a intro, esconder imediatamente
         introModal.style.display = 'none';
+        // E ir direto para a seção 'sobre'
         scrollToSobre();
     }
 
-    // Function to hide the intro modal
+    // Function to hide the intro modal and scroll to 'sobre'
     function hideIntroModal() {
         introModal.style.opacity = '0';
         setTimeout(() => {
@@ -289,7 +270,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event listener for the Enter button
     enterBtn.addEventListener('click', hideIntroModal);
 
-    // Also allow clicking anywhere on the modal to enter
+    // Also allow clicking anywhere on the modal to enter (except the button area to avoid double action)
     introModal.addEventListener('click', function(e) {
         if (e.target === introModal) {
             hideIntroModal();
@@ -493,42 +474,5 @@ window.addEventListener('scroll', function() {
     }, 150);
 });
 
-// Função para forçar scroll para seção "Sobre" após intro
-function forceScrollToSobre() {
-    setTimeout(() => {
-        const sobreSection = document.getElementById('sobre');
-        if (sobreSection) {
-            // Método mais robusto para forçar o scroll
-            window.scrollTo({
-                top: sobreSection.offsetTop - 70, // compensar o header fixo
-                behavior: 'instant'
-            });
-
-            // Destacar o link "Sobre" como ativo
-            document.querySelectorAll('nav a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#sobre') {
-                    link.classList.add('active');
-                }
-            });
-        }
-    }, 100);
-}
-
-// Forçar scroll para "Sobre" em dispositivos móveis após intro
-document.addEventListener('DOMContentLoaded', function() {
-    // Verifica se é um dispositivo móvel
-    const isMobile = window.innerWidth <= 768;
-
-    if (isMobile) {
-        // Em dispositivos móveis, adicionar um timer para certificar que o scroll ocorre
-        setTimeout(() => {
-            const introModal = document.querySelector('#intro-modal');
-            if (!introModal || introModal.style.display === 'none') {
-                forceScrollToSobre();
-            }
-        }, 1500); // Atraso maior para garantir que a intro foi completamente removida
-    }
-});
 
 

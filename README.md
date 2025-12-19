@@ -30,7 +30,7 @@ Este projeto tem como objetivo apresentar meu perfil profissional, currículo e 
 - **Barras de habilidades** - Visualização do nível de conhecimento
 - **Grid de portfólio** - Cards interativos para cada projeto
 - **Cronograma de cursos** - Progresso e status dos estudos
-- **Intro interativa profissional** - Tela inicial estilo "inicialização de sistema" que impressiona nos primeiros segundos
+- **Intro profissional com boas-vindas** - Tela inicial simples com mensagem de boas-vindas e botão direto para o conteúdo
 - **Background animado sutil** - Partículas leves que não impactam performance
 - **Contador global de visitantes** - Mostra número real de visitantes usando API pública
 - **Jogo da Adivinhação** - Jogo interativo e divertido que qualquer pessoa pode jogar
@@ -52,6 +52,15 @@ O portfólio agora inclui um jogo interativo do tipo "Adivinhe o Número" que de
 - Feedback visual e textual imediato
 - Barra de progresso que mostra aproximação do número correto
 - Sistema de tentativas e dificuldade
+
+## Intro Simplificada
+A introdução do portfólio foi simplificada para melhor experiência do usuário:
+
+- Mensagem de boas-vindas clara e direta
+- Botão "Entrar no Portfólio" visível e de fácil acesso
+- Ao clicar, o usuário é direcionado imediatamente para a seção "Sobre"
+- Design limpo e profissional
+- Compatível com todos os dispositivos
 
 ## Seções do Site
 
