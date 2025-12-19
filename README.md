@@ -30,7 +30,7 @@ Este projeto tem como objetivo apresentar meu perfil profissional, currículo e 
 - **Barras de habilidades** - Visualização do nível de conhecimento
 - **Grid de portfólio** - Cards interativos para cada projeto
 - **Cronograma de cursos** - Progresso e status dos estudos
-- **Intro profissional com boas-vindas** - Tela inicial simples com mensagem de boas-vindas e botão direto para o conteúdo
+- **Intro profissional simplificada** - Tela inicial com duração reduzida e botão "Pular Introdução" visível para recrutadores
 - **Background animado sutil** - Partículas leves que não impactam performance
 - **Contador global de visitantes** - Mostra número real de visitantes usando API pública
 - **Jogo da Adivinhação** - Jogo interativo e divertido que qualquer pessoa pode jogar
@@ -44,23 +44,30 @@ Este projeto tem como objetivo apresentar meu perfil profissional, currículo e 
 └── README.md           # Documentação do projeto
 ```
 
-## Novo Jogo Interativo
-O portfólio agora inclui um jogo interativo do tipo "Adivinhe o Número" que demonstra habilidades técnicas de forma divertida e acessível:
+## Demonstração Técnica
+O portfólio inclui uma demonstração técnica do tipo "Adivinhe o Número" que mostra habilidades em:
 
-- Jogo de adivinhação simples e intuitivo
-- Interface amigável para todos os usuários
-- Feedback visual e textual imediato
-- Barra de progresso que mostra aproximação do número correto
-- Sistema de tentativas e dificuldade
+- Manipulação de DOM
+- Validação de entrada
+- Lógica de programação
+- Atualização dinâmica da interface
+- Cálculos matemáticos
 
-## Intro Simplificada
-A introdução do portfólio foi simplificada para melhor experiência do usuário:
+## Intro Profissional Otimizada
+A introdução do portfólio foi otimizada para recrutadores:
 
-- Mensagem de boas-vindas clara e direta
-- Botão "Entrar no Portfólio" visível e de fácil acesso
-- Ao clicar, o usuário é direcionado imediatamente para a seção "Sobre"
-- Design limpo e profissional
+- Duração reduzida (2.5 segundos)
+- Botão "Pular Introdução" visível
+- Design profissional e direto
 - Compatível com todos os dispositivos
+
+## Call-to-Action Profissional
+Adicionado CTA claro para oportunidades profissionais:
+
+- Botão "Entrar em Contato" visível na página inicial
+- Link direto para GitHub
+- Mensagem clara sobre busca por oportunidades
+- Design acessível e responsivo
 
 ## Seções do Site
 
@@ -126,6 +133,8 @@ Para hospedar este site no GitHub Pages siga os passos abaixo:
 - Integrar com APIs de redes sociais
 - Aprimorar acessibilidade (a11y) para melhor experiência de usuário
 - Otimizar performance e tempo de carregamento
+- Melhorar hierarquia visual para melhor compreensão do conteúdo
+- Adicionar testes automatizados para garantir qualidade do código
 
 ## Contribuições
 Contribuições são bem-vindas! Se você tiver sugestões ou melhorias:

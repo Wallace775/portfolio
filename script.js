@@ -223,6 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', function() {
     const introModal = document.getElementById('intro-modal');
     const enterBtn = document.getElementById('enter-btn');
+    const skipBtn = document.getElementById('skip-btn');
 
     // Function to scroll to 'sobre' section
     function scrollToSobre() {
@@ -249,7 +250,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (!hasSeenIntro) {
         // Mostrar a intro para novos visitantes
-        // Não fazer nada, a intro já está visível
+        // Reduzir o tempo para apenas 2.5 segundos
+        setTimeout(() => {
+            if (introModal.style.display !== 'none') {
+                hideIntroModal();
+            }
+        }, 2500); // Reduzido de 3.5s para 2.5s
     } else {
         // Se o usuário já viu a intro, esconder imediatamente
         introModal.style.display = 'none';
@@ -263,12 +269,15 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             introModal.style.display = 'none';
             scrollToSobre();
-        }, 500);
+        }, 300); // Reduzido o tempo de fade out
         localStorage.setItem('hasSeenIntro', 'true');
     }
 
     // Event listener for the Enter button
     enterBtn.addEventListener('click', hideIntroModal);
+
+    // Event listener for the Skip button
+    skipBtn.addEventListener('click', hideIntroModal);
 
     // Also allow clicking anywhere on the modal to enter (except the button area to avoid double action)
     introModal.addEventListener('click', function(e) {

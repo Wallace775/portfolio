@@ -14,9 +14,10 @@
     <!-- Intro Modal -->
     <div id="intro-modal" class="intro-modal">
         <div class="intro-content">
-            <h1 class="welcome-text">Bem-vindo ao meu Portfólio</h1>
-            <p class="intro-description">Wallace Phellipe - Desenvolvedor Front-end Júnior</p>
-            <button id="enter-btn" class="enter-btn">Entrar no Portfólio</button>
+            <h1 class="welcome-text">Wallace Phellipe</h1>
+            <p class="intro-description">Desenvolvedor Front-end Júnior</p>
+            <button id="enter-btn" class="enter-btn">Acessar Portfólio</button>
+            <button id="skip-btn" class="skip-btn">Pular Introdução</button>
         </div>
     </div>
 
@@ -45,13 +46,27 @@
                     <li><a href="#formacao"><i class="fas fa-graduation-cap"></i> Formação</a></li>
                     <li><a href="#cursos"><i class="fas fa-book"></i> Cursos</a></li>
                     <li><a href="#habilidades"><i class="fas fa-code"></i> Habilidades</a></li>
-                    <li><a href="#jogo"><i class="fas fa-gamepad"></i> Jogo da Adivinhação</a></li>
+                    <li><a href="#jogo"><i class="fas fa-gamepad"></i> Demonstração Técnica</a></li>
                     <li><a href="#portifolio"><i class="fas fa-folder"></i> Portfólio</a></li>
                     <li><a href="#contato"><i class="fas fa-envelope"></i> Contato</a></li>
                 </ul>
             </nav>
         </div>
     </header>
+
+    <!-- Call-to-Action Profissional -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Interessado em colaborar?</h2>
+                <p>Estou em busca de oportunidades como Desenvolvedor Front-end Júnior</p>
+                <div class="cta-buttons">
+                    <a href="#contato" class="cta-btn primary-btn">Entrar em Contato</a>
+                    <a href="https://github.com/Wallace775" target="_blank" class="cta-btn secondary-btn"><i class="fab fa-github"></i> Ver GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <main>
         <!-- Seção Sobre Mim -->
@@ -324,12 +339,13 @@
         <!-- Seção Jogo Interativo -->
         <section id="jogo" class="section">
             <div class="container">
-                <h2><i class="fas fa-gamepad"></i> Jogo da Adivinhação</h2>
+                <h2><i class="fas fa-gamepad"></i> Demonstração Técnica</h2>
 
                 <div class="game-container">
                     <div class="game-intro">
                         <h3>Adivinhe o Número</h3>
-                        <p>Estou pensando em um número entre 1 e 100. Você consegue adivinhar qual é?</p>
+                        <p>Pequeno exemplo de lógica e manipulação de DOM com JavaScript</p>
+                        <p class="technical-note">Este jogo demonstra manipulação de eventos, validação de entrada, cálculos matemáticos e atualização dinâmica da interface.</p>
                     </div>
 
                     <div class="game-ui">
@@ -568,25 +584,24 @@
 
             // Array para armazenar as partículas
             const particles = [];
-            const particleCount = 80; // Reduzido para melhor performance
+            const particleCount = 60; // Reduzido para melhor performance
 
             // Classe para partículas
             class Particle {
                 constructor() {
                     this.x = Math.random() * canvas.width;
                     this.y = Math.random() * canvas.height;
-                    this.size = Math.random() * 1.5 + 0.5; // Tamanho ainda menor
-                    this.speedX = (Math.random() - 0.5) * 0.5; // Velocidade reduzida
-                    this.speedY = (Math.random() - 0.5) * 0.5;
-                    this.color = `rgba(255, 255, 255, ${Math.random() * 0.3 + 0.1})`; // Transparência reduzida
-                    this.brightness = Math.random() * 0.5 + 0.3;
-                    this.twinkleSpeed = Math.random() * 0.01 + 0.005; // Velocidade de cintilação mais lenta
+                    this.size = Math.random() * 1.2 + 0.3; // Tamanho ainda menor
+                    this.speedX = (Math.random() - 0.5) * 0.3; // Velocidade ainda mais reduzida
+                    this.speedY = (Math.random() - 0.5) * 0.3;
+                    this.brightness = Math.random() * 0.4 + 0.2; // Menor brilho
+                    this.twinkleSpeed = Math.random() * 0.008 + 0.003; // Velocidade de cintilação ainda mais lenta
                     this.originalBrightness = this.brightness;
                     this.twinkleOffset = Math.random() * Math.PI * 2;
                 }
 
                 update() {
-                    // Movimento lento
+                    // Movimento muito lento
                     this.x += this.speedX;
                     this.y += this.speedY;
 
@@ -598,8 +613,8 @@
                         this.speedY = -this.speedY;
                     }
 
-                    // Efeito de cintilação suave
-                    this.brightness = this.originalBrightness + Math.sin(Date.now() * this.twinkleSpeed + this.twinkleOffset) * 0.2;
+                    // Efeito de cintilação suave e sutil
+                    this.brightness = this.originalBrightness + Math.sin(Date.now() * this.twinkleSpeed + this.twinkleOffset) * 0.15;
                 }
 
                 draw() {
@@ -608,31 +623,31 @@
                     ctx.fillStyle = `rgba(255, 255, 255, ${this.brightness})`;
                     ctx.fill();
 
-                    // Efeito de brilho sutil
+                    // Efeito de brilho muito sutil
                     const gradient = ctx.createRadialGradient(
                         this.x, this.y, 0,
-                        this.x, this.y, this.size * 3
+                        this.x, this.y, this.size * 2
                     );
                     gradient.addColorStop(0, `rgba(255, 255, 255, ${this.brightness})`);
                     gradient.addColorStop(1, 'transparent');
 
                     ctx.fillStyle = gradient;
                     ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+                    ctx.arc(this.x, this.y, this.size * 2, 0, Math.PI * 2);
                     ctx.fill();
                 }
             }
 
-            // Conectar partículas próximas
+            // Conectar partículas próximas (reduzido para menos conexões)
             function connectParticles() {
                 for (let a = 0; a < particles.length; a++) {
                     for (let b = a; b < particles.length; b++) {
                         const distance = Math.sqrt((particles[a].x - particles[b].x) ** 2 + (particles[a].y - particles[b].y) ** 2);
 
-                        if (distance < 120) { // Aumentei a distância para menos linhas
-                            const opacity = 0.2 * (1 - distance / 120); // Menor opacidade
-                            ctx.strokeStyle = `rgba(100, 100, 255, ${opacity})`;
-                            ctx.lineWidth = 0.5;
+                        if (distance < 100) { // Distância reduzida para menos conexões
+                            const opacity = 0.1 * (1 - distance / 100); // Opacidade ainda menor
+                            ctx.strokeStyle = `rgba(100, 150, 255, ${opacity})`; // Azul mais suave
+                            ctx.lineWidth = 0.3; // Linhas mais finas
                             ctx.beginPath();
                             ctx.moveTo(particles[a].x, particles[a].y);
                             ctx.lineTo(particles[b].x, particles[b].y);
@@ -651,8 +666,8 @@
 
             // Animação principal
             function animate() {
-                // Limpar canvas com cor de fundo escura e transparência
-                ctx.fillStyle = 'rgba(5, 5, 25, 0.05)'; // Menor transparência para melhor desempenho
+                // Limpar canvas com cor de fundo escura e menor transparência
+                ctx.fillStyle = 'rgba(5, 5, 25, 0.03)'; // Menor valor para transparência ainda menor
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
                 // Atualizar e desenhar partículas
@@ -667,12 +682,29 @@
                 requestAnimationFrame(animate);
             }
 
+            // Pausar animação quando a aba estiver inativa
+            let animationId;
+            function handleVisibilityChange() {
+                if (document.hidden) {
+                    // Cancelar a animação quando a aba estiver oculta
+                    if (animationId) {
+                        cancelAnimationFrame(animationId);
+                    }
+                } else {
+                    // Reiniciar a animação quando a aba ficar visível
+                    animate();
+                }
+            }
+
+            document.addEventListener('visibilitychange', handleVisibilityChange);
+
             // Inicializar e começar animação
             initParticles();
             animate();
         });
     </script>
 
+    </main>
     <script src="script.js"></script>
 </body>
 </html>

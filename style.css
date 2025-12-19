@@ -536,7 +536,18 @@ main {
 .game-intro p {
     color: #666;
     font-size: 1.1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+}
+
+.technical-note {
+    background: rgba(0, 80, 158, 0.08);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 3px solid #00509e;
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+    text-align: left;
 }
 
 .game-ui {
@@ -980,6 +991,80 @@ footer {
     text-align: center;
 }
 
+/* Call-to-Action Profissional */
+.cta-section {
+    background: linear-gradient(135deg, rgba(0, 80, 158, 0.9), rgba(15, 15, 40, 0.95));
+    color: white;
+    padding: 3rem 0;
+    margin: 220px 0 2rem 0; /* Compensar o header fixo */
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #ddd;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    min-height: 44px; /* Acessibilidade - área de toque */
+}
+
+.primary-btn {
+    background: #007bff;
+    color: white;
+    border: 2px solid #007bff;
+}
+
+.primary-btn:hover {
+    background: white;
+    color: #007bff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
+}
+
+.secondary-btn {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.secondary-btn:hover {
+    background: white;
+    color: #007bff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+}
+
+.secondary-btn i {
+    margin-right: 0.5rem;
+}
+
 /* Animações e transições */
 .section {
     opacity: 0;
@@ -1058,19 +1143,19 @@ footer {
 }
 
 .welcome-text {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
     opacity: 0;
-    animation: fadeInUp 1s 0.5s forwards;
+    animation: fadeInUp 0.8s 0.3s forwards;
     font-family: 'Arial', sans-serif;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .intro-description {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
     opacity: 0;
-    animation: fadeInUp 1s 1s forwards;
+    animation: fadeInUp 0.8s 0.6s forwards;
     font-family: 'Arial', sans-serif;
     color: #ddd;
 }
@@ -1079,8 +1164,8 @@ footer {
     background: #007bff;
     color: white;
     border: none;
-    padding: 1rem 2.5rem;
-    font-size: 1.2rem;
+    padding: 0.9rem 2rem;
+    font-size: 1.1rem;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -1088,9 +1173,10 @@ footer {
     font-weight: bold;
     outline: none;
     opacity: 0;
-    animation: fadeInUp 1s 1.5s forwards;
+    animation: fadeInUp 0.8s 0.9s forwards;
     box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
     min-height: 44px; /* Garantir área de toque adequada para mobile */
+    margin-bottom: 1rem;
 }
 
 .enter-btn:hover {
@@ -1103,6 +1189,27 @@ footer {
     transform: translateY(0);
 }
 
+.skip-btn {
+    background: transparent;
+    color: #aaa;
+    border: 1px solid #555;
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Arial', sans-serif;
+    outline: none;
+    opacity: 0;
+    animation: fadeInUp 0.8s 1.2s forwards;
+    min-height: 44px; /* Garantir área de toque adequada para mobile */
+}
+
+.skip-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
 @keyframes fadeInUp {
     to {
         opacity: 1;
@@ -1112,12 +1219,12 @@ footer {
 
 /* Animation for moving text */
 .welcome-text {
-    animation: moveText 2s ease-in-out, fadeInUp 1s 0.5s forwards;
+    animation: moveText 1.5s ease-in-out, fadeInUp 0.8s 0.3s forwards;
 }
 
 @keyframes moveText {
-    0% { transform: translateY(30px); }
-    50% { transform: translateY(-10px); }
+    0% { transform: translateY(20px); }
+    50% { transform: translateY(-5px); }
     100% { transform: translateY(0); }
 }
 
