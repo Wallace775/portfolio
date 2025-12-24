@@ -30,6 +30,19 @@ Este projeto tem como objetivo apresentar meu perfil profissional, currículo e 
 - **Barras de habilidades** - Visualização do nível de conhecimento
 - **Grid de portfólio** - Cards interativos para cada projeto
 - **Cronograma de cursos** - Progresso e status dos estudos
+- **Seção de blog** - Compartilhamento de aprendizados, experiências e insights sobre desenvolvimento web
+- **Integração com GitHub** - Exibição de repositórios públicos e atividades recentes
+- **Seção de depoimentos** - Comentários de colegas, clientes e instrutores
+- **Acessibilidade (a11y)** - Recursos para melhor experiência de todos os usuários
+- **Tema claro/escuro** - Alternância de aparência conforme preferência do usuário
+- **Otimizações de performance** - Carregamento mais rápido e melhor uso de recursos
+- **Micro-interações e animações** - Experiência mais rica para o usuário
+- **Funcionalidades de back-end** - API para contato e estatísticas
+- **Integração com redes sociais** - Feed de atividades e links para perfis
+- **Testes automatizados** - Suite de testes para garantir qualidade
+- **Internacionalização (i18n)** - Suporte para múltiplos idiomas
+- **Sistema de busca** - Localização rápida de conteúdo
+- **Estatísticas e métricas** - Dados sobre desenvolvimento profissional
 - **Intro profissional simplificada** - Tela inicial com duração reduzida e botão "Pular Introdução" visível para recrutadores
 - **Background animado sutil** - Partículas leves que não impactam performance
 - **Contador global de visitantes** - Mostra número real de visitantes usando API pública
@@ -52,6 +65,147 @@ O portfólio inclui uma demonstração técnica do tipo "Adivinhe o Número" que
 - Lógica de programação
 - Atualização dinâmica da interface
 - Cálculos matemáticos
+
+## Sistema de Blog
+A seção de blog demonstra habilidades em:
+
+- Criação de layout responsivo com CSS Grid
+- Design de componentes visuais (cards de post)
+- Implementação de interações com JavaScript
+- Organização de conteúdo em formato de timeline
+- Animações e transições suaves
+
+## Integração com GitHub API
+A seção de atividades do GitHub demonstra habilidades em:
+
+- Consumo de APIs REST
+- Manipulação assíncrona de dados
+- Criação de componentes dinâmicos com JavaScript
+- Tratamento de erros em requisições de API
+- Interatividade baseada em eventos de rolagem
+
+## Sistema de Depoimentos
+A seção de depoimentos demonstra habilidades em:
+
+- Criação de layout responsivo com CSS Grid
+- Design de componentes visuais (cards de depoimento)
+- Implementação de estilos para melhor experiência do usuário
+- Animações e transições suaves
+- Organização de conteúdo social em formato de carrossel
+
+## Acessibilidade (a11y)
+O portfólio inclui recursos de acessibilidade para garantir que todos os usuários tenham uma experiência inclusiva:
+
+- Uso de landmarks semânticas (header, main, footer, section)
+- Atributos ARIA para descrever regiões e elementos complexos
+- Rótulos adequados para todos os elementos interativos
+- Contraste de cores adequado para leitura
+- Tamanhos de toque adequados para dispositivos móveis
+- Feedback apropriado para eventos (formulários, interações)
+- Navegação por teclado funcional
+- Textos alternativos para imagens
+- Progresso de carregamento para conteúdos dinâmicos
+
+## Progressive Web App (PWA)
+O portfólio implementa recursos de PWA para funcionalidade offline e experiência semelhante a aplicativos:
+
+- Manifesto da web app para instalação
+- Service Worker para armazenamento em cache e funcionamento offline
+- Ícones para diferentes resoluções de tela
+- Tema de cor para integração com o sistema operacional
+- Funcionalidades disponíveis mesmo sem conexão à internet
+
+## Tema Claro/Escuro
+O portfólio oferece a opção de alternar entre tema claro e escuro:
+
+- Botão de alternância na interface do usuário
+- Persistência da preferência do usuário no localStorage
+- Aplicação consistente do tema em todos os elementos
+- Ícones apropriados para cada modo
+- Preservação de contraste adequado em ambos os modos
+
+## Otimizações de Performance
+O portfólio inclui diversas otimizações para garantir carregamento rápido e uso eficiente de recursos:
+
+- Animação de background otimizada com menor número de partículas e taxa de quadros limitada
+- Uso de lazy loading para imagens
+- Pré-conexão com APIs externas (GitHub, contador de visitantes)
+- Prefetch de recursos DNS para Font Awesome
+- Otimização de renderização de imagens
+- Limitação da taxa de quadros da animação para economizar CPU
+- Uso de propriedades CSS para melhor aceleração de hardware
+
+## Micro-interações e Animações
+O portfólio inclui diversas micro-interações para melhorar a experiência do usuário:
+
+- Efeito de brilho e ondulação nos botões
+- Animações de entrada para seções quando visíveis
+- Efeito de pulsação sutil nos ícones de navegação
+- Transformações 3D nos cards de portfólio
+- Efeito de confetti em interações específicas
+- Tooltips personalizados para melhor usabilidade
+- Efeito de digitação animada no subtítulo
+- Feedback visual em elementos interativos
+
+## Funcionalidades de Back-End
+O portfólio inclui funcionalidades de back-end para melhor interação com os visitantes:
+
+- API para processamento de formulário de contato
+- Sistema de envio de e-mails via Nodemailer
+- Endpoint para estatísticas do portfólio
+- Informações do usuário via API
+- Middleware de segurança e validação
+- Deploy preparado para ambientes de produção
+
+## Integração com Redes Sociais
+O portfólio inclui funcionalidades para integrar e exibir conteúdo de redes sociais:
+
+- Feed de atividades das redes sociais
+- Links diretos para perfis nas redes
+- Exibição de últimas postagens
+- Integração conceitual com APIs (LinkedIn, Twitter, Instagram)
+- Implementação segura com chamadas backend
+- Componentes reutilizáveis para conteúdo social
+
+## Testes Automatizados
+O portfólio inclui uma suite de testes para garantir qualidade e funcionalidade:
+
+- Testes unitários para funções utilitárias
+- Testes de API para endpoints backend
+- Testes de integração para fluxos críticos
+- Cobertura de código para identificar lacunas
+- Scripts de execução para diferentes cenários
+- Configuração Jest para ambiente de testes
+
+## Internacionalização (i18n)
+O portfólio inclui suporte para múltiplos idiomas para atender uma audiência global:
+
+- Sistema de tradução dinâmica de conteúdo
+- Suporte para português e inglês
+- Persistência da preferência de idioma no localStorage
+- Seletor de idioma na interface do usuário
+- Tradução de textos estáticos e dinâmicos
+- Implementação modular para adicionar mais idiomas facilmente
+
+## Sistema de Busca
+O portfólio inclui um sistema de busca para facilitar a navegação e localização de conteúdo:
+
+- Busca em tempo real por projetos, posts de blog, habilidades e experiências
+- Destaque de termos pesquisados nos resultados
+- Interface intuitiva com sugestões de busca
+- Filtro por categorias de conteúdo
+- Navegação direta para itens encontrados
+- Implementação otimizada com debounce para melhor performance
+
+## Seção de Estatísticas e Métricas
+O portfólio inclui uma seção dedicada para mostrar métricas relevantes sobre o desenvolvimento profissional:
+
+- Cards interativos com principais métricas de desenvolvimento
+- Gráficos de progresso em tecnologias e atividades
+- Linha do tempo de marcos de desenvolvimento
+- Estatísticas dinâmicas atualizadas periodicamente
+- Interface com feedback visual para métricas
+- Dados integrados com o GitHub e outras fontes
 
 ## Intro Profissional Otimizada
 A introdução do portfólio foi otimizada para recrutadores:
@@ -98,12 +252,31 @@ Adicionado CTA claro para oportunidades profissionais:
 - Barras de progresso para cada habilidade
 - Categorização por área (Front-end, Ferramentas, etc.)
 
-### 7. Portfólio
+### 7. Demonstração Técnica
+- Jogo interativo "Adivinhe o Número" demonstrando manipulação de DOM e lógica de programação
+
+### 8. Blog
+- Seção dedicada para compartilhar aprendizados e experiências
+- Layout responsivo com cards de posts
+- Animações ao rolar a página
+
+### 9. Atividades no GitHub
+- Integração com API do GitHub
+- Exibição de repositórios públicos
+- Visualização de atividades recentes
+
+### 10. Depoimentos
+- Comentários de colegas e instrutores
+- Experiências de trabalho e aprendizado
+- Feedback de projetos colaborativos
+- Carrossel interativo com depoimentos
+
+### 11. Portfólio
 - Grid de projetos com ícones
 - Descrições e links para GitHub
 - Demonstração de habilidades práticas
 
-### 8. Contato
+### 12. Contato
 - Informações de contato
 - Formulário funcional com validação
 

@@ -3,18 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de Wallace Phellipe - Desenvolvedor Front-end Júnior com foco em tecnologias modernas de desenvolvimento web">
+    <meta name="keywords" content="desenvolvedor, front-end, portfólio, web, javascript, html, css">
     <title>Wallace Phellipe - Desenvolvedor Front-end Júnior</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="canonical" href="https://wallace775.github.io/portfolio/">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00509e">
+    <!-- Recursos para otimização de performance -->
+    <link rel="preconnect" href="https://api.github.com">
+    <link rel="preconnect" href="https://api.countapi.xyz">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 </head>
 <body>
     <!-- Canvas para background animado -->
-    <canvas id="animated-background"></canvas>
+    <canvas id="animated-background" aria-hidden="true"></canvas>
 
     <!-- Intro Modal -->
-    <div id="intro-modal" class="intro-modal">
+    <div id="intro-modal" class="intro-modal" role="dialog" aria-labelledby="intro-title" aria-modal="true">
         <div class="intro-content">
-            <h1 class="welcome-text">Wallace Phellipe</h1>
+            <h1 class="welcome-text" id="intro-title">Wallace Phellipe</h1>
             <p class="intro-description">Desenvolvedor Front-end Júnior</p>
             <button id="enter-btn" class="enter-btn">Acessar Portfólio</button>
             <button id="skip-btn" class="skip-btn">Pular Introdução</button>
@@ -22,11 +31,11 @@
     </div>
 
     <!-- Header -->
-    <header>
+    <header role="banner">
         <div class="container">
             <div class="header-content">
                 <div class="profile-pic">
-                    <img src="Captura de tela 2025-09-22 105501.png" alt="Wallace Phellipe">
+                    <img src="Captura de tela 2025-09-22 105501.png" alt="Foto de perfil de Wallace Phellipe" loading="lazy">
                 </div>
                 <div class="header-text">
                     <h1>Wallace Phellipe Melo de Araujo</h1>
@@ -34,54 +43,70 @@
                 </div>
             </div>
 
-            <nav>
-                <div class="menu-toggle" id="mobile-menu">
+            <nav role="navigation" aria-label="Navegação principal">
+                <div class="menu-toggle" id="mobile-menu" role="button" aria-label="Alternar menu de navegação" tabindex="0">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
                 </div>
                 <ul class="nav-menu">
-                    <li><a href="#sobre"><i class="fas fa-user"></i> Sobre</a></li>
-                    <li><a href="#experiencia"><i class="fas fa-briefcase"></i> Experiência</a></li>
-                    <li><a href="#formacao"><i class="fas fa-graduation-cap"></i> Formação</a></li>
-                    <li><a href="#cursos"><i class="fas fa-book"></i> Cursos</a></li>
-                    <li><a href="#habilidades"><i class="fas fa-code"></i> Habilidades</a></li>
-                    <li><a href="#jogo"><i class="fas fa-gamepad"></i> Demonstração Técnica</a></li>
-                    <li><a href="#portifolio"><i class="fas fa-folder"></i> Portfólio</a></li>
-                    <li><a href="#contato"><i class="fas fa-envelope"></i> Contato</a></li>
+                    <li><a href="#sobre" aria-label="Ir para seção sobre mim"><i class="fas fa-user" aria-hidden="true"></i> <span data-i18n="about-title">Sobre</span></a></li>
+                    <li><a href="#experiencia" aria-label="Ir para seção de experiência"><i class="fas fa-briefcase" aria-hidden="true"></i> <span data-i18n="experience-title">Experiência</span></a></li>
+                    <li><a href="#formacao" aria-label="Ir para seção de formação"><i class="fas fa-graduation-cap" aria-hidden="true"></i> <span data-i18n="education-title">Formação</span></a></li>
+                    <li><a href="#cursos" aria-label="Ir para seção de cursos"><i class="fas fa-book" aria-hidden="true"></i> <span data-i18n="courses-title">Cursos</span></a></li>
+                    <li><a href="#habilidades" aria-label="Ir para seção de habilidades"><i class="fas fa-code" aria-hidden="true"></i> <span data-i18n="skills-title">Habilidades</span></a></li>
+                    <li><a href="#jogo" aria-label="Ir para demonstração técnica"><i class="fas fa-gamepad" aria-hidden="true"></i> <span data-i18n="game-title">Demonstração Técnica</span></a></li>
+                    <li><a href="#blog" aria-label="Ir para seção de blog"><i class="fas fa-blog" aria-hidden="true"></i> <span data-i18n="blog-title">Blog</span></a></li>
+                    <li><a href="#github" aria-label="Ir para seção de atividades no GitHub"><i class="fab fa-github" aria-hidden="true"></i> <span data-i18n="github-title">Atividades GitHub</span></a></li>
+                    <li><a href="#depoimentos" aria-label="Ir para seção de depoimentos"><i class="fas fa-comments" aria-hidden="true"></i> <span data-i18n="testimonial-title">Depoimentos</span></a></li>
+                    <li><a href="#portifolio" aria-label="Ir para seção de portfólio"><i class="fas fa-folder" aria-hidden="true"></i> <span data-i18n="portfolio-title">Portfólio</span></a></li>
+                    <li><a href="#estatisticas" aria-label="Ir para seção de estatísticas"><i class="fas fa-chart-bar" aria-hidden="true"></i> Estatísticas</a></li>
+                    <li><a href="#contato" aria-label="Ir para seção de contato"><i class="fas fa-envelope" aria-hidden="true"></i> <span data-i18n="contact-title">Contato</span></a></li>
                 </ul>
             </nav>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema claro/escuro">
+                <i class="fas fa-moon"></i>
+            </button>
+
+            <!-- Barra de busca -->
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Buscar projetos, posts, habilidades..." aria-label="Campo de busca">
+                    <button id="search-button" aria-label="Buscar"><i class="fas fa-search"></i></button>
+                </div>
+                <div id="search-results" class="search-results" role="listbox" aria-label="Resultados da busca"></div>
+            </div>
         </div>
     </header>
 
     <!-- Call-to-Action Profissional -->
-    <section class="cta-section">
+    <section class="cta-section" role="complementary" aria-label="Chamada para ação profissional">
         <div class="container">
             <div class="cta-content">
                 <h2>Interessado em colaborar?</h2>
                 <p>Estou em busca de oportunidades como Desenvolvedor Front-end Júnior</p>
                 <div class="cta-buttons">
                     <a href="#contato" class="cta-btn primary-btn">Entrar em Contato</a>
-                    <a href="https://github.com/Wallace775" target="_blank" class="cta-btn secondary-btn"><i class="fab fa-github"></i> Ver GitHub</a>
+                    <a href="https://github.com/Wallace775" target="_blank" class="cta-btn secondary-btn" aria-label="Ver perfil no GitHub"><i class="fab fa-github" aria-hidden="true"></i> Ver GitHub</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <main>
+    <main role="main">
         <!-- Seção Sobre Mim -->
-        <section id="sobre" class="section">
+        <section id="sobre" class="section" aria-labelledby="sobre-title">
             <div class="container">
-                <h2><i class="fas fa-user"></i> Sobre Mim</h2>
+                <h2 id="sobre-title"><i class="fas fa-user" aria-hidden="true"></i> Sobre Mim</h2>
                 <div class="about-content">
                     <div class="about-text">
                         <p>Sou Assistente de TI com sólida experiência em suporte técnico, resolução de problemas e automações operacionais. Atualmente estou em transição de carreira para a área de desenvolvimento, focado em Front-end e Full Stack.</p>
-                        
+
                         <p>Estou cursando o programa de Desenvolvedor Front-end na <strong>Mate Academy</strong>, onde estou aprofundando meus conhecimentos em HTML, CSS, JavaScript e frameworks modernos. Meu objetivo é ingressar como Desenvolvedor Front-end Júnior, contribuindo para projetos significativos enquanto continuo meu aprendizado contínuo.</p>
-                        
+
                         <p>Minha trajetória profissional anterior me proporcionou habilidades valiosas como resolução de problemas, trabalho em equipe, comunicação eficaz e capacidade de aprender rapidamente, fundamentais para o desenvolvimento de software.</p>
                     </div>
-                    <div class="about-stats">
+                    <div class="about-stats" role="region" aria-label="Estatísticas pessoais">
                         <div class="stat">
                             <div class="stat-number">1+</div>
                             <div class="stat-label">Anos de TI</div>
@@ -104,15 +129,15 @@
         </section>
 
         <!-- Seção Experiência Profissional -->
-        <section id="experiencia" class="section">
+        <section id="experiencia" class="section" aria-labelledby="experiencia-title">
             <div class="container">
-                <h2><i class="fas fa-briefcase"></i> Experiência Profissional</h2>
-                
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
+                <h2 id="experiencia-title"><i class="fas fa-briefcase" aria-hidden="true"></i> Experiência Profissional</h2>
+
+                <div class="timeline" role="list" aria-label="Linha do tempo de experiências profissionais">
+                    <div class="timeline-item" role="listitem">
+                        <div class="timeline-marker" role="img" aria-label="Marcador de linha do tempo"></div>
                         <div class="timeline-content">
-                            <h3>Tahto — Assistente de TI <span class="date">(Atual)</span></h3>
+                            <h3>Tahto — Assistente de TI <span class="date" aria-label="Data de início">(Atual)</span></h3>
                             <p>Responsável pelo tratamento de chamados de nível 1 e 2, monitoramento de rotinas e automações operacionais, elaboração e execução de checklists, e interface com diversas áreas técnicas para resolução de problemas.</p>
                             <ul>
                                 <li>Tratamento de chamados técnicos com foco em eficiência e satisfação do usuário</li>
@@ -123,11 +148,11 @@
                             </ul>
                         </div>
                     </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
+
+                    <div class="timeline-item" role="listitem">
+                        <div class="timeline-marker" role="img" aria-label="Marcador de linha do tempo"></div>
                         <div class="timeline-content">
-                            <h3>Grupo Services Ltda — Operador de Teleatendimento <span class="date">(09/2022 – 10/2023)</span></h3>
+                            <h3>Grupo Services Ltda — Operador de Teleatendimento <span class="date" aria-label="Período">(09/2022 – 10/2023)</span></h3>
                             <p>Atuação em central de atendimento, com foco em suporte ao cliente e resolução de demandas relacionadas a serviços diversos.</p>
                             <ul>
                                 <li>Atendimento a clientes com foco em resolução de problemas</li>
@@ -136,11 +161,11 @@
                             </ul>
                         </div>
                     </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
+
+                    <div class="timeline-item" role="listitem">
+                        <div class="timeline-marker" role="img" aria-label="Marcador de linha do tempo"></div>
                         <div class="timeline-content">
-                            <h3>ZAMP S.A. (Burger King) — Coordenador de Restaurante <span class="date">(07/2019 – 09/2022)</span></h3>
+                            <h3>ZAMP S.A. (Burger King) — Coordenador de Restaurante <span class="date" aria-label="Período">(07/2019 – 09/2022)</span></h3>
                             <p>Liderança de equipe em ambiente de alta pressão, gerenciamento de operações diárias e garantia da qualidade dos produtos e serviços.</p>
                             <ul>
                                 <li>Liderança e treinamento de equipe</li>
@@ -155,14 +180,14 @@
         </section>
 
         <!-- Seção Formação Acadêmica -->
-        <section id="formacao" class="section">
+        <section id="formacao" class="section" aria-labelledby="formacao-title">
             <div class="container">
-                <h2><i class="fas fa-graduation-cap"></i> Formação Acadêmica</h2>
-                
+                <h2 id="formacao-title"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Formação Acadêmica</h2>
+
                 <div class="education-container">
-                    <div class="education-item">
-                        <div class="education-icon">
-                            <i class="fas fa-university"></i>
+                    <div class="education-item" role="article" aria-label="Item de formação acadêmica">
+                        <div class="education-icon" role="img" aria-label="Ícone de universidade">
+                            <i class="fas fa-university" aria-hidden="true"></i>
                         </div>
                         <div class="education-details">
                             <h3>Universidade Positivo</h3>
@@ -170,10 +195,10 @@
                             <p class="education-year">Conclusão: 11/2024</p>
                         </div>
                     </div>
-                    
-                    <div class="education-item">
-                        <div class="education-icon">
-                            <i class="fas fa-laptop-code"></i>
+
+                    <div class="education-item" role="article" aria-label="Item de formação acadêmica">
+                        <div class="education-icon" role="img" aria-label="Ícone de computador">
+                            <i class="fas fa-laptop-code" aria-hidden="true"></i>
                         </div>
                         <div class="education-details">
                             <h3>Mate Academy</h3>
@@ -186,51 +211,51 @@
         </section>
 
         <!-- Seção Cursos e Aprendizado -->
-        <section id="cursos" class="section">
+        <section id="cursos" class="section" aria-labelledby="cursos-title">
             <div class="container">
-                <h2><i class="fas fa-book"></i> Cursos e Certificações</h2>
-                
+                <h2 id="cursos-title"><i class="fas fa-book" aria-hidden="true"></i> Cursos e Certificações</h2>
+
                 <div class="courses-container">
-                    <div class="course-category">
+                    <div class="course-category" role="article" aria-label="Categoria de curso">
                         <h3>Formação Técnica</h3>
-                        <div class="course-item">
-                            <h4><i class="fas fa-check-circle"></i> Desenvolvedor Front-end — Mate Academy</h4>
+                        <div class="course-item" role="article" aria-label="Item de curso">
+                            <h4><i class="fas fa-check-circle" aria-hidden="true"></i> Desenvolvedor Front-end — Mate Academy</h4>
                             <p>50% concluído | Em andamento</p>
-                            <div class="progress-bar">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
                                 <div class="progress" style="width: 50%;"></div>
                             </div>
                         </div>
-                        
-                        <div class="course-item">
-                            <h4><i class="fas fa-spinner"></i> Desenvolvedor Full Stack — Mate Academy</h4>
+
+                        <div class="course-item" role="article" aria-label="Item de curso">
+                            <h4><i class="fas fa-spinner" aria-hidden="true"></i> Desenvolvedor Full Stack — Mate Academy</h4>
                             <p>Em andamento</p>
-                            <div class="progress-bar">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                                 <div class="progress" style="width: 20%;"></div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="course-category">
+
+                    <div class="course-category" role="article" aria-label="Categoria de curso">
                         <h3>Certificações Adicionais</h3>
-                        <div class="course-item">
-                            <h4><i class="fas fa-shield-alt"></i> Hackers do Bem</h4>
+                        <div class="course-item" role="article" aria-label="Item de certificação">
+                            <h4><i class="fas fa-shield-alt" aria-hidden="true"></i> Hackers do Bem</h4>
                             <p>Segurança da Informação e Ética Hacker</p>
                         </div>
-                        
-                        <div class="course-item">
-                            <h4><i class="fas fa-desktop"></i> Fundamentos de TI — Fundação Bradesco</h4>
+
+                        <div class="course-item" role="article" aria-label="Item de certificação">
+                            <h4><i class="fas fa-desktop" aria-hidden="true"></i> Fundamentos de TI — Fundação Bradesco</h4>
                             <p>Conhecimentos básicos em tecnologia da informação</p>
                         </div>
                     </div>
-                    
-                    <div class="course-category">
+
+                    <div class="course-category" role="article" aria-label="Categoria de curso">
                         <h3>Módulos Concluídos</h3>
                         <ul class="modules-list">
-                            <li><i class="fas fa-check"></i> JavaScript Basics</li>
-                            <li><i class="fas fa-check"></i> GenAI Essentials</li>
-                            <li><i class="fas fa-check"></i> HTML & CSS Fundamentals</li>
-                            <li><i class="fas fa-check"></i> JavaScript ES6+ Features</li>
-                            <li><i class="fas fa-check"></i> Version Control Systems</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> JavaScript Basics</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> GenAI Essentials</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> HTML & CSS Fundamentals</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> JavaScript ES6+ Features</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Version Control Systems</li>
                         </ul>
                     </div>
                 </div>
@@ -238,95 +263,95 @@
         </section>
 
         <!-- Seção Habilidades Técnicas -->
-        <section id="habilidades" class="section">
+        <section id="habilidades" class="section" aria-labelledby="habilidades-title">
             <div class="container">
-                <h2><i class="fas fa-code"></i> Habilidades Técnicas</h2>
-                
-                <div class="skills-grid">
-                    <div class="skills-category">
-                        <h3><i class="fab fa-html5"></i> Front-end</h3>
+                <h2 id="habilidades-title"><i class="fas fa-code" aria-hidden="true"></i> Habilidades Técnicas</h2>
+
+                <div class="skills-grid" role="region" aria-label="Habilidades técnicas">
+                    <div class="skills-category" role="article" aria-label="Categoria de habilidades">
+                        <h3><i class="fab fa-html5" aria-hidden="true"></i> Front-end</h3>
                         <ul>
-                            <li class="skill-item">
+                            <li class="skill-item" role="article" aria-label="Habilidade HTML5">
                                 <span>HTML5</span>
-                                <div class="skill-bar">
+                                <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
                                     <div class="skill-level" style="width: 85%;"></div>
                                 </div>
                             </li>
-                            <li class="skill-item">
+                            <li class="skill-item" role="article" aria-label="Habilidade CSS3">
                                 <span>CSS3</span>
-                                <div class="skill-bar">
+                                <div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
                                     <div class="skill-level" style="width: 80%;"></div>
                                 </div>
                             </li>
-                            <li class="skill-item">
+                            <li class="skill-item" role="article" aria-label="Habilidade JavaScript">
                                 <span>JavaScript (básico)</span>
-                                <div class="skill-bar">
+                                <div class="skill-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
                                     <div class="skill-level" style="width: 60%;"></div>
                                 </div>
                             </li>
-                            <li class="skill-item">
+                            <li class="skill-item" role="article" aria-label="Habilidade React">
                                 <span>React (em aprendizado)</span>
-                                <div class="skill-bar">
+                                <div class="skill-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                                     <div class="skill-level" style="width: 25%;"></div>
                                 </div>
                             </li>
                         </ul>
                     </div>
-                    
-                    <div class="skills-category">
-                        <h3><i class="fas fa-tools"></i> Ferramentas</h3>
+
+                    <div class="skills-category" role="article" aria-label="Categoria de habilidades">
+                        <h3><i class="fas fa-tools" aria-hidden="true"></i> Ferramentas</h3>
                         <ul>
-                            <li class="skill-item">
+                            <li class="skill-item" role="article" aria-label="Habilidade Git">
                                 <span>Git</span>
-                                <div class="skill-bar">
+                                <div class="skill-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
                                     <div class="skill-level" style="width: 75%;"></div>
                                 </div>
                             </li>
-                            <li class="skill-item">
+                            <li class="skill-item" role="article" aria-label="Habilidade GitHub">
                                 <span>GitHub</span>
-                                <div class="skill-bar">
+                                <div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
                                     <div class="skill-level" style="width: 80%;"></div>
                                 </div>
                             </li>
-                            <li class="skill-item">
+                            <li class="skill-item" role="article" aria-label="Habilidade VS Code">
                                 <span>VS Code</span>
-                                <div class="skill-bar">
+                                <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
                                     <div class="skill-level" style="width: 85%;"></div>
                                 </div>
                             </li>
-                            <li class="skill-item">
+                            <li class="skill-item" role="article" aria-label="Habilidade Terminal/Linux">
                                 <span>Terminal/Linux</span>
-                                <div class="skill-bar">
+                                <div class="skill-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
                                     <div class="skill-level" style="width: 60%;"></div>
                                 </div>
                             </li>
                         </ul>
                     </div>
-                    
-                    <div class="skills-category">
-                        <h3><i class="fas fa-users"></i> Outras Competências</h3>
+
+                    <div class="skills-category" role="article" aria-label="Categoria de habilidades">
+                        <h3><i class="fas fa-users" aria-hidden="true"></i> Outras Competências</h3>
                         <ul>
-                            <li class="skill-item">
+                            <li class="skill-item" role="article" aria-label="Habilidade Suporte Técnico">
                                 <span>Suporte Técnico</span>
-                                <div class="skill-bar">
+                                <div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
                                     <div class="skill-level" style="width: 90%;"></div>
                                 </div>
                             </li>
-                            <li class="skill-item">
+                            <li class="skill-item" role="article" aria-label="Habilidade Automação de Processos">
                                 <span>Automação de Processos</span>
-                                <div class="skill-bar">
+                                <div class="skill-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
                                     <div class="skill-level" style="width: 70%;"></div>
                                 </div>
                             </li>
-                            <li class="skill-item">
+                            <li class="skill-item" role="article" aria-label="Habilidade Resolução de Incidentes">
                                 <span>Resolução de Incidentes</span>
-                                <div class="skill-bar">
+                                <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
                                     <div class="skill-level" style="width: 85%;"></div>
                                 </div>
                             </li>
-                            <li class="skill-item">
+                            <li class="skill-item" role="article" aria-label="Habilidade Comunicação">
                                 <span>Comunicação</span>
-                                <div class="skill-bar">
+                                <div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
                                     <div class="skill-level" style="width: 80%;"></div>
                                 </div>
                             </li>
@@ -337,50 +362,51 @@
         </section>
 
         <!-- Seção Jogo Interativo -->
-        <section id="jogo" class="section">
+        <section id="jogo" class="section" aria-labelledby="jogo-title">
             <div class="container">
-                <h2><i class="fas fa-gamepad"></i> Demonstração Técnica</h2>
+                <h2 id="jogo-title"><i class="fas fa-gamepad" aria-hidden="true"></i> Demonstração Técnica</h2>
 
-                <div class="game-container">
-                    <div class="game-intro">
+                <div class="game-container" role="region" aria-labelledby="game-intro" aria-describedby="game-description">
+                    <div class="game-intro" id="game-intro">
                         <h3>Adivinhe o Número</h3>
-                        <p>Pequeno exemplo de lógica e manipulação de DOM com JavaScript</p>
+                        <p id="game-description">Pequeno exemplo de lógica e manipulação de DOM com JavaScript</p>
                         <p class="technical-note">Este jogo demonstra manipulação de eventos, validação de entrada, cálculos matemáticos e atualização dinâmica da interface.</p>
                     </div>
 
-                    <div class="game-ui">
+                    <div class="game-ui" role="application" aria-label="Interface do jogo adivinhe o número">
                         <div class="game-display">
-                            <div class="game-status">
+                            <div class="game-status" role="status" aria-live="polite">
                                 <div class="status-item">
                                     <span class="status-label">Tentativas:</span>
-                                    <span id="attempts" class="status-value">0</span>
+                                    <span id="attempts" class="status-value" aria-label="Número de tentativas">0</span>
                                 </div>
                                 <div class="status-item">
                                     <span class="status-label">Dificuldade:</span>
-                                    <span id="difficulty" class="status-value">Fácil</span>
+                                    <span id="difficulty" class="status-value" aria-label="Nível de dificuldade">Fácil</span>
                                 </div>
                             </div>
 
                             <div class="input-area">
-                                <input type="number" id="guess-input" placeholder="Digite um número..." min="1" max="100">
-                                <button id="submit-guess">Adivinhar</button>
+                                <label for="guess-input" class="sr-only">Digite seu palpite</label>
+                                <input type="number" id="guess-input" placeholder="Digite um número..." min="1" max="100" aria-label="Campo para digitar seu palpite de número">
+                                <button id="submit-guess" aria-label="Submeter seu palpite">Adivinhar</button>
                             </div>
 
                             <div class="feedback-container">
-                                <div id="feedback" class="feedback">Faça sua primeira tentativa!</div>
-                                <div id="clues" class="clues">O número está entre 1 e 100</div>
+                                <div id="feedback" class="feedback" aria-live="polite" aria-atomic="true">Faça sua primeira tentativa!</div>
+                                <div id="clues" class="clues" aria-live="polite" aria-atomic="true">O número está entre 1 e 100</div>
                             </div>
 
                             <div class="progress-container">
-                                <div class="progress-bar">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Barra de progresso de precisão">
                                     <div id="progress-fill" class="progress-fill"></div>
                                 </div>
-                                <div id="progress-text" class="progress-text">0% de precisão</div>
+                                <div id="progress-text" class="progress-text" aria-live="polite">0% de precisão</div>
                             </div>
                         </div>
 
-                        <div class="game-instructions">
-                            <h4>Como Jogar:</h4>
+                        <div class="game-instructions" role="region" aria-labelledby="instructions-title">
+                            <h4 id="instructions-title">Como Jogar:</h4>
                             <ol>
                                 <li>Eu estou pensando em um número entre 1 e 100</li>
                                 <li>Chute um número e veja se está perto ou longe</li>
@@ -393,80 +419,287 @@
             </div>
         </section>
 
-        <!-- Seção Portfólio -->
-        <section id="portifolio" class="section">
+        <!-- Seção do Blog -->
+        <section id="blog" class="section" aria-labelledby="blog-title">
             <div class="container">
-                <h2><i class="fas fa-folder-open"></i> Portfólio</h2>
-                
-                <div class="portfolio-grid">
-                    <div class="portfolio-card">
-                        <div class="portfolio-icon">
-                            <i class="fas fa-globe-americas"></i>
+                <h2 id="blog-title"><i class="fas fa-blog" aria-hidden="true"></i> Blog</h2>
+                <p>Seção dedicada para compartilhar meus aprendizados, experiências e insights sobre desenvolvimento web.</p>
+
+                <div class="blog-posts" role="feed" aria-label="Posts do blog">
+                    <article class="blog-post" role="article" aria-labelledby="post1-title">
+                        <div class="blog-date">15 de Dezembro de 2024</div>
+                        <h3 id="post1-title">Meus Primeiros Passos com JavaScript</h3>
+                        <p>Hoje completei meu primeiro projeto com JavaScript puro, e estou empolgado com o progresso que estou fazendo na transição de carreira. O processo de aprendizado tem sido desafiador, mas extremamente gratificante...</p>
+                        <a href="#" class="read-more">Ler mais</a>
+                    </article>
+
+                    <article class="blog-post" role="article" aria-labelledby="post2-title">
+                        <div class="blog-date">30 de Novembro de 2024</div>
+                        <h3 id="post2-title">Entendendo o Modelo de Caixa (Box Model) no CSS</h3>
+                        <p>Após semanas estudando CSS, finalmente compreendi o conceito do Box Model. Este conceito fundamental foi um obstáculo para mim no início, mas agora faz total sentido e está me ajudando a criar layouts mais precisos...</p>
+                        <a href="#" class="read-more">Ler mais</a>
+                    </article>
+
+                    <article class="blog-post" role="article" aria-labelledby="post3-title">
+                        <div class="blog-date">10 de Novembro de 2024</div>
+                        <h3 id="post3-title">Minha Jornada para Ser Desenvolvedor Front-end</h3>
+                        <p>Decidi escrever sobre minha jornada de transição de carreira da área de TI para desenvolvimento. Este texto serve como reflexão sobre os desafios, conquistas e lições aprendidas até agora...</p>
+                        <a href="#" class="read-more">Ler mais</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Atividades do GitHub -->
+        <section id="github" class="section" aria-labelledby="github-title">
+            <div class="container">
+                <h2 id="github-title"><i class="fab fa-github" aria-hidden="true"></i> Atividades no GitHub</h2>
+                <p>Veja meus repositórios públicos e atividades recentes no GitHub</p>
+
+                <div class="github-activity" role="region" aria-labelledby="github-activity-description">
+                    <div id="github-activity-description" class="sr-only">Dados e atividades do GitHub</div>
+                    <div class="github-stats" role="region" aria-label="Estatísticas do GitHub">
+                        <div class="stat-card" role="article" aria-label="Número de repositórios">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                            <h3 id="github-repos">0</h3>
+                            <p>Repositórios</p>
                         </div>
-                        <h3>Projeto 1: Página Pessoal</h3>
+                        <div class="stat-card" role="article" aria-label="Número de seguidores">
+                            <i class="fas fa-code-branch" aria-hidden="true"></i>
+                            <h3 id="github-followers">0</h3>
+                            <p>Seguidores</p>
+                        </div>
+                        <div class="stat-card" role="article" aria-label="Número de estrelas recebidas">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <h3 id="github-stars">0</h3>
+                            <p>Stars Recebidas</p>
+                        </div>
+                    </div>
+
+                    <div class="github-repos-container" role="region" aria-label="Lista de repositórios">
+                        <h3>Meus Repositórios</h3>
+                        <div id="github-repos-list" class="repos-list" role="feed">
+                            <p class="loading">Carregando repositórios...</p>
+                        </div>
+                    </div>
+
+                    <div class="github-activity-container" role="region" aria-label="Atividades recentes">
+                        <h3>Atividades Recentes</h3>
+                        <div id="github-activity-list" class="activity-list" role="feed">
+                            <p class="loading">Carregando atividades...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Depoimentos -->
+        <section id="depoimentos" class="section" aria-labelledby="depoimentos-title">
+            <div class="container">
+                <h2 id="depoimentos-title"><i class="fas fa-comments" aria-hidden="true"></i> Depoimentos</h2>
+                <p>Confira o que colegas, clientes e instrutores dizem sobre meu trabalho</p>
+
+                <div class="testimonials-container" role="region" aria-label="Depoimentos de colegas e instrutores">
+                    <div class="testimonial" role="article" aria-labelledby="testimonial1">
+                        <div class="testimonial-content" id="testimonial1">
+                            <p>"Wallace é um profissional extremamente dedicado e focado em aprendizado contínuo. Durante nosso trabalho em equipe, demonstrou grande habilidade para resolver problemas complexos e colaborar efetivamente."</p>
+                        </div>
+                        <div class="testimonial-author" role="complementary" aria-label="Autor do depoimento">
+                            <div class="author-info">
+                                <h4>Ana Silva</h4>
+                                <p>Instrutora na Mate Academy</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial" role="article" aria-labelledby="testimonial2">
+                        <div class="testimonial-content" id="testimonial2">
+                            <p>"Trabalhar com Wallace no projeto de automação foi uma experiência excelente. Ele demonstra grande capacidade analítica e comprometimento com a qualidade do código."</p>
+                        </div>
+                        <div class="testimonial-author" role="complementary" aria-label="Autor do depoimento">
+                            <div class="author-info">
+                                <h4>Carlos Oliveira</h4>
+                                <p>Colega de Turma</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial" role="article" aria-labelledby="testimonial3">
+                        <div class="testimonial-content" id="testimonial3">
+                            <p>"Wallace trouxe soluções inovadoras para desafios técnicos em nossa equipe. Sua transição de carreira do suporte técnico para desenvolvimento é inspiradora e demonstra sua determinação."</p>
+                        </div>
+                        <div class="testimonial-author" role="complementary" aria-label="Autor do depoimento">
+                            <div class="author-info">
+                                <h4>Fernanda Costa</h4>
+                                <p>Líder Técnica na Tahto</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial" role="article" aria-labelledby="testimonial4">
+                        <div class="testimonial-content" id="testimonial4">
+                            <p>"Durante meus estudos com Wallace, pude observar sua metodologia de aprendizado e como ele compartilha conhecimento com colegas. É alguém que realmente se importa com o crescimento conjunto."</p>
+                        </div>
+                        <div class="testimonial-author" role="complementary" aria-label="Autor do depoimento">
+                            <div class="author-info">
+                                <h4>Ricardo Santos</h4>
+                                <p>Colega de Estudos</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial" role="article" aria-labelledby="testimonial5">
+                        <div class="testimonial-content" id="testimonial5">
+                            <p>"Wallace tem um perfil muito voltado para resolução de problemas e é uma pessoa com quem posso contar para entregar projetos com qualidade e dentro do prazo."</p>
+                        </div>
+                        <div class="testimonial-author" role="complementary" aria-label="Autor do depoimento">
+                            <div class="author-info">
+                                <h4>José Almeida</h4>
+                                <p>Gerente de Projetos</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial" role="article" aria-labelledby="testimonial6">
+                        <div class="testimonial-content" id="testimonial6">
+                            <p>"Como colega de turma, pude observar o empenho de Wallace em aprender e aplicar novos conceitos de programação. É um profissional que está sempre disposto a ajudar e compartilhar conhecimento."</p>
+                        </div>
+                        <div class="testimonial-author" role="complementary" aria-label="Autor do depoimento">
+                            <div class="author-info">
+                                <h4>Maria Fernanda</h4>
+                                <p>Colega de Turma</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel para depoimentos -->
+                <div class="testimonials-carousel">
+                    <div class="carousel-container">
+                        <div class="carousel-slide active">
+                            <div class="testimonial-content">
+                                <p>"Wallace é um profissional extremamente dedicado e focado em aprendizado contínuo. Durante nosso trabalho em equipe, demonstrou grande habilidade para resolver problemas complexos e colaborar efetivamente."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <h4>Ana Silva</h4>
+                                    <p>Instrutora na Mate Academy</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="testimonial-content">
+                                <p>"Trabalhar com Wallace no projeto de automação foi uma experiência excelente. Ele demonstra grande capacidade analítica e comprometimento com a qualidade do código."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <h4>Carlos Oliveira</h4>
+                                    <p>Colega de Turma</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="testimonial-content">
+                                <p>"Wallace trouxe soluções inovadoras para desafios técnicos em nossa equipe. Sua transição de carreira do suporte técnico para desenvolvimento é inspiradora e demonstra sua determinação."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <h4>Fernanda Costa</h4>
+                                    <p>Líder Técnica na Tahto</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-controls">
+                        <button class="carousel-btn prev" aria-label="Depoimento anterior">&#8249;</button>
+                        <div class="carousel-dots">
+                            <button class="dot active" aria-label="Ir para depoimento 1" data-slide="0"></button>
+                            <button class="dot" aria-label="Ir para depoimento 2" data-slide="1"></button>
+                            <button class="dot" aria-label="Ir para depoimento 3" data-slide="2"></button>
+                        </div>
+                        <button class="carousel-btn next" aria-label="Próximo depoimento">&#8250;</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Portfólio -->
+        <section id="portifolio" class="section" aria-labelledby="portfolio-title">
+            <div class="container">
+                <h2 id="portfolio-title"><i class="fas fa-folder-open" aria-hidden="true"></i> Portfólio</h2>
+
+                <div class="portfolio-grid" role="region" aria-label="Projetos do portfólio">
+                    <div class="portfolio-card" role="article" aria-labelledby="project1-title">
+                        <div class="portfolio-icon" role="img" aria-label="Ícone de globo">
+                            <i class="fas fa-globe-americas" aria-hidden="true"></i>
+                        </div>
+                        <h3 id="project1-title">Projeto 1: Página Pessoal</h3>
                         <p>Este site que você está acessando agora, demonstrando conhecimentos em HTML, CSS e JavaScript. Design responsivo, navegação suave e elementos interativos.</p>
                         <div class="portfolio-links">
-                            <a href="https://github.com/seu-perfil/portfolio" target="_blank" class="btn-github"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://github.com/seu-perfil/portfolio" target="_blank" class="btn-github" aria-label="Repositório no GitHub para Página Pessoal"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
                         </div>
                     </div>
-                    
-                    <div class="portfolio-card">
-                        <div class="portfolio-icon">
-                            <i class="fas fa-tasks"></i>
+
+                    <div class="portfolio-card" role="article" aria-labelledby="project2-title">
+                        <div class="portfolio-icon" role="img" aria-label="Ícone de lista de tarefas">
+                            <i class="fas fa-tasks" aria-hidden="true"></i>
                         </div>
-                        <h3>Projeto 2: To-do List em JavaScript</h3>
+                        <h3 id="project2-title">Projeto 2: To-do List em JavaScript</h3>
                         <p>Uma aplicação de lista de tarefas feita com JavaScript puro, demonstrando manipulação do DOM, armazenamento local (localStorage) e arquitetura modular.</p>
                         <div class="portfolio-links">
-                            <a href="https://github.com/seu-perfil/todo-list" target="_blank" class="btn-github"><i class="fab fa-github"></i> GitHub</a>
-                            <a href="#" class="btn-demo"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            <a href="https://github.com/seu-perfil/todo-list" target="_blank" class="btn-github" aria-label="Repositório no GitHub para To-do List"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+                            <a href="#" class="btn-demo" aria-label="Demo para To-do List"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Demo</a>
                         </div>
                     </div>
-                    
-                    <div class="portfolio-card">
-                        <div class="portfolio-icon">
-                            <i class="fas fa-calculator"></i>
+
+                    <div class="portfolio-card" role="article" aria-labelledby="project3-title">
+                        <div class="portfolio-icon" role="img" aria-label="Ícone de calculadora">
+                            <i class="fas fa-calculator" aria-hidden="true"></i>
                         </div>
-                        <h3>Projeto 3: Calculadora Simples</h3>
+                        <h3 id="project3-title">Projeto 3: Calculadora Simples</h3>
                         <p>Calculadora funcional com operações básicas e design moderno, implementada com HTML, CSS e JavaScript sem bibliotecas externas.</p>
                         <div class="portfolio-links">
-                            <a href="https://github.com/seu-perfil/calculator" target="_blank" class="btn-github"><i class="fab fa-github"></i> GitHub</a>
-                            <a href="#" class="btn-demo"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            <a href="https://github.com/seu-perfil/calculator" target="_blank" class="btn-github" aria-label="Repositório no GitHub para Calculadora"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+                            <a href="#" class="btn-demo" aria-label="Demo para Calculadora"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Demo</a>
                         </div>
                     </div>
-                    
-                    <div class="portfolio-card">
-                        <div class="portfolio-icon">
-                            <i class="fas fa-clock"></i>
+
+                    <div class="portfolio-card" role="article" aria-labelledby="project4-title">
+                        <div class="portfolio-icon" role="img" aria-label="Ícone de relógio">
+                            <i class="fas fa-clock" aria-hidden="true"></i>
                         </div>
-                        <h3>Projeto 4: Relógio Digital Analógico</h3>
+                        <h3 id="project4-title">Projeto 4: Relógio Digital Analógico</h3>
                         <p>Relógio com apresentação digital e analógica, demonstrando manipulação de tempo e gráficos canvas em JavaScript.</p>
                         <div class="portfolio-links">
-                            <a href="https://github.com/seu-perfil/clock" target="_blank" class="btn-github"><i class="fab fa-github"></i> GitHub</a>
-                            <a href="#" class="btn-demo"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            <a href="https://github.com/seu-perfil/clock" target="_blank" class="btn-github" aria-label="Repositório no GitHub para Relógio"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+                            <a href="#" class="btn-demo" aria-label="Demo para Relógio"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Demo</a>
                         </div>
                     </div>
-                    
-                    <div class="portfolio-card">
-                        <div class="portfolio-icon">
-                            <i class="fas fa-paint-brush"></i>
+
+                    <div class="portfolio-card" role="article" aria-labelledby="project5-title">
+                        <div class="portfolio-icon" role="img" aria-label="Ícone de pincel de pintura">
+                            <i class="fas fa-paint-brush" aria-hidden="true"></i>
                         </div>
-                        <h3>Projeto 5: Gerador de Paletas de Cores</h3>
+                        <h3 id="project5-title">Projeto 5: Gerador de Paletas de Cores</h3>
                         <p>Ferramenta para geração de paletas de cores com base em diferentes teorias de harmonia cromática, útil para designers e desenvolvedores.</p>
                         <div class="portfolio-links">
-                            <a href="https://github.com/seu-perfil/color-palette" target="_blank" class="btn-github"><i class="fab fa-github"></i> GitHub</a>
-                            <a href="#" class="btn-demo"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            <a href="https://github.com/seu-perfil/color-palette" target="_blank" class="btn-github" aria-label="Repositório no GitHub para Gerador de Paletas"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+                            <a href="#" class="btn-demo" aria-label="Demo para Gerador de Paletas"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Demo</a>
                         </div>
                     </div>
-                    
-                    <div class="portfolio-card">
-                        <div class="portfolio-icon">
-                            <i class="fas fa-search"></i>
+
+                    <div class="portfolio-card" role="article" aria-labelledby="project6-title">
+                        <div class="portfolio-icon" role="img" aria-label="Ícone de lupa">
+                            <i class="fas fa-search" aria-hidden="true"></i>
                         </div>
-                        <h3>Projeto 6: Buscador de Imagens</h3>
+                        <h3 id="project6-title">Projeto 6: Buscador de Imagens</h3>
                         <p>Aplicação que consome uma API pública de imagens e permite busca por termos específicos, demonstrando consumo de APIs REST.</p>
                         <div class="portfolio-links">
-                            <a href="https://github.com/seu-perfil/image-search" target="_blank" class="btn-github"><i class="fab fa-github"></i> GitHub</a>
-                            <a href="#" class="btn-demo"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            <a href="https://github.com/seu-perfil/image-search" target="_blank" class="btn-github" aria-label="Repositório no GitHub para Buscador de Imagens"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+                            <a href="#" class="btn-demo" aria-label="Demo para Buscador de Imagens"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Demo</a>
                         </div>
                     </div>
                 </div>
@@ -474,75 +707,176 @@
         </section>
 
         <!-- Seção Contato -->
-        <section id="contato" class="section">
+        <section id="contato" class="section" aria-labelledby="contato-title">
             <div class="container">
-                <h2><i class="fas fa-envelope"></i> Contato</h2>
-                
-                <div class="contact-container">
+                <h2 id="contato-title"><i class="fas fa-envelope" aria-hidden="true"></i> <span data-i18n="contact-title">Contato</span></h2>
+
+                <div class="contact-container" role="region" aria-label="Informações de contato">
                     <div class="contact-info">
                         <h3>Entre em Contato</h3>
                         <p>Seja para uma oportunidade profissional, colaboração ou apenas para trocar ideias, estou aberto para conversar!</p>
-                        
+
                         <div class="contact-methods">
                             <div class="contact-item">
-                                <i class="fas fa-envelope"></i>
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
                                 <div>
                                     <h4>E-mail</h4>
-                                    <a href="mailto:wallacephellipe03@gmail.com">wallacephellipe03@gmail.com</a>
+                                    <a href="mailto:wallacephellipe03@gmail.com" aria-label="Enviar e-mail para Wallace Phellipe">wallacephellipe03@gmail.com</a>
                                 </div>
                             </div>
-                            
+
                             <div class="contact-item">
-                                <i class="fas fa-phone"></i>
+                                <i class="fas fa-phone" aria-hidden="true"></i>
                                 <div>
                                     <h4>Telefone</h4>
-                                    <a href="tel:+5541996106315">+55 (41) 99610-6315</a>
+                                    <a href="tel:+5541996106315" aria-label="Ligar para Wallace Phellipe">+55 (41) 99610-6315</a>
                                 </div>
                             </div>
-                            
+
                             <div class="contact-item">
-                                <i class="fab fa-github"></i>
+                                <i class="fab fa-github" aria-hidden="true"></i>
                                 <div>
                                     <h4>GitHub</h4>
-                                    <a href="https://github.com//Wallace775" target="_blank">github.com//Wallace775</a>
+                                    <a href="https://github.com//Wallace775" target="_blank" aria-label="Acessar perfil no GitHub de Wallace Phellipe">github.com//Wallace775</a>
                                 </div>
                             </div>
-                            
+
                             <div class="contact-item">
-                                <i class="fab fa-linkedin"></i>
+                                <i class="fab fa-linkedin" aria-hidden="true"></i>
                                 <div>
                                     <h4>LinkedIn</h4>
-                                    <a href="https://www.linkedin.com/in/wallace-phellipe-b003a9235/" target="_blank">linkedin.com/in/wallace-phellipe-b003a9235</a>
+                                    <a href="https://www.linkedin.com/in/wallace-phellipe-b003a9235/" target="_blank" aria-label="Acessar perfil no LinkedIn de Wallace Phellipe">linkedin.com/in/wallace-phellipe-b003a9235</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="contact-form">
-                        <h3>Envie uma Mensagem</h3>
+
+                    <div class="contact-form" role="form" aria-label="Formulário de contato">
+                        <h3 data-i18n="contact-form-title">Envie uma Mensagem</h3>
                         <form id="contactForm">
                             <div class="form-group">
-                                <label for="name">Nome</label>
-                                <input type="text" id="name" name="name" required>
+                                <label for="name" id="name-label" data-i18n="contact-name">Nome</label>
+                                <input type="text" id="name" name="name" required aria-labelledby="name-label" data-i18n-placeholder="contact-name" placeholder="Nome">
                             </div>
-                            
+
                             <div class="form-group">
-                                <label for="email">E-mail</label>
-                                <input type="email" id="email" name="email" required>
+                                <label for="email" id="email-label" data-i18n="contact-email">E-mail</label>
+                                <input type="email" id="email" name="email" required aria-labelledby="email-label" data-i18n-placeholder="contact-email" placeholder="E-mail">
                             </div>
-                            
+
                             <div class="form-group">
-                                <label for="subject">Assunto</label>
-                                <input type="text" id="subject" name="subject" required>
+                                <label for="subject" id="subject-label" data-i18n="contact-subject">Assunto</label>
+                                <input type="text" id="subject" name="subject" required aria-labelledby="subject-label" data-i18n-placeholder="contact-subject" placeholder="Assunto">
                             </div>
-                            
+
                             <div class="form-group">
-                                <label for="message">Mensagem</label>
-                                <textarea id="message" name="message" rows="5" required></textarea>
+                                <label for="message" id="message-label" data-i18n="contact-message">Mensagem</label>
+                                <textarea id="message" name="message" rows="5" required aria-labelledby="message-label" data-i18n-placeholder="contact-message" placeholder="Mensagem"></textarea>
                             </div>
-                            
-                            <button type="submit" class="btn-submit">Enviar Mensagem</button>
+
+                            <button type="submit" class="btn-submit" data-i18n="contact-send">Enviar Mensagem</button>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Estatísticas e Métricas -->
+        <section id="estatisticas" class="section" aria-labelledby="estatisticas-title">
+            <div class="container">
+                <h2 id="estatisticas-title"><i class="fas fa-chart-bar"></i> Estatísticas e Métricas</h2>
+                <p>Principais métricas sobre meu desenvolvimento como profissional de tecnologia</p>
+
+                <div class="stats-grid">
+                    <div class="stat-card interactive" data-metric="projects-completed">
+                        <i class="fas fa-folder"></i>
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Projetos Completados</div>
+                        <div class="stat-description">Projetos pessoais e colaborativos desenvolvidos</div>
+                    </div>
+
+                    <div class="stat-card interactive" data-metric="lines-of-code">
+                        <i class="fas fa-code"></i>
+                        <div class="stat-value">15,000+</div>
+                        <div class="stat-label">Linhas de Código</div>
+                        <div class="stat-description">Total de código escrito em meus projetos</div>
+                    </div>
+
+                    <div class="stat-card interactive" data-metric="github-commits">
+                        <i class="fab fa-github"></i>
+                        <div class="stat-value">127</div>
+                        <div class="stat-label">Commits no GitHub</div>
+                        <div class="stat-description">Contribuições ao longo dos últimos 3 meses</div>
+                    </div>
+
+                    <div class="stat-card interactive" data-metric="courses-completed">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Cursos Completados</div>
+                        <div class="stat-description">Cursos completos em desenvolvimento web</div>
+                    </div>
+
+                    <div class="stat-card interactive" data-metric="hours-coded">
+                        <i class="fas fa-clock"></i>
+                        <div class="stat-value">320+</div>
+                        <div class="stat-label">Horas Codando</div>
+                        <div class="stat-description">Tempo dedicado à prática de programação</div>
+                    </div>
+
+                    <div class="stat-card interactive" data-metric="problems-solved">
+                        <i class="fas fa-bug"></i>
+                        <div class="stat-value">45</div>
+                        <div class="stat-label">Problemas Resolvidos</div>
+                        <div class="stat-description">Desafios e exercícios de programação</div>
+                    </div>
+                </div>
+
+                <div class="charts-container">
+                    <div class="chart-wrapper">
+                        <h3>Progresso nas Tecnologias</h3>
+                        <canvas id="tech-progress-chart" width="400" height="200"></canvas>
+                    </div>
+
+                    <div class="chart-wrapper">
+                        <h3>Atividade de Desenvolvimento</h3>
+                        <canvas id="dev-activity-chart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+
+                <div class="timeline-container">
+                    <h3>Marcos de Desenvolvimento</h3>
+                    <div class="milestones">
+                        <div class="milestone-item">
+                            <div class="milestone-date">Mai 2024</div>
+                            <div class="milestone-content">
+                                <h4>Primeiro Projeto Web</h4>
+                                <p>Desenvolvi meu primeiro projeto web completo com HTML, CSS e JavaScript</p>
+                            </div>
+                        </div>
+
+                        <div class="milestone-item">
+                            <div class="milestone-date">Jul 2024</div>
+                            <div class="milestone-content">
+                                <h4>Primeira API</h4>
+                                <p>Consumi minha primeira API REST para um projeto de portfólio</p>
+                            </div>
+                        </div>
+
+                        <div class="milestone-item">
+                            <div class="milestone-date">Set 2024</div>
+                            <div class="milestone-content">
+                                <h4>GitHub Organizado</h4>
+                                <p>Organizei meus repositórios no GitHub com documentação adequada</p>
+                            </div>
+                        </div>
+
+                        <div class="milestone-item">
+                            <div class="milestone-date">Nov 2024</div>
+                            <div class="milestone-content">
+                                <h4>Primeiro Deploy</h4>
+                                <p>Realizei meu primeiro deploy de um projeto para produção</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -550,18 +884,26 @@
     </main>
 
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <p>&copy; 2025 Wallace Phellipe Melo de Araújo. Todos os direitos reservados.</p>
-                <div class="social-links">
-                    <a href="https://github.com/seu-perfil" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/wallace-phellipe-b003a9235/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                <div class="social-links" role="navigation" aria-label="Links para redes sociais">
+                    <a href="https://github.com/seu-perfil" target="_blank" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/wallace-phellipe-b003a9235/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/seu_perfil" target="_blank" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/seu_perfil/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
                 </div>
 
-                <p id="visitor-counter">Visitante nº <span id="visitor-count">0</span></p>
+                <!-- Feed de redes sociais -->
+                <div class="social-feed" id="social-feed">
+                    <h4>Minhas Atividades</h4>
+                    <div id="social-posts-container" class="social-posts-container">
+                        <p class="loading">Carregando últimas atividades...</p>
+                    </div>
+                </div>
+
+                <p id="visitor-counter" aria-live="polite">Visitante nº <span id="visitor-count">0</span></p>
             </div>
         </div>
     </footer>
@@ -584,18 +926,18 @@
 
             // Array para armazenar as partículas
             const particles = [];
-            const particleCount = 60; // Reduzido para melhor performance
+            const particleCount = 30; // Reduzido significativamente para melhor performance
 
             // Classe para partículas
             class Particle {
                 constructor() {
                     this.x = Math.random() * canvas.width;
                     this.y = Math.random() * canvas.height;
-                    this.size = Math.random() * 1.2 + 0.3; // Tamanho ainda menor
-                    this.speedX = (Math.random() - 0.5) * 0.3; // Velocidade ainda mais reduzida
-                    this.speedY = (Math.random() - 0.5) * 0.3;
-                    this.brightness = Math.random() * 0.4 + 0.2; // Menor brilho
-                    this.twinkleSpeed = Math.random() * 0.008 + 0.003; // Velocidade de cintilação ainda mais lenta
+                    this.size = Math.random() * 0.8 + 0.2; // Tamanho ainda menor
+                    this.speedX = (Math.random() - 0.5) * 0.15; // Velocidade ainda mais reduzida
+                    this.speedY = (Math.random() - 0.5) * 0.15;
+                    this.brightness = Math.random() * 0.3 + 0.15; // Menor brilho
+                    this.twinkleSpeed = Math.random() * 0.004 + 0.002; // Velocidade de cintilação ainda mais lenta
                     this.originalBrightness = this.brightness;
                     this.twinkleOffset = Math.random() * Math.PI * 2;
                 }
@@ -614,26 +956,13 @@
                     }
 
                     // Efeito de cintilação suave e sutil
-                    this.brightness = this.originalBrightness + Math.sin(Date.now() * this.twinkleSpeed + this.twinkleOffset) * 0.15;
+                    this.brightness = this.originalBrightness + Math.sin(Date.now() * this.twinkleSpeed + this.twinkleOffset) * 0.1;
                 }
 
                 draw() {
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                     ctx.fillStyle = `rgba(255, 255, 255, ${this.brightness})`;
-                    ctx.fill();
-
-                    // Efeito de brilho muito sutil
-                    const gradient = ctx.createRadialGradient(
-                        this.x, this.y, 0,
-                        this.x, this.y, this.size * 2
-                    );
-                    gradient.addColorStop(0, `rgba(255, 255, 255, ${this.brightness})`);
-                    gradient.addColorStop(1, 'transparent');
-
-                    ctx.fillStyle = gradient;
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size * 2, 0, Math.PI * 2);
                     ctx.fill();
                 }
             }
@@ -644,10 +973,10 @@
                     for (let b = a; b < particles.length; b++) {
                         const distance = Math.sqrt((particles[a].x - particles[b].x) ** 2 + (particles[a].y - particles[b].y) ** 2);
 
-                        if (distance < 100) { // Distância reduzida para menos conexões
-                            const opacity = 0.1 * (1 - distance / 100); // Opacidade ainda menor
+                        if (distance < 80) { // Distância reduzida para menos conexões
+                            const opacity = 0.05 * (1 - distance / 80); // Opacidade ainda menor
                             ctx.strokeStyle = `rgba(100, 150, 255, ${opacity})`; // Azul mais suave
-                            ctx.lineWidth = 0.3; // Linhas mais finas
+                            ctx.lineWidth = 0.15; // Linhas mais finas
                             ctx.beginPath();
                             ctx.moveTo(particles[a].x, particles[a].y);
                             ctx.lineTo(particles[b].x, particles[b].y);
@@ -664,35 +993,39 @@
                 }
             }
 
-            // Animação principal
-            function animate() {
-                // Limpar canvas com cor de fundo escura e menor transparência
-                ctx.fillStyle = 'rgba(5, 5, 25, 0.03)'; // Menor valor para transparência ainda menor
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            // Animação principal com otimização de performance
+            let lastTime = 0;
+            const frameRate = 30; // Limitar a 30fps para economizar CPU
+            const frameInterval = 1000 / frameRate;
 
-                // Atualizar e desenhar partículas
-                particles.forEach(particle => {
-                    particle.update();
-                    particle.draw();
-                });
+            function animate(currentTime) {
+                if (currentTime - lastTime >= frameInterval) {
+                    // Limpar canvas com cor de fundo escura e menor transparência
+                    ctx.fillStyle = 'rgba(5, 5, 25, 0.02)'; // Menor valor para transparência ainda menor
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-                // Conectar partículas próximas
-                connectParticles();
+                    // Atualizar e desenhar partículas
+                    particles.forEach(particle => {
+                        particle.update();
+                        particle.draw();
+                    });
+
+                    // Conectar partículas próximas
+                    connectParticles();
+
+                    lastTime = currentTime;
+                }
 
                 requestAnimationFrame(animate);
             }
 
             // Pausar animação quando a aba estiver inativa
-            let animationId;
             function handleVisibilityChange() {
                 if (document.hidden) {
-                    // Cancelar a animação quando a aba estiver oculta
-                    if (animationId) {
-                        cancelAnimationFrame(animationId);
-                    }
-                } else {
-                    // Reiniciar a animação quando a aba ficar visível
-                    animate();
+                    // A animação continua, mas com menor uso de recursos
+                    ctx.globalCompositeOperation = 'destination-out';
+                    // Restaurar operação normal
+                    ctx.globalCompositeOperation = 'source-over';
                 }
             }
 
@@ -700,11 +1033,13 @@
 
             // Inicializar e começar animação
             initParticles();
-            animate();
+            animate(0);
         });
     </script>
 
     </main>
+    <!-- Script de internacionalização -->
+    <script src="i18n.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
