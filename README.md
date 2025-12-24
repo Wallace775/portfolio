@@ -51,10 +51,30 @@ Este projeto tem como objetivo apresentar meu perfil profissional, currículo e 
 ## Estrutura do Projeto
 ```
 /portfolio
-├── index.html          # Página principal com todas as seções
-├── style.css           # Estilos, design responsivo e animações
-├── script.js           # Funcionalidades JavaScript e validações
-└── README.md           # Documentação do projeto
+├── index.html              # Página principal com todas as seções
+├── style.css               # Estilos, design responsivo e animações
+├── js/                     # Diretório com módulos JavaScript
+│   ├── utils.js            # Funções utilitárias
+│   ├── theme.js            # Gerenciamento de tema claro/escuro
+│   ├── navigation.js       # Funcionalidades de navegação
+│   ├── form-validator.js   # Sistema de validação de formulários
+│   ├── contact-form.js     # Gerenciamento do formulário de contato
+│   ├── github.js           # Integração com GitHub API
+│   ├── search.js           # Sistema de busca
+│   ├── blog.js             # Sistema de blog
+│   ├── testimonials.js     # Sistema de depoimentos
+│   ├── portfolio.js        # Sistema de projetos do portfólio
+│   ├── notifications.js    # Sistema de notificações
+│   └── animations.js       # Animações e interações
+├── i18n.js                 # Sistema de internacionalização
+├── server.js               # Servidor backend com Express
+├── sw.js                   # Service Worker para PWA
+├── manifest.json           # Manifesto para PWA
+├── package.json            # Dependências e scripts do projeto
+├── .env.example            # Exemplo de variáveis de ambiente
+├── .eslintrc.json          # Configuração do ESLint
+├── .prettierrc             # Configuração do Prettier
+└── README.md               # Documentação do projeto
 ```
 
 ## Demonstração Técnica
@@ -285,7 +305,18 @@ Adicionado CTA claro para oportunidades profissionais:
 ```bash
 git clone https://github.com/seu-usuario/seu-repositorio.git
 ```
-2. Abra o arquivo `index.html` em seu navegador
+2. Instale as dependências
+```bash
+npm install
+```
+3. Crie um arquivo `.env` com base no `.env.example`
+4. Inicie o servidor
+```bash
+npm start
+# ou para desenvolvimento
+npm run dev
+```
+5. Acesse `http://localhost:3000` no seu navegador
 
 ## Deploy no GitHub Pages
 Para hospedar este site no GitHub Pages siga os passos abaixo:
@@ -309,14 +340,69 @@ Para hospedar este site no GitHub Pages siga os passos abaixo:
 - Melhorar hierarquia visual para melhor compreensão do conteúdo
 - Adicionar testes automatizados para garantir qualidade do código
 
+## Melhorias Implementadas
+- **Modularização do JavaScript**: Código dividido em módulos específicos para melhor manutenção
+- **Segurança aprimorada**: Adicionados headers de segurança, sanitização de entradas e rate limiting
+- **Melhoria na experiência do usuário**:
+  - Feedback mais claro no formulário de contato com sistema de notificações
+  - Sistema de validação avançado para formulários
+  - Modal de blog funcional com conteúdo dinâmico
+  - Seção de depoimentos dinâmica
+  - Seção de portfólio com filtros e informações detalhadas
+- **Melhoria na qualidade do código**: Adicionados ESLint e Prettier para manter consistência
+- **Documentação atualizada**: README.md atualizado com instruções claras de uso
+- **Sistema de notificações**: Notificações elegantes para feedback do usuário
+- **Validação de formulários**: Sistema avançado de validação em tempo real
+- **Conteúdo dinâmico**: Seções de blog, depoimentos e portfólio com dados reais
+
 ## Contribuições
 Contribuições são bem-vindas! Se você tiver sugestões ou melhorias:
 
+### Para desenvolvedores:
+
 1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/NovaFeature`)
-3. Faça commit de suas mudanças (`git commit -m 'Add nova feature'`)
-4. Faça push para a branch (`git push origin feature/NovaFeature`)
-5. Abra um Pull Request
+2. Clone o repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/portfolio.git
+   ```
+3. Crie uma branch para sua feature:
+   ```bash
+   git checkout -b feature/NovaFeature
+   ```
+4. Instale as dependências:
+   ```bash
+   npm install
+   ```
+5. Faça suas alterações
+6. Teste suas alterações localmente:
+   ```bash
+   npm run dev
+   ```
+7. Faça commit de suas mudanças:
+   ```bash
+   git commit -m 'Adiciona nova feature'
+   ```
+8. Faça push para a branch:
+   ```bash
+   git push origin feature/NovaFeature
+   ```
+9. Abra um Pull Request
+
+### Diretrizes de contribuição:
+
+- Siga os padrões de código estabelecidos (ESLint e Prettier)
+- Adicione comentários significativos ao código
+- Atualize a documentação conforme necessário
+- Teste suas alterações em diferentes navegadores
+- Siga o modelo de commits convencionais
+
+### Tecnologias utilizadas:
+
+- HTML5, CSS3, JavaScript ES6+
+- Node.js com Express
+- Nodemailer para envio de emails
+- Font Awesome para ícones
+- APIs externas (GitHub, CountAPI)
 
 ## Licença
 Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
