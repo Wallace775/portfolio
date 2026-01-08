@@ -238,11 +238,6 @@
                     <div class="course-category" role="article" aria-label="Categoria de curso">
                         <h3>Certificações Adicionais</h3>
                         <div class="course-item" role="article" aria-label="Item de certificação">
-                            <h4><i class="fas fa-shield-alt" aria-hidden="true"></i> Hackers do Bem</h4>
-                            <p>Segurança da Informação e Ética Hacker</p>
-                        </div>
-
-                        <div class="course-item" role="article" aria-label="Item de certificação">
                             <h4><i class="fas fa-desktop" aria-hidden="true"></i> Fundamentos de TI — Fundação Bradesco</h4>
                             <p>Conhecimentos básicos em tecnologia da informação</p>
                         </div>
@@ -366,52 +361,43 @@
             <div class="container">
                 <h2 id="jogo-title"><i class="fas fa-gamepad" aria-hidden="true"></i> Demonstração Técnica</h2>
 
-                <div class="game-container" role="region" aria-labelledby="game-intro" aria-describedby="game-description">
-                    <div class="game-intro" id="game-intro">
-                        <h3>Adivinhe o Número</h3>
-                        <p id="game-description">Pequeno exemplo de lógica e manipulação de DOM com JavaScript</p>
-                        <p class="technical-note">Este jogo demonstra manipulação de eventos, validação de entrada, cálculos matemáticos e atualização dinâmica da interface.</p>
+                <div class="game-container" role="region" aria-labelledby="puzzle-intro" aria-describedby="puzzle-description">
+                    <div class="game-intro" id="puzzle-intro">
+                        <h3>Puzzle Deslizante (8-Puzzle)</h3>
+                        <p id="puzzle-description">Pequeno exemplo de lógica e manipulação de DOM com JavaScript</p>
+                        <p class="technical-note">Este jogo demonstra manipulação de eventos, lógica de posicionamento, cálculos matemáticos e atualização dinâmica da interface.</p>
                     </div>
 
-                    <div class="game-ui" role="application" aria-label="Interface do jogo adivinhe o número">
-                        <div class="game-display">
-                            <div class="game-status" role="status" aria-live="polite">
-                                <div class="status-item">
-                                    <span class="status-label">Tentativas:</span>
-                                    <span id="attempts" class="status-value" aria-label="Número de tentativas">0</span>
-                                </div>
-                                <div class="status-item">
-                                    <span class="status-label">Dificuldade:</span>
-                                    <span id="difficulty" class="status-value" aria-label="Nível de dificuldade">Fácil</span>
-                                </div>
-                            </div>
-
-                            <div class="input-area">
-                                <label for="guess-input" class="sr-only">Digite seu palpite</label>
-                                <input type="number" id="guess-input" placeholder="Digite um número..." min="1" max="100" aria-label="Campo para digitar seu palpite de número">
-                                <button id="submit-guess" aria-label="Submeter seu palpite">Adivinhar</button>
-                            </div>
-
-                            <div class="feedback-container">
-                                <div id="feedback" class="feedback" aria-live="polite" aria-atomic="true">Faça sua primeira tentativa!</div>
-                                <div id="clues" class="clues" aria-live="polite" aria-atomic="true">O número está entre 1 e 100</div>
-                            </div>
-
-                            <div class="progress-container">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Barra de progresso de precisão">
-                                    <div id="progress-fill" class="progress-fill"></div>
-                                </div>
-                                <div id="progress-text" class="progress-text" aria-live="polite">0% de precisão</div>
+                    <div class="puzzle-ui" role="application" aria-label="Interface do jogo puzzle deslizante">
+                        <div class="puzzle-board-container">
+                            <div class="puzzle-board" id="puzzle-board">
+                                <!-- Blocos do puzzle serão gerados dinamicamente -->
                             </div>
                         </div>
 
-                        <div class="game-instructions" role="region" aria-labelledby="instructions-title">
-                            <h4 id="instructions-title">Como Jogar:</h4>
+                        <div class="puzzle-stats" role="status" aria-live="polite">
+                            <div class="stats-item">
+                                <span class="stats-label">Movimentos:</span>
+                                <span id="moves-count" class="stats-value" aria-label="Número de movimentos">0</span>
+                            </div>
+                            <div class="stats-item">
+                                <span class="stats-label">Tempo:</span>
+                                <span id="timer" class="stats-value" aria-label="Tempo decorrido">00:00</span>
+                            </div>
+                        </div>
+
+                        <div class="puzzle-controls">
+                            <button id="shuffle-btn" class="btn-shuffle" aria-label="Embaralhar peças">Embaralhar</button>
+                            <button id="reset-btn" class="btn-reset" aria-label="Reiniciar jogo">Reiniciar</button>
+                        </div>
+
+                        <div class="puzzle-instructions" role="region" aria-labelledby="puzzle-instructions-title">
+                            <h4 id="puzzle-instructions-title">Como Jogar:</h4>
                             <ol>
-                                <li>Eu estou pensando em um número entre 1 e 100</li>
-                                <li>Chute um número e veja se está perto ou longe</li>
-                                <li>Use as dicas para adivinhar o número correto</li>
-                                <li>Quanto menos tentativas, melhor sua pontuação!</li>
+                                <li>Clique em um bloco adjacente ao espaço vazio para movê-lo</li>
+                                <li>Reorganize os blocos numerados na ordem correta</li>
+                                <li>Complete o puzzle com o menor número de movimentos possível</li>
+                                <li>Use o temporizador para medir sua velocidade!</li>
                             </ol>
                         </div>
                     </div>
@@ -1051,6 +1037,7 @@
     <script src="js/testimonials.js"></script>
     <script src="js/portfolio.js"></script>
     <script src="js/notifications.js"></script>
+    <script src="js/game.js"></script>
     <!-- Script de internacionalização -->
     <script src="i18n.js"></script>
 </body>

@@ -2456,3 +2456,192 @@ nav a:hover i {
         text-align: center;
     }
 }
+
+/* Estilos para o Puzzle Deslizante */
+.puzzle-board-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.puzzle-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2px;
+    width: 300px;
+    height: 300px;
+    background-color: #333;
+    border: 3px solid #00509e;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.puzzle-tile {
+    background: linear-gradient(135deg, #007bff, #00509e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.puzzle-tile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.puzzle-tile:hover::before {
+    opacity: 1;
+}
+
+.puzzle-tile:hover {
+    transform: scale(0.95);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.puzzle-tile.empty {
+    background: transparent;
+    border: 2px dashed #666;
+    cursor: default;
+}
+
+.puzzle-tile.empty:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.puzzle-tile.empty::before {
+    display: none;
+}
+
+.puzzle-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+}
+
+.stats-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stats-label {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 0.25rem;
+}
+
+.stats-value {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    font-family: 'Arial', sans-serif;
+}
+
+.puzzle-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+}
+
+.btn-shuffle, .btn-reset {
+    padding: 0.8rem 1.5rem;
+    background: var(--btn-primary-bg);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s, transform 0.2s;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+}
+
+.btn-shuffle:hover, .btn-reset:hover {
+    background: var(--btn-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-shuffle:active, .btn-reset:active {
+    transform: translateY(0);
+}
+
+.puzzle-instructions {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+}
+
+.puzzle-instructions h4 {
+    color: #00509e;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.puzzle-instructions ol {
+    padding-left: 1.5rem;
+}
+
+.puzzle-instructions li {
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+}
+
+/* Animação para quando o puzzle é resolvido */
+.puzzle-solved .puzzle-tile {
+    animation: celebrate 0.6s ease;
+}
+
+@keyframes celebrate {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1) rotate(5deg); }
+    100% { transform: scale(1); }
+}
+
+/* Estilo para mensagem de vitória */
+.win-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(40, 167, 69, 0.95);
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 10000;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    font-size: 1.5rem;
+    font-weight: bold;
+    animation: popup 0.5s ease;
+}
+
+@keyframes popup {
+    0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}

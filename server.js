@@ -3,37 +3,84 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 const nodemailer = require('nodemailer');
+const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
-app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// Configuração de segurança
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutos
+  max: 100 // limite de 100 requisições por janela
+});
+
+// Middleware de segurança
+app.use(limiter);
+app.use(cors({
+  origin: process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : ['http://localhost:3000'],
+  credentials: true
+}));
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
+
+// Headers de segurança
+app.use((req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
+  res.setHeader('Referrer-Policy', 'no-referrer-when-downgrade');
+  next();
+});
 
 // Servir arquivos estáticos
-app.use(express.static(path.join(__dirname, '.')));
+app.use(express.static(path.join(__dirname, '.'), {
+  maxAge: '1d', // Cache de 1 dia para assets estáticos
+  etag: true
+}));
 
 // Rota para o formulário de contato
 app.post('/api/contact', async (req, res) => {
-    const { name, email, subject, message } = req.body;
+    let { name, email, subject, message } = req.body;
+
+    // Sanitização básica
+    name = name ? name.toString().trim() : '';
+    email = email ? email.toString().trim() : '';
+    subject = subject ? subject.toString().trim() : '';
+    message = message ? message.toString().trim() : '';
 
     // Validação básica
     if (!name || !email || !subject || !message) {
-        return res.status(400).json({ 
-            success: false, 
-            message: 'Por favor, preencha todos os campos obrigatórios.' 
+        return res.status(400).json({
+            success: false,
+            message: 'Por favor, preencha todos os campos obrigatórios.'
         });
     }
 
-    // Validação de email
+    // Validação e sanitização adicionais
+    if (name.length > 100 || email.length > 254 || subject.length > 200 || message.length > 2000) {
+        return res.status(400).json({
+            success: false,
+            message: 'Dados fornecidos excedem os limites permitidos.'
+        });
+    }
+
+    // Validação de email mais robusta
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-        return res.status(400).json({ 
-            success: false, 
-            message: 'Por favor, insira um email válido.' 
+        return res.status(400).json({
+            success: false,
+            message: 'Por favor, insira um email válido.'
+        });
+    }
+
+    // Validação de conteúdo para prevenir injeção
+    const suspiciousPatterns = [/<script/i, /javascript:/i, /vbscript:/i, /onload/i, /onerror/i];
+    if (suspiciousPatterns.some(pattern => pattern.test(name + subject + message))) {
+        return res.status(400).json({
+            success: false,
+            message: 'Dados inválidos detectados.'
         });
     }
 

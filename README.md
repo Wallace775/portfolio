@@ -78,13 +78,14 @@ Este projeto tem como objetivo apresentar meu perfil profissional, currículo e 
 ```
 
 ## Demonstração Técnica
-O portfólio inclui uma demonstração técnica do tipo "Adivinhe o Número" que mostra habilidades em:
+O portfólio inclui uma demonstração técnica do tipo "Puzzle Deslizante" que mostra habilidades em:
 
 - Manipulação de DOM
-- Validação de entrada
+- Lógica de posicionamento
 - Lógica de programação
 - Atualização dinâmica da interface
 - Cálculos matemáticos
+- Event handling e interatividade
 
 ## Sistema de Blog
 A seção de blog demonstra habilidades em:
@@ -273,7 +274,7 @@ Adicionado CTA claro para oportunidades profissionais:
 - Categorização por área (Front-end, Ferramentas, etc.)
 
 ### 7. Demonstração Técnica
-- Jogo interativo "Adivinhe o Número" demonstrando manipulação de DOM e lógica de programação
+- Jogo interativo "Puzzle Deslizante" demonstrando manipulação de DOM e lógica de posicionamento
 
 ### 8. Blog
 - Seção dedicada para compartilhar aprendizados e experiências
