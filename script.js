@@ -105,146 +105,6 @@ document.querySelectorAll('.section').forEach(section => {
     observer.observe(section);
 });
 
-// Observar cards do portfólio para animação
-document.querySelectorAll('.portfolio-card').forEach(card => {
-    observer.observe(card);
-});
-
-// Observar posts do blog para animação
-document.querySelectorAll('.blog-post').forEach(post => {
-    observer.observe(post);
-});
-
-// Observar cards de GitHub para animação
-document.querySelectorAll('.repo-card, .activity-card').forEach(card => {
-    observer.observe(card);
-});
-
-// Observar depoimentos para animação
-document.querySelectorAll('.testimonial').forEach(testimonial => {
-    observer.observe(testimonial);
-});
-
-// Função para buscar dados do GitHub
-function fetchGitHubData() {
-    const username = 'Wallace775'; // Substitua pelo seu nome de usuário do GitHub
-
-    // Buscar informações do usuário
-    fetch(`https://api.github.com/users/${username}`)
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('github-repos').textContent = data.public_repos;
-            document.getElementById('github-followers').textContent = data.followers;
-        })
-        .catch(error => {
-            console.error('Erro ao buscar dados do usuário GitHub:', error);
-            document.getElementById('github-repos').textContent = 'Erro';
-            document.getElementById('github-followers').textContent = 'Erro';
-        });
-
-    // Buscar repositórios
-    fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`)
-        .then(response => response.json())
-        .then(repos => {
-            const reposContainer = document.getElementById('github-repos-list');
-            reposContainer.innerHTML = '';
-
-            if (repos.length > 0) {
-                repos.forEach(repo => {
-                    const repoCard = document.createElement('div');
-                    repoCard.className = 'repo-card';
-                    repoCard.innerHTML = `
-                        <h4>${repo.name}</h4>
-                        <p>${repo.description || 'Sem descrição'}</p>
-                        <div class="repo-meta">
-                            <span><i class="fas fa-star"></i> ${repo.stargazers_count}</span>
-                            <span><i class="fas fa-code-branch"></i> ${repo.forks_count}</span>
-                            <span class="repo-language">${repo.language || 'N/A'}</span>
-                        </div>
-                        <a href="${repo.html_url}" target="_blank" class="btn-github" style="display: inline-block; margin-top: 1rem;">
-                            <i class="fab fa-github"></i> Ver Repositório
-                        </a>
-                    `;
-                    reposContainer.appendChild(repoCard);
-                });
-            } else {
-                reposContainer.innerHTML = '<p class="no-data">Nenhum repositório público encontrado.</p>';
-            }
-        })
-        .catch(error => {
-            console.error('Erro ao buscar repositórios GitHub:', error);
-            document.getElementById('github-repos-list').innerHTML = '<p class="error">Erro ao carregar repositórios.</p>';
-        });
-
-    // Buscar atividades recentes
-    fetch(`https://api.github.com/users/${username}/events?per_page=5`)
-        .then(response => response.json())
-        .then(events => {
-            const activityContainer = document.getElementById('github-activity-list');
-            activityContainer.innerHTML = '';
-
-            if (events.length > 0) {
-                events.forEach(event => {
-                    let activityText = '';
-                    let activityType = '';
-
-                    switch(event.type) {
-                        case 'PushEvent':
-                            activityText = `Fez push para ${event.repo.name}: ${event.payload.size} commits`;
-                            activityType = 'Push';
-                            break;
-                        case 'CreateEvent':
-                            activityText = `Criou ${event.payload.ref_type} ${event.payload.ref || 'um novo item'} em ${event.repo.name}`;
-                            activityType = 'Criação';
-                            break;
-                        case 'ForkEvent':
-                            activityText = `Forkou ${event.repo.name}`;
-                            activityType = 'Fork';
-                            break;
-                        case 'WatchEvent':
-                            activityText = `Começou a seguir ${event.repo.name}`;
-                            activityType = 'Star';
-                            break;
-                        default:
-                            activityText = `Atividade no repositório ${event.repo.name}`;
-                            activityType = event.type.replace('Event', '');
-                    }
-
-                    const activityCard = document.createElement('div');
-                    activityCard.className = 'activity-card';
-                    activityCard.innerHTML = `
-                        <div class="activity-type">${activityType}</div>
-                        <h4>${event.repo.name}</h4>
-                        <p>${activityText}</p>
-                        <small>${new Date(event.created_at).toLocaleDateString('pt-BR')}</small>
-                    `;
-                    activityContainer.appendChild(activityCard);
-                });
-            } else {
-                activityContainer.innerHTML = '<p class="no-data">Nenhuma atividade recente encontrada.</p>';
-            }
-        })
-        .catch(error => {
-            console.error('Erro ao buscar atividades GitHub:', error);
-            document.getElementById('github-activity-list').innerHTML = '<p class="error">Erro ao carregar atividades.</p>';
-        });
-}
-
-// Carregar dados do GitHub quando a seção estiver visível
-const githubSection = document.getElementById('github');
-if (githubSection) {
-    const githubObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                fetchGitHubData();
-                githubObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    githubObserver.observe(githubSection);
-}
-
 // Validação e envio do formulário de contato
 document.getElementById('contactForm')?.addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -380,131 +240,6 @@ document.getElementById('contactForm')?.addEventListener('submit', async functio
     }
 });
 
-// Função para obter e exibir estatísticas do portfólio
-async function fetchPortfolioStats() {
-    try {
-        const response = await fetch('/api/stats');
-        const stats = await response.json();
-
-        // Atualizar elementos do DOM com as estatísticas
-        const totalViewsElement = document.getElementById('github-repos'); // Reutilizando o elemento
-        if (totalViewsElement) {
-            totalViewsElement.textContent = stats.totalViews;
-        }
-
-        // Se precisar de mais elementos específicos para estatísticas, podemos adicionar
-        // Exemplo de como adicionar mais estatísticas específicas:
-        /*
-        const totalContactsElement = document.getElementById('total-contacts');
-        if (totalContactsElement) {
-            totalContactsElement.textContent = stats.totalContacts;
-        }
-        */
-    } catch (error) {
-        console.error('Erro ao buscar estatísticas:', error);
-    }
-}
-
-// Carregar estatísticas quando a página carregar
-document.addEventListener('DOMContentLoaded', function() {
-    fetchPortfolioStats();
-});
-
-// Função para buscar e exibir atividades das redes sociais
-async function fetchSocialActivities() {
-    try {
-        // Simulação de dados de redes sociais
-        // Em um ambiente real, isso seria substituído por chamadas reais às APIs
-        const socialData = [
-            {
-                id: 1,
-                platform: 'linkedin',
-                icon: 'fab fa-linkedin',
-                title: 'Novo post no LinkedIn',
-                content: 'Compartilhei uma nova atualização sobre meus estudos em desenvolvimento front-end...',
-                date: '2 dias atrás',
-                url: 'https://linkedin.com/posts/exemplo'
-            },
-            {
-                id: 2,
-                platform: 'github',
-                icon: 'fab fa-github',
-                title: 'Novo commit',
-                content: 'Atualizei o portfólio com novas funcionalidades e melhorias de performance',
-                date: '3 dias atrás',
-                url: 'https://github.com/Wallace775/portfolio/commits/main'
-            },
-            {
-                id: 3,
-                platform: 'twitter',
-                icon: 'fab fa-twitter',
-                title: 'Novo tweet',
-                content: 'Acabei de completar mais um módulo do meu curso de React! Cada dia me sinto mais preparado para o mercado #DesenvolvimentoWeb #React',
-                date: '1 semana atrás',
-                url: 'https://twitter.com/exemplo'
-            }
-        ];
-
-        const container = document.getElementById('social-posts-container');
-        if (!container) return;
-
-        // Limpar container
-        container.innerHTML = '';
-
-        // Adicionar posts ao container
-        socialData.forEach(post => {
-            const postElement = document.createElement('a');
-            postElement.href = post.url;
-            postElement.target = "_blank";
-            postElement.rel = "noopener noreferrer";
-            postElement.className = 'social-post';
-            postElement.innerHTML = `
-                <div>
-                    <i class="${post.icon} platform-icon"></i>
-                    <strong>${post.title}</strong>
-                    <p>${post.content}</p>
-                    <span class="post-date">${post.date}</span>
-                </div>
-            `;
-            container.appendChild(postElement);
-        });
-
-    } catch (error) {
-        console.error('Erro ao buscar atividades das redes sociais:', error);
-        const container = document.getElementById('social-posts-container');
-        if (container) {
-            container.innerHTML = '<p class="error">Erro ao carregar últimas atividades</p>';
-        }
-    }
-}
-
-// Função para integrar com APIs reais de redes sociais (exemplo conceitual)
-async function integrateSocialAPIs() {
-    try {
-        // Exemplo de chamada para uma API de redes sociais (simulada)
-        // const linkedinResponse = await fetch('/api/social/linkedin');
-        // const twitterResponse = await fetch('/api/social/twitter');
-
-        // Em uma implementação real, você chamaria as APIs reais:
-        // - LinkedIn API: https://docs.microsoft.com/en-us/linkedin/
-        // - Twitter API: https://developer.twitter.com/en/docs/twitter-api
-        // - Instagram Basic Display API: https://developers.facebook.com/docs/instagram-basic-display-api/
-
-        // Por segurança, a integração real normalmente seria feita no backend
-        // para proteger as credenciais das APIs
-
-        fetchSocialActivities(); // Chamando a simulação por enquanto
-    } catch (error) {
-        console.error('Erro na integração com redes sociais:', error);
-        fetchSocialActivities(); // Fallback para dados simulados
-    }
-}
-
-// Carregar atividades das redes sociais quando a página carregar
-document.addEventListener('DOMContentLoaded', function() {
-    integrateSocialAPIs();
-});
-
 // Sistema de busca
 class SearchSystem {
     constructor() {
@@ -522,10 +257,6 @@ class SearchSystem {
     initializeSearchData() {
         // Coletando dados de todas as seções para busca
         this.searchData = [
-            // Projetos do portfólio
-            ...this.extractPortfolioData(),
-            // Posts do blog
-            ...this.extractBlogData(),
             // Habilidades
             ...this.extractSkillsData(),
             // Experiências
@@ -535,50 +266,6 @@ class SearchSystem {
             // Cursos
             ...this.extractCoursesData()
         ];
-    }
-
-    extractPortfolioData() {
-        const projects = [];
-        const projectElements = document.querySelectorAll('.portfolio-card');
-
-        projectElements.forEach((card, index) => {
-            const title = card.querySelector('h3')?.textContent || '';
-            const description = card.querySelector('p')?.textContent || '';
-            const link = card.querySelector('.btn-github')?.href || '';
-
-            projects.push({
-                id: `project-${index}`,
-                title: title,
-                content: description,
-                url: `#portifolio`,
-                type: 'project',
-                category: 'portfólio'
-            });
-        });
-
-        return projects;
-    }
-
-    extractBlogData() {
-        const posts = [];
-        const postElements = document.querySelectorAll('.blog-post');
-
-        postElements.forEach((post, index) => {
-            const title = post.querySelector('h3')?.textContent || '';
-            const content = post.querySelector('p')?.textContent || '';
-            const date = post.querySelector('.blog-date')?.textContent || '';
-
-            posts.push({
-                id: `blog-${index}`,
-                title: title,
-                content: `${date} - ${content}`,
-                url: `#blog`,
-                type: 'blog',
-                category: 'blog'
-            });
-        });
-
-        return posts;
     }
 
     extractSkillsData() {
@@ -946,52 +633,13 @@ class StatsSystem {
 
     showMetricDetails(metric) {
         // Esta função pode mostrar mais detalhes sobre uma métrica específica
-        let detail = '';
-
-        switch (metric) {
-            case 'projects-completed':
-                detail = '8 projetos completados incluindo sites responsivos, aplicações web e integrações API.';
-                break;
-            case 'lines-of-code':
-                detail = 'Mais de 15,000 linhas de código escritas em projetos pessoais e colaborativos.';
-                break;
-            case 'github-commits':
-                detail = '127 commits no GitHub demonstrando consistência e dedicação à prática.';
-                break;
-            case 'courses-completed':
-                detail = '12 cursos completos em desenvolvimento web, focando em tecnologias modernas.';
-                break;
-            case 'hours-coded':
-                detail = 'Mais de 320 horas dedicadas à prática de programação e desenvolvimento de projetos.';
-                break;
-            case 'problems-solved':
-                detail = '45 problemas e desafios resolvidos em algoritmos e programação.';
-                break;
-            default:
-                detail = 'Detalhes da métrica selecionada.';
-        }
-
-        // Em um ambiente real, você pode mostrar um modal ou expandir o card
-        alert(detail);
+        // Função mantida para compatibilidade futura
+        console.log('Métrica:', metric);
     }
 
     updateDynamicStats() {
         // Atualizar estatísticas dinamicamente se for necessário
-        // Por exemplo, atualizar o contador de commits do GitHub via API
-        this.fetchGitHubStats();
-    }
-
-    fetchGitHubStats() {
-        // Simular busca de estatísticas reais do GitHub
-        // Em implementação real, isso faria uma chamada real à API do GitHub
-        setTimeout(() => {
-            // Exemplo de como atualizar estatísticas com dados reais
-            const commitsElement = document.querySelector('[data-metric="github-commits"] .stat-value');
-            if (commitsElement) {
-                // Aqui atualizaríamos o valor com dados reais do GitHub
-                // Por enquanto, apenas mostramos que isso é possível
-            }
-        }, 1000);
+        // Função placeholder para futuras implementações
     }
 }
 
@@ -1387,7 +1035,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Adicionar micro-interações e animações mais sofisticadas
 document.addEventListener('DOMContentLoaded', function() {
     // Efeito de mouse follower em links importantes
-    const interactiveElements = document.querySelectorAll('a, button, .skill-card, .stat, .testimonial, .education-item, .portfolio-card');
+    const interactiveElements = document.querySelectorAll('a, button, .skill-card, .stat, .education-item');
 
     // Efeito de eletrocardiograma nos cards quando hover
     interactiveElements.forEach(element => {
@@ -1520,82 +1168,6 @@ function typeEffect(selector, texts) {
     // Iniciar o efeito após um pequeno delay
     setTimeout(type, 1000);
 }
-
-// Função para inicializar o carrossel de depoimentos
-function initTestimonialCarousel() {
-    const slides = document.querySelectorAll('.carousel-slide');
-    const dots = document.querySelectorAll('.dot');
-    const prevBtn = document.querySelector('.carousel-btn.prev');
-    const nextBtn = document.querySelector('.carousel-btn.next');
-
-    if (slides.length === 0) return;
-
-    let currentIndex = 0;
-    const totalSlides = slides.length;
-
-    // Função para mostrar slide específico
-    function showSlide(index) {
-        // Remover classe ativa de todos os slides
-        slides.forEach(slide => {
-            slide.classList.remove('active');
-            // Adicionar classe para animação
-            if (parseInt(slide.dataset.index) < index) {
-                slide.classList.add('prev');
-            } else {
-                slide.classList.add('next');
-            }
-        });
-
-        // Remover classe ativa de todos os dots
-        dots.forEach(dot => dot.classList.remove('active'));
-
-        // Atualizar slide
-        const newSlide = slides[index];
-        newSlide.classList.remove('prev', 'next');
-        newSlide.classList.add('active');
-
-        // Atualizar dot
-        dots[index].classList.add('active');
-
-        currentIndex = index;
-    }
-
-    // Event listeners para os botões
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-            const newIndex = currentIndex === 0 ? totalSlides - 1 : currentIndex - 1;
-            showSlide(newIndex);
-        });
-    }
-
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            const newIndex = currentIndex === totalSlides - 1 ? 0 : currentIndex + 1;
-            showSlide(newIndex);
-        });
-    }
-
-    // Event listeners para os dots
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            showSlide(index);
-        });
-    });
-
-    // Iniciar o carrossel
-    showSlide(currentIndex);
-
-    // Auto-avancar o carrossel a cada 5 segundos
-    setInterval(() => {
-        const newIndex = currentIndex === totalSlides - 1 ? 0 : currentIndex + 1;
-        showSlide(newIndex);
-    }, 5000);
-}
-
-// Inicializar o carrossel quando o DOM estiver carregado
-document.addEventListener('DOMContentLoaded', function() {
-    initTestimonialCarousel();
-});
 
 // Registro do Service Worker para funcionalidade PWA
 if ('serviceWorker' in navigator) {

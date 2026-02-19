@@ -190,7 +190,7 @@ header {
     background: var(--header-bg);
     color: white;
     padding: 1rem 0;
-    position: fixed;
+    position: fixed !important;
     width: 100%;
     top: 0;
     z-index: 1000;
@@ -319,7 +319,7 @@ nav a.active {
 
 /* Main content */
 main {
-    margin-top: 220px;
+    margin-top: 250px;
     position: relative;
     background: transparent; /* Garantindo que o main não tenha fundo */
 }
@@ -1547,6 +1547,175 @@ footer {
     transform: translateY(0);
 }
 
+/* Monitoramento & Automação */
+.monitoring-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.monitoring-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.monitoring-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.monitoring-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: white;
+}
+
+.monitoring-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.monitoring-card p {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.monitoring-list {
+    list-style: none;
+    padding: 0;
+}
+
+.monitoring-list li {
+    padding: 0.5rem 0;
+    color: var(--text-color);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.monitoring-list li i {
+    color: var(--primary-color);
+    margin-top: 4px;
+}
+
+.tools-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.tool-tag {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Responsivo para Monitoramento */
+@media (max-width: 768px) {
+    .monitoring-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .monitoring-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+}
+
+/* Conhecimentos Técnicos */
+.knowledge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.knowledge-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.8rem;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.knowledge-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+.knowledge-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.knowledge-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.knowledge-list {
+    list-style: none;
+    padding: 0;
+}
+
+.knowledge-list li {
+    padding: 0.4rem 0;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.knowledge-list li i {
+    color: var(--primary-color);
+    font-size: 0.8rem;
+}
+
+/* Responsivo para Conhecimentos */
+@media (max-width: 768px) {
+    .knowledge-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    
+    .knowledge-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+}
+
 .portfolio-card {
     opacity: 0;
     transform: translateY(40px);
@@ -2455,193 +2624,4 @@ nav a:hover i {
     .footer-content {
         text-align: center;
     }
-}
-
-/* Estilos para o Puzzle Deslizante */
-.puzzle-board-container {
-    display: flex;
-    justify-content: center;
-    margin: 2rem 0;
-}
-
-.puzzle-board {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 2px;
-    width: 300px;
-    height: 300px;
-    background-color: #333;
-    border: 3px solid #00509e;
-    border-radius: 5px;
-    padding: 5px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-.puzzle-tile {
-    background: linear-gradient(135deg, #007bff, #00509e);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: white;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    user-select: none;
-    position: relative;
-    overflow: hidden;
-}
-
-.puzzle-tile::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    opacity: 0;
-    transition: opacity 0.2s ease;
-}
-
-.puzzle-tile:hover::before {
-    opacity: 1;
-}
-
-.puzzle-tile:hover {
-    transform: scale(0.95);
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.puzzle-tile.empty {
-    background: transparent;
-    border: 2px dashed #666;
-    cursor: default;
-}
-
-.puzzle-tile.empty:hover {
-    transform: none;
-    box-shadow: none;
-}
-
-.puzzle-tile.empty::before {
-    display: none;
-}
-
-.puzzle-stats {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin: 1.5rem 0;
-    flex-wrap: wrap;
-}
-
-.stats-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.stats-label {
-    font-size: 0.9rem;
-    color: var(--text-light);
-    margin-bottom: 0.25rem;
-}
-
-.stats-value {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    font-family: 'Arial', sans-serif;
-}
-
-.puzzle-controls {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin: 1.5rem 0;
-    flex-wrap: wrap;
-}
-
-.btn-shuffle, .btn-reset {
-    padding: 0.8rem 1.5rem;
-    background: var(--btn-primary-bg);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.3s, transform 0.2s;
-    font-family: 'Arial', sans-serif;
-    font-weight: bold;
-}
-
-.btn-shuffle:hover, .btn-reset:hover {
-    background: var(--btn-primary-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.btn-shuffle:active, .btn-reset:active {
-    transform: translateY(0);
-}
-
-.puzzle-instructions {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 1.5rem;
-    border-radius: 10px;
-    text-align: left;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    margin-top: 2rem;
-}
-
-.puzzle-instructions h4 {
-    color: #00509e;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-.puzzle-instructions ol {
-    padding-left: 1.5rem;
-}
-
-.puzzle-instructions li {
-    margin-bottom: 0.75rem;
-    line-height: 1.5;
-}
-
-/* Animação para quando o puzzle é resolvido */
-.puzzle-solved .puzzle-tile {
-    animation: celebrate 0.6s ease;
-}
-
-@keyframes celebrate {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1) rotate(5deg); }
-    100% { transform: scale(1); }
-}
-
-/* Estilo para mensagem de vitória */
-.win-message {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(40, 167, 69, 0.95);
-    color: white;
-    padding: 2rem;
-    border-radius: 10px;
-    text-align: center;
-    z-index: 10000;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    font-size: 1.5rem;
-    font-weight: bold;
-    animation: popup 0.5s ease;
-}
-
-@keyframes popup {
-    0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
-    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
 }

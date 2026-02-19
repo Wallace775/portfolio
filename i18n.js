@@ -24,7 +24,7 @@ class I18n {
                 'github-title': 'Atividades no GitHub',
                 'game-title': 'Demonstração Técnica',
                 'welcome-text': 'Wallace Phellipe',
-                'developer-title': 'Desenvolvedor Front-end Júnior | Em transição para desenvolvimento',
+                'developer-title': 'Assistente de TI | Monitoramento & Automação | Suporte Técnico | Estudante Full Stack',
                 'cta-button': 'Entrar em Contato',
                 'github-button': 'Ver GitHub',
                 'contact-button': 'Pular Introdução'
@@ -49,7 +49,7 @@ class I18n {
                 'github-title': 'GitHub Activities',
                 'game-title': 'Technical Demo',
                 'welcome-text': 'Wallace Phellipe',
-                'developer-title': 'Front-end Junior Developer | Transitioning to development',
+                'developer-title': 'IT Assistant | Monitoring & Automation | Technical Support | Full Stack Student',
                 'cta-button': 'Get in Touch',
                 'github-button': 'View GitHub',
                 'contact-button': 'Skip Introduction'

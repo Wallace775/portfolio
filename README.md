@@ -1,17 +1,17 @@
-# Portfólio Pessoal - Wallace Phellipe
+# Portfólio - Wallace Phellipe
 
 ## Sobre Mim
-Olá! Sou Wallace Phellipe Melo de Araújo, um profissional em transição para a área de desenvolvimento front-end com sólida experiência em suporte técnico e TI. Estou cursando o programa de Desenvolvedor Front-end na Mate Academy, aplicando os conhecimentos adquiridos durante meus estudos na área de desenvolvimento.
+Olá! Sou Wallace Phellipe Melo de Araújo, **Assistente de TI** com sólida experiência em **suporte técnico**, **monitoramento de sistemas** e **automações operacionais**. Estou em transição de carreira para desenvolvimento Full Stack, combinando minha experiência em TI com habilidades de programação para criar soluções automatizadas e eficientes.
 
-Com habilidades em HTML, CSS, JavaScript e frameworks modernos, busco minha primeira oportunidade como Desenvolvedor Front-end Júnior, contribuindo para projetos significativos enquanto continuo meu aprendizado contínuo.
+Com habilidades em HTML, CSS, JavaScript, Node.js e frameworks modernos, busco oportunidades em TI: Suporte, Monitoramento e Automação, contribuindo para projetos significativos enquanto continuo meu aprendizado contínuo.
 
 ## Objetivo do Projeto
-Este projeto tem como objetivo apresentar meu perfil profissional, currículo e evolução como Desenvolvedor Front-end Júnior. Este site serve como:
+Este projeto tem como objetivo apresentar meu perfil profissional, currículo e evolução como profissional de TI e Desenvolvedor Full Stack. Este site serve como:
 - Currículo online
-- Portfólio inicial de desenvolvedor
-- Prova prática de conhecimento em HTML, CSS e JavaScript
+- Portfólio de projetos de automação e desenvolvimento
+- Prova prática de conhecimento em HTML, CSS, JavaScript e Node.js
 - Demonstração de boas práticas de desenvolvimento web
-- Link direto para recrutadores e vagas Dev Júnior
+- Link direto para recrutadores e vagas de TI: Suporte, Monitoramento e Automação
 
 ## Tecnologias Utilizadas
 - **HTML5** - Estrutura semântica e semântica
@@ -46,7 +46,8 @@ Este projeto tem como objetivo apresentar meu perfil profissional, currículo e 
 - **Intro profissional simplificada** - Tela inicial com duração reduzida e botão "Pular Introdução" visível para recrutadores
 - **Background animado sutil** - Partículas leves que não impactam performance
 - **Contador global de visitantes** - Mostra número real de visitantes usando API pública
-- **Jogo da Adivinhação** - Jogo interativo e divertido que qualquer pessoa pode jogar
+- **Jogo Puzzle Deslizante** - Demo técnica de manipulação de DOM e lógica
+- **Seção Monitoramento & Automação** - Destaque para habilidades em TI, suporte e automação
 
 ## Estrutura do Projeto
 ```
@@ -254,9 +255,15 @@ Adicionado CTA claro para oportunidades profissionais:
 ### 2. Sobre Mim
 - Apresentação pessoal
 - Estatísticas relevantes
-- Sobre a transição de carreira
+- Sobre a trajetória em TI e desenvolvimento
 
-### 3. Experiência Profissional
+### 3. Monitoramento & Automação (NOVO)
+- Cards com habilidades em Monitoramento de Sistemas
+- Automação Operacional com scripts e fluxos
+- Suporte Técnico N1/N2
+- Ferramentas e tecnologias (ServiceNow, Jira, PowerShell, Python, etc.)
+
+### 4. Experiência Profissional
 - Timeline interativa com empregos anteriores
 - Detalhes de responsabilidades e conquistas
 
@@ -271,7 +278,7 @@ Adicionado CTA claro para oportunidades profissionais:
 
 ### 6. Habilidades Técnicas
 - Barras de progresso para cada habilidade
-- Categorização por área (Front-end, Ferramentas, etc.)
+- Categorização por área (Front-end, TI & Operações, Ferramentas)
 
 ### 7. Demonstração Técnica
 - Jogo interativo "Puzzle Deslizante" demonstrando manipulação de DOM e lógica de posicionamento
@@ -297,7 +304,12 @@ Adicionado CTA claro para oportunidades profissionais:
 - Descrições e links para GitHub
 - Demonstração de habilidades práticas
 
-### 12. Contato
+### 12. Estatísticas
+- Cards interativos com métricas de desenvolvimento
+- Gráficos de progresso
+- Timeline de marcos profissionais
+
+### 13. Contato
 - Informações de contato
 - Formulário funcional com validação
 
@@ -331,15 +343,15 @@ Para hospedar este site no GitHub Pages siga os passos abaixo:
 7. Aguarde alguns minutos e seu site estará disponível no link mostrado
 
 ## Próximos Passos
-- Adicionar mais projetos ao portfólio à medida que forem desenvolvidos
-- Implementar novas funcionalidades conforme avanço nos estudos
+- Adicionar mais projetos de automação e scripts ao portfólio
+- Implementar dashboard de monitoramento em tempo real
 - Melhorar design com base em feedbacks recebidos
-- Adicionar funcionalidades de back-end (Node.js, banco de dados)
-- Integrar com APIs de redes sociais
+- Expandir funcionalidades de back-end (Node.js, banco de dados)
+- Integrar com APIs de monitoramento e ITSM
 - Aprimorar acessibilidade (a11y) para melhor experiência de usuário
 - Otimizar performance e tempo de carregamento
-- Melhorar hierarquia visual para melhor compreensão do conteúdo
-- Adicionar testes automatizados para garantir qualidade do código
+- Adicionar mais casos de uso de automação (Python, PowerShell)
+- Expandir testes automatizados para garantir qualidade do código
 
 ## Melhorias Implementadas
 - **Modularização do JavaScript**: Código dividido em módulos específicos para melhor manutenção
@@ -355,6 +367,8 @@ Para hospedar este site no GitHub Pages siga os passos abaixo:
 - **Sistema de notificações**: Notificações elegantes para feedback do usuário
 - **Validação de formulários**: Sistema avançado de validação em tempo real
 - **Conteúdo dinâmico**: Seções de blog, depoimentos e portfólio com dados reais
+- **Nova seção Monitoramento & Automação**: Destaque para habilidades em TI, Suporte e Automação
+- **Atualização de foco profissional**: Conteúdo alinhado para vagas de TI/Monitoramento/Automação
 
 ## Contribuições
 Contribuições são bem-vindas! Se você tiver sugestões ou melhorias:
