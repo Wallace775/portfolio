@@ -1,20 +1,19 @@
 # Portfólio - Wallace Phellipe
 
-## Sobre Mim
+## Sobre
 Olá! Sou Wallace Phellipe Melo de Araújo, **Assistente de TI** com sólida experiência em **suporte técnico**, **monitoramento de sistemas** e **automações operacionais**. Estou em transição de carreira para desenvolvimento Full Stack, combinando minha experiência em TI com habilidades de programação para criar soluções automatizadas e eficientes.
 
-Com habilidades em HTML, CSS, JavaScript, Node.js e frameworks modernos, busco oportunidades em TI: Suporte, Monitoramento e Automação, contribuindo para projetos significativos enquanto continuo meu aprendizado contínuo.
+Com habilidades em HTML, CSS, JavaScript e frameworks modernos, busco oportunidades em TI: Suporte, Monitoramento e Automação, contribuindo para projetos significativos enquanto continuo meu aprendizado contínuo.
 
 ## Objetivo do Projeto
 Este projeto tem como objetivo apresentar meu perfil profissional, currículo e evolução como profissional de TI e Desenvolvedor Full Stack. Este site serve como:
 - Currículo online
-- Portfólio de projetos de automação e desenvolvimento
-- Prova prática de conhecimento em HTML, CSS, JavaScript e Node.js
+- Prova prática de conhecimento em HTML, CSS, JavaScript
 - Demonstração de boas práticas de desenvolvimento web
 - Link direto para recrutadores e vagas de TI: Suporte, Monitoramento e Automação
 
 ## Tecnologias Utilizadas
-- **HTML5** - Estrutura semântica e semântica
+- **HTML5** - Estrutura semântica
 - **CSS3** - Estilos, layout flexbox/grid e responsividade
 - **JavaScript (ES6+)** - Funcionalidades interativas e validação
 - **Font Awesome** - Ícones para melhor experiência do usuário
@@ -28,26 +27,15 @@ Este projeto tem como objetivo apresentar meu perfil profissional, currículo e 
 - **Formulário de contato** - Com validação e feedback visual
 - **Timeline de experiências** - Apresentação visual da trajetória profissional
 - **Barras de habilidades** - Visualização do nível de conhecimento
-- **Grid de portfólio** - Cards interativos para cada projeto
 - **Cronograma de cursos** - Progresso e status dos estudos
-- **Seção de blog** - Compartilhamento de aprendizados, experiências e insights sobre desenvolvimento web
-- **Integração com GitHub** - Exibição de repositórios públicos e atividades recentes
-- **Seção de depoimentos** - Comentários de colegas, clientes e instrutores
 - **Acessibilidade (a11y)** - Recursos para melhor experiência de todos os usuários
 - **Tema claro/escuro** - Alternância de aparência conforme preferência do usuário
 - **Otimizações de performance** - Carregamento mais rápido e melhor uso de recursos
 - **Micro-interações e animações** - Experiência mais rica para o usuário
-- **Funcionalidades de back-end** - API para contato e estatísticas
-- **Integração com redes sociais** - Feed de atividades e links para perfis
-- **Testes automatizados** - Suite de testes para garantir qualidade
-- **Internacionalização (i18n)** - Suporte para múltiplos idiomas
 - **Sistema de busca** - Localização rápida de conteúdo
-- **Estatísticas e métricas** - Dados sobre desenvolvimento profissional
-- **Intro profissional simplificada** - Tela inicial com duração reduzida e botão "Pular Introdução" visível para recrutadores
+- **Intro profissional simplificada** - Tela inicial com duração reduzida e botão "Pular Introdução"
 - **Background animado sutil** - Partículas leves que não impactam performance
-- **Contador global de visitantes** - Mostra número real de visitantes usando API pública
-- **Jogo Puzzle Deslizante** - Demo técnica de manipulação de DOM e lógica
-- **Seção Monitoramento & Automação** - Destaque para habilidades em TI, suporte e automação
+- **Header fixo** - Menu sempre visível no topo da página
 
 ## Estrutura do Projeto
 ```
@@ -60,12 +48,7 @@ Este projeto tem como objetivo apresentar meu perfil profissional, currículo e 
 │   ├── navigation.js       # Funcionalidades de navegação
 │   ├── form-validator.js   # Sistema de validação de formulários
 │   ├── contact-form.js     # Gerenciamento do formulário de contato
-│   ├── github.js           # Integração com GitHub API
 │   ├── search.js           # Sistema de busca
-│   ├── blog.js             # Sistema de blog
-│   ├── testimonials.js     # Sistema de depoimentos
-│   ├── portfolio.js        # Sistema de projetos do portfólio
-│   ├── notifications.js    # Sistema de notificações
 │   └── animations.js       # Animações e interações
 ├── i18n.js                 # Sistema de internacionalização
 ├── server.js               # Servidor backend com Express
@@ -78,46 +61,8 @@ Este projeto tem como objetivo apresentar meu perfil profissional, currículo e 
 └── README.md               # Documentação do projeto
 ```
 
-## Demonstração Técnica
-O portfólio inclui uma demonstração técnica do tipo "Puzzle Deslizante" que mostra habilidades em:
-
-- Manipulação de DOM
-- Lógica de posicionamento
-- Lógica de programação
-- Atualização dinâmica da interface
-- Cálculos matemáticos
-- Event handling e interatividade
-
-## Sistema de Blog
-A seção de blog demonstra habilidades em:
-
-- Criação de layout responsivo com CSS Grid
-- Design de componentes visuais (cards de post)
-- Implementação de interações com JavaScript
-- Organização de conteúdo em formato de timeline
-- Animações e transições suaves
-
-## Integração com GitHub API
-A seção de atividades do GitHub demonstra habilidades em:
-
-- Consumo de APIs REST
-- Manipulação assíncrona de dados
-- Criação de componentes dinâmicos com JavaScript
-- Tratamento de erros em requisições de API
-- Interatividade baseada em eventos de rolagem
-
-## Sistema de Depoimentos
-A seção de depoimentos demonstra habilidades em:
-
-- Criação de layout responsivo com CSS Grid
-- Design de componentes visuais (cards de depoimento)
-- Implementação de estilos para melhor experiência do usuário
-- Animações e transições suaves
-- Organização de conteúdo social em formato de carrossel
-
 ## Acessibilidade (a11y)
 O portfólio inclui recursos de acessibilidade para garantir que todos os usuários tenham uma experiência inclusiva:
-
 - Uso de landmarks semânticas (header, main, footer, section)
 - Atributos ARIA para descrever regiões e elementos complexos
 - Rótulos adequados para todos os elementos interativos
@@ -126,112 +71,50 @@ O portfólio inclui recursos de acessibilidade para garantir que todos os usuár
 - Feedback apropriado para eventos (formulários, interações)
 - Navegação por teclado funcional
 - Textos alternativos para imagens
-- Progresso de carregamento para conteúdos dinâmicos
 
 ## Progressive Web App (PWA)
 O portfólio implementa recursos de PWA para funcionalidade offline e experiência semelhante a aplicativos:
-
 - Manifesto da web app para instalação
 - Service Worker para armazenamento em cache e funcionamento offline
 - Ícones para diferentes resoluções de tela
 - Tema de cor para integração com o sistema operacional
-- Funcionalidades disponíveis mesmo sem conexão à internet
 
 ## Tema Claro/Escuro
 O portfólio oferece a opção de alternar entre tema claro e escuro:
-
 - Botão de alternância na interface do usuário
 - Persistência da preferência do usuário no localStorage
 - Aplicação consistente do tema em todos os elementos
-- Ícones apropriados para cada modo
 - Preservação de contraste adequado em ambos os modos
 
 ## Otimizações de Performance
 O portfólio inclui diversas otimizações para garantir carregamento rápido e uso eficiente de recursos:
-
 - Animação de background otimizada com menor número de partículas e taxa de quadros limitada
 - Uso de lazy loading para imagens
-- Pré-conexão com APIs externas (GitHub, contador de visitantes)
+- Pré-conexão com APIs externas
 - Prefetch de recursos DNS para Font Awesome
-- Otimização de renderização de imagens
 - Limitação da taxa de quadros da animação para economizar CPU
 - Uso de propriedades CSS para melhor aceleração de hardware
 
 ## Micro-interações e Animações
 O portfólio inclui diversas micro-interações para melhorar a experiência do usuário:
-
 - Efeito de brilho e ondulação nos botões
 - Animações de entrada para seções quando visíveis
-- Efeito de pulsação sutil nos ícones de navegação
-- Transformações 3D nos cards de portfólio
+- Transformações 3D nos cards
 - Efeito de confetti em interações específicas
 - Tooltips personalizados para melhor usabilidade
 - Efeito de digitação animada no subtítulo
 - Feedback visual em elementos interativos
 
-## Funcionalidades de Back-End
-O portfólio inclui funcionalidades de back-end para melhor interação com os visitantes:
-
-- API para processamento de formulário de contato
-- Sistema de envio de e-mails via Nodemailer
-- Endpoint para estatísticas do portfólio
-- Informações do usuário via API
-- Middleware de segurança e validação
-- Deploy preparado para ambientes de produção
-
-## Integração com Redes Sociais
-O portfólio inclui funcionalidades para integrar e exibir conteúdo de redes sociais:
-
-- Feed de atividades das redes sociais
-- Links diretos para perfis nas redes
-- Exibição de últimas postagens
-- Integração conceitual com APIs (LinkedIn, Twitter, Instagram)
-- Implementação segura com chamadas backend
-- Componentes reutilizáveis para conteúdo social
-
-## Testes Automatizados
-O portfólio inclui uma suite de testes para garantir qualidade e funcionalidade:
-
-- Testes unitários para funções utilitárias
-- Testes de API para endpoints backend
-- Testes de integração para fluxos críticos
-- Cobertura de código para identificar lacunas
-- Scripts de execução para diferentes cenários
-- Configuração Jest para ambiente de testes
-
-## Internacionalização (i18n)
-O portfólio inclui suporte para múltiplos idiomas para atender uma audiência global:
-
-- Sistema de tradução dinâmica de conteúdo
-- Suporte para português e inglês
-- Persistência da preferência de idioma no localStorage
-- Seletor de idioma na interface do usuário
-- Tradução de textos estáticos e dinâmicos
-- Implementação modular para adicionar mais idiomas facilmente
-
 ## Sistema de Busca
 O portfólio inclui um sistema de busca para facilitar a navegação e localização de conteúdo:
-
-- Busca em tempo real por projetos, posts de blog, habilidades e experiências
+- Busca em tempo real por projetos, habilidades e experiências
 - Destaque de termos pesquisados nos resultados
 - Interface intuitiva com sugestões de busca
 - Filtro por categorias de conteúdo
 - Navegação direta para itens encontrados
-- Implementação otimizada com debounce para melhor performance
-
-## Seção de Estatísticas e Métricas
-O portfólio inclui uma seção dedicada para mostrar métricas relevantes sobre o desenvolvimento profissional:
-
-- Cards interativos com principais métricas de desenvolvimento
-- Gráficos de progresso em tecnologias e atividades
-- Linha do tempo de marcos de desenvolvimento
-- Estatísticas dinâmicas atualizadas periodicamente
-- Interface com feedback visual para métricas
-- Dados integrados com o GitHub e outras fontes
 
 ## Intro Profissional Otimizada
 A introdução do portfólio foi otimizada para recrutadores:
-
 - Duração reduzida (2.5 segundos)
 - Botão "Pular Introdução" visível
 - Design profissional e direto
@@ -239,7 +122,6 @@ A introdução do portfólio foi otimizada para recrutadores:
 
 ## Call-to-Action Profissional
 Adicionado CTA claro para oportunidades profissionais:
-
 - Botão "Entrar em Contato" visível na página inicial
 - Link direto para GitHub
 - Mensagem clara sobre busca por oportunidades
@@ -247,88 +129,69 @@ Adicionado CTA claro para oportunidades profissionais:
 
 ## Seções do Site
 
-### 1. Cabeçalho
+### 1. Cabeçalho (Fixo)
 - Foto de perfil
 - Nome completo e cargo
 - Navegação com ícones para todas as seções
+- **Sempre visível no topo ao rolar a página**
 
 ### 2. Sobre Mim
 - Apresentação pessoal
 - Estatísticas relevantes
-- Sobre a trajetória em TI e desenvolvimento
+- Trajetória em TI e desenvolvimento
 
-### 3. Monitoramento & Automação (NOVO)
+### 3. Monitoramento & Automação
 - Cards com habilidades em Monitoramento de Sistemas
 - Automação Operacional com scripts e fluxos
 - Suporte Técnico N1/N2
-- Ferramentas e tecnologias (ServiceNow, Jira, PowerShell, Python, etc.)
 
 ### 4. Experiência Profissional
 - Timeline interativa com empregos anteriores
 - Detalhes de responsabilidades e conquistas
 
-### 4. Formação Acadêmica
+### 5. Formação Acadêmica
 - Cursos e certificações relevantes
 - Em andamento e concluídos
 
-### 5. Cursos e Certificações
+### 6. Cursos e Certificações
 - Progresso em formações técnicas
 - Módulos concluídos
 - Certificações adicionais
 
-### 6. Habilidades Técnicas
+### 7. Habilidades Técnicas
 - Barras de progresso para cada habilidade
 - Categorização por área (Front-end, TI & Operações, Ferramentas)
 
-### 7. Demonstração Técnica
-- Jogo interativo "Puzzle Deslizante" demonstrando manipulação de DOM e lógica de posicionamento
+### 8. Conhecimentos Técnicos
+- Desenvolvimento Web (HTML, CSS, JavaScript, Git)
+- Suporte & Monitoramento
+- Automação (Scripts, Integração, Checklists)
+- Ferramentas (ServiceNow, Jira, Pacote Office)
 
-### 8. Blog
-- Seção dedicada para compartilhar aprendizados e experiências
-- Layout responsivo com cards de posts
-- Animações ao rolar a página
-
-### 9. Atividades no GitHub
-- Integração com API do GitHub
-- Exibição de repositórios públicos
-- Visualização de atividades recentes
-
-### 10. Depoimentos
-- Comentários de colegas e instrutores
-- Experiências de trabalho e aprendizado
-- Feedback de projetos colaborativos
-- Carrossel interativo com depoimentos
-
-### 11. Portfólio
-- Grid de projetos com ícones
-- Descrições e links para GitHub
-- Demonstração de habilidades práticas
-
-### 12. Estatísticas
-- Cards interativos com métricas de desenvolvimento
-- Gráficos de progresso
-- Timeline de marcos profissionais
-
-### 13. Contato
+### 9. Contato
 - Informações de contato
 - Formulário funcional com validação
 
 ## Como Usar
 1. Clone este repositório
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/Wallace775/portfolio.git
 ```
+
 2. Instale as dependências
 ```bash
 npm install
 ```
+
 3. Crie um arquivo `.env` com base no `.env.example`
+
 4. Inicie o servidor
 ```bash
 npm start
 # ou para desenvolvimento
 npm run dev
 ```
+
 5. Acesse `http://localhost:3000` no seu navegador
 
 ## Deploy no GitHub Pages
@@ -351,7 +214,6 @@ Para hospedar este site no GitHub Pages siga os passos abaixo:
 - Aprimorar acessibilidade (a11y) para melhor experiência de usuário
 - Otimizar performance e tempo de carregamento
 - Adicionar mais casos de uso de automação (Python, PowerShell)
-- Expandir testes automatizados para garantir qualidade do código
 
 ## Melhorias Implementadas
 - **Modularização do JavaScript**: Código dividido em módulos específicos para melhor manutenção
@@ -359,16 +221,15 @@ Para hospedar este site no GitHub Pages siga os passos abaixo:
 - **Melhoria na experiência do usuário**:
   - Feedback mais claro no formulário de contato com sistema de notificações
   - Sistema de validação avançado para formulários
-  - Modal de blog funcional com conteúdo dinâmico
   - Seção de depoimentos dinâmica
-  - Seção de portfólio com filtros e informações detalhadas
 - **Melhoria na qualidade do código**: Adicionados ESLint e Prettier para manter consistência
 - **Documentação atualizada**: README.md atualizado com instruções claras de uso
 - **Sistema de notificações**: Notificações elegantes para feedback do usuário
 - **Validação de formulários**: Sistema avançado de validação em tempo real
-- **Conteúdo dinâmico**: Seções de blog, depoimentos e portfólio com dados reais
 - **Nova seção Monitoramento & Automação**: Destaque para habilidades em TI, Suporte e Automação
 - **Atualização de foco profissional**: Conteúdo alinhado para vagas de TI/Monitoramento/Automação
+- **Header fixo no topo**: Menu sempre visível ao rolar a página
+- **Site simplificado**: Remoção de seções não essenciais para foco no objetivo principal
 
 ## Contribuições
 Contribuições são bem-vindas! Se você tiver sugestões ou melhorias:
@@ -378,7 +239,7 @@ Contribuições são bem-vindas! Se você tiver sugestões ou melhorias:
 1. Faça um fork do projeto
 2. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/portfolio.git
+   git clone https://github.com/Wallace775/portfolio.git
    ```
 3. Crie uma branch para sua feature:
    ```bash
@@ -404,7 +265,6 @@ Contribuições são bem-vindas! Se você tiver sugestões ou melhorias:
 9. Abra um Pull Request
 
 ### Diretrizes de contribuição:
-
 - Siga os padrões de código estabelecidos (ESLint e Prettier)
 - Adicione comentários significativos ao código
 - Atualize a documentação conforme necessário
@@ -412,7 +272,6 @@ Contribuições são bem-vindas! Se você tiver sugestões ou melhorias:
 - Siga o modelo de commits convencionais
 
 ### Tecnologias utilizadas:
-
 - HTML5, CSS3, JavaScript ES6+
 - Node.js com Express
 - Nodemailer para envio de emails
@@ -423,19 +282,10 @@ Contribuições são bem-vindas! Se você tiver sugestões ou melhorias:
 Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
 
 ## Contato
-- E-mail: wallacephellipe03@gmail.com
-- LinkedIn: [Wallace Phellipe](https://linkedin.com/in/seu-perfil)
-- GitHub: [Wallace Phellipe](https://github.com/seu-perfil)
+- **E-mail:** wallacephellipe03@gmail.com
+- **LinkedIn:** [Wallace Phellipe](https://www.linkedin.com/in/wallace-phellipe-b003a9235/)
+- **GitHub:** [Wallace775](https://github.com/Wallace775)
 
 ---
 
-## Melhorias Futuras Planejadas
-- Sistema de blog para compartilhar aprendizados
-- Integração com GitHub API para mostrar atividades recentes
-- Seção de depoimentos/testemunhos
-- Implementação de acessibilidade (a11y)
-- PWA (Progressive Web App) para funcionamento offline
-- Tema escuro/claro alternativo
-- Análise de desempenho e otimização de carregamento
-- Animações e micro-interações adicionais
-- Seção de depoimentos de colegas e clientes
+*Portfólio desenvolvido com foco em simplicidade e objetividade para oportunidades em TI: Suporte, Monitoramento e Automação.*
