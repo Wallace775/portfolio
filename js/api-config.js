@@ -8,7 +8,7 @@
 const API_CONFIG = {
     // Configuração da API do GitHub
     github: {
-        username: 'Wallace775', // Seu usuário do GitHub
+        username: 'wallace775', // Seu usuário do GitHub (case-sensitive)
         baseUrl: 'https://api.github.com',
         endpoints: {
             repos: '/users/{username}/repos',
@@ -38,8 +38,9 @@ const API_CONFIG = {
         // Crie uma conta em https://openweathermap.org/api
         weather: {
             apiKey: 'SUA_API_KEY_AQUI',
-            city: 'São Paulo', // Sua cidade
-            units: 'metric' // 'metric' para Celsius, 'imperial' para Fahrenheit
+            city: 'Curitiba', // Sua cidade (padrão: Curitiba)
+            units: 'metric', // 'metric' para Celsius, 'imperial' para Fahrenheit
+            enableGeolocation: false // Ativa geolocalização como fallback (opcional)
         },
 
         // API de cotação de moedas (Brasil API - gratuita, sem auth)
@@ -64,6 +65,22 @@ const API_CONFIG = {
         projectsLimit: 6,
         // Cache de dados (em minutos)
         cacheDuration: 30
+    },
+
+    // Método utilitário para limpar cache (para testes)
+    clearCache() {
+        // Limpar cache do localStorage
+        const cacheKeys = Object.keys(localStorage).filter(key => key.startsWith('portfolio_cache_'));
+        cacheKeys.forEach(key => localStorage.removeItem(key));
+        console.log('[API_CONFIG] Cache limpo com sucesso!', cacheKeys.length, 'chaves removidas');
+        
+        // Limpar cache em memória se existir
+        if (window.githubAPI && typeof githubAPI.clearCache === 'function') {
+            githubAPI.clearCache();
+        }
+        if (window.dynamicDataAPI && typeof dynamicDataAPI.refreshAll === 'function') {
+            dynamicDataAPI.refreshAll();
+        }
     }
 };
 

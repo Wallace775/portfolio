@@ -2974,6 +2974,19 @@ nav a:hover i {
     border: 3px solid var(--primary-color);
 }
 
+.github-avatar-placeholder {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--section-bg);
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
 .github-stats-info h4 {
     margin: 0;
     color: var(--text-color);
