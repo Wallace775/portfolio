@@ -83,6 +83,76 @@ body {
     font-weight: bold !important;
 }
 
+/* Validação de formulário */
+input.error,
+textarea.error {
+    border-color: #dc3545 !important;
+    background-color: rgba(220, 53, 69, 0.05) !important;
+}
+
+.field-error {
+    color: #dc3545;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.field-error::before {
+    content: '⚠️';
+    font-size: 0.75rem;
+}
+
+/* Notificações */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideIn 0.3s ease-out;
+    max-width: 400px;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.notification-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.notification-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.notification-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+.notification i {
+    font-size: 1.2rem;
+}
+
 /* Estilos para o modal de blog */
 .blog-modal {
     position: fixed;
@@ -2623,5 +2693,634 @@ nav a:hover i {
     
     .footer-content {
         text-align: center;
+    }
+}
+
+/* ========================================
+   NOVAS SEÇÕES - PROJETOS E WIDGETS
+   ======================================== */
+
+/* Seção de Projetos */
+#projetos {
+    position: relative;
+}
+
+.section-description {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+/* Loading e Error States */
+.loading-state,
+.error-state {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-light);
+}
+
+.loading-state i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.error-state i {
+    font-size: 3rem;
+    color: #dc3545;
+    margin-bottom: 1rem;
+}
+
+.btn-retry {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    transition: background 0.3s ease;
+}
+
+.btn-retry:hover {
+    background: var(--primary-dark);
+}
+
+/* Grid de Projetos */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+/* Card de Projeto */
+.project-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.project-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.project-icon {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.project-title {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin: 0;
+    flex: 1;
+}
+
+.project-description {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    flex: 1;
+}
+
+.project-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+}
+
+.project-language,
+.project-stars,
+.project-forks {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--text-lighter);
+}
+
+.project-language i {
+    color: #f1e05a;
+}
+
+.project-stars i {
+    color: #f1c40f;
+}
+
+.project-forks i {
+    color: var(--primary-color);
+}
+
+.project-topics {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.topic-tag {
+    background: var(--section-bg-alt);
+    color: var(--primary-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    border: 1px solid var(--border-color);
+}
+
+.project-links {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: auto;
+}
+
+.btn-project {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-project:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.btn-project.btn-secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.btn-project.btn-secondary:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.project-footer {
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.project-updated {
+    color: var(--text-lighter);
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.project-updated i {
+    font-size: 0.7rem;
+}
+
+/* CTA de Projetos */
+.projects-cta {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.btn-github {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 2rem;
+    background: #24292e;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 2px solid #24292e;
+}
+
+.btn-github:hover {
+    background: #1a1e23;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(36, 41, 46, 0.4);
+}
+
+/* Seção de Widgets */
+.section-widgets {
+    background: var(--section-bg-alt);
+}
+
+.widgets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.widget-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.widget-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Widget: GitHub Stats */
+.github-stats-widget {
+    text-align: center;
+}
+
+.github-stats-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.github-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+}
+
+.github-stats-info h4 {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+.github-bio {
+    margin: 0.25rem 0 0 0;
+    color: var(--text-light);
+    font-size: 0.85rem;
+}
+
+.github-stats-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.github-stat {
+    text-align: center;
+}
+
+.github-stat i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-lighter);
+    margin-top: 0.25rem;
+}
+
+.github-profile-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    background: #24292e;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.github-profile-btn:hover {
+    background: #1a1e23;
+    transform: translateY(-2px);
+}
+
+/* Widget: Clima */
+.weather-widget {
+    text-align: center;
+}
+
+.weather-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.weather-header i {
+    color: #f39c12;
+}
+
+.weather-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.weather-icon {
+    width: 60px;
+    height: 60px;
+}
+
+.weather-temp {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.temp {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.description {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    text-transform: capitalize;
+}
+
+.weather-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.weather-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.weather-detail i {
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+/* Widget: Cotações */
+.currency-widget {
+}
+
+.currency-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.currency-header i {
+    color: #27ae60;
+}
+
+.currency-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.currency-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: var(--section-bg);
+    border-radius: 8px;
+}
+
+.currency-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.currency-name {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.currency-code {
+    font-size: 0.75rem;
+    color: var(--text-lighter);
+}
+
+.currency-value {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+}
+
+.currency-buy {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.currency-variation {
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.currency-variation.positive {
+    color: #27ae60;
+}
+
+.currency-variation.negative {
+    color: #e74c3c;
+}
+
+.currency-footer {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.currency-footer small {
+    color: var(--text-lighter);
+    font-size: 0.75rem;
+}
+
+/* Widget: Frase Motivacional */
+.quote-widget {
+    text-align: center;
+    padding: 1rem;
+}
+
+.quote-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    opacity: 0.3;
+    margin-bottom: 1rem;
+}
+
+.quote-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    font-style: italic;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.quote-author {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-style: normal;
+}
+
+/* Projetos vazios */
+.projects-empty {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-light);
+}
+
+.projects-empty i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+/* Loading Skeleton para Widgets */
+.widget-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    color: var(--text-light);
+}
+
+.widget-loading i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.widget-loading p {
+    font-size: 0.9rem;
+}
+
+/* Skeleton Animation */
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        var(--section-bg) 25%,
+        var(--section-bg-alt) 50%,
+        var(--section-bg) 75%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: 4px;
+}
+
+/* Responsividade para novas seções */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .widgets-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .github-stats-content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .weather-details {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .project-links {
+        flex-direction: column;
+    }
+    
+    .btn-project {
+        width: 100%;
+    }
+    
+    .github-stats-content {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+    }
+    
+    .stat-value {
+        font-size: 1.2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.65rem;
     }
 }

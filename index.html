@@ -57,6 +57,7 @@
                     <li><a href="#cursos" aria-label="Ir para seção de cursos"><i class="fas fa-book" aria-hidden="true"></i> <span data-i18n="courses-title">Cursos</span></a></li>
                     <li><a href="#habilidades" aria-label="Ir para seção de habilidades"><i class="fas fa-code" aria-hidden="true"></i> <span data-i18n="skills-title">Habilidades</span></a></li>
                     <li><a href="#conhecimentos" aria-label="Ir para seção de conhecimentos"><i class="fas fa-graduation-cap" aria-hidden="true"></i> <span>Conhecimentos</span></a></li>
+                    <li><a href="#projetos" aria-label="Ir para seção de projetos"><i class="fas fa-folder" aria-hidden="true"></i> <span>Projetos</span></a></li>
                     <li><a href="#contato" aria-label="Ir para seção de contato"><i class="fas fa-envelope" aria-hidden="true"></i> <span data-i18n="contact-title">Contato</span></a></li>
                 </ul>
             </nav>
@@ -455,6 +456,57 @@
             </div>
         </section>
 
+        <!-- Seção Projetos Dinâmicos (GitHub) -->
+        <section id="projetos" class="section" aria-labelledby="projetos-title">
+            <div class="container">
+                <h2 id="projetos-title"><i class="fas fa-code" aria-hidden="true"></i> Projetos no GitHub</h2>
+                <p class="section-description">Confira meus projetos mais recentes diretamente do GitHub</p>
+                
+                <!-- Loading State -->
+                <div id="projects-loading" class="loading-state">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Carregando projetos...</p>
+                </div>
+                
+                <!-- Error State -->
+                <div id="projects-error" class="error-state" style="display: none;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>Erro ao carregar projetos. <button id="retry-projects" class="btn-retry">Tentar novamente</button></p>
+                </div>
+                
+                <!-- Container dos Projetos -->
+                <div id="projects-container" class="projects-grid"></div>
+                
+                <!-- Ver mais no GitHub -->
+                <div class="projects-cta">
+                    <a href="https://github.com/Wallace775?tab=repositories" target="_blank" rel="noopener noreferrer" class="btn-github">
+                        <i class="fab fa-github"></i> Ver todos os repositórios no GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Dados Dinâmicos (Widgets) -->
+        <section id="widgets" class="section section-widgets" aria-labelledby="widgets-title">
+            <div class="container">
+                <h2 id="widgets-title"><i class="fas fa-chart-line" aria-hidden="true"></i> Dados em Tempo Real</h2>
+                
+                <div class="widgets-grid">
+                    <!-- Widget: GitHub Stats -->
+                    <div id="github-stats-widget" class="widget-card"></div>
+                    
+                    <!-- Widget: Clima -->
+                    <div id="weather-widget" class="widget-card"></div>
+                    
+                    <!-- Widget: Cotações -->
+                    <div id="currency-widget" class="widget-card"></div>
+                    
+                    <!-- Widget: Frase Motivacional -->
+                    <div id="quote-widget" class="widget-card"></div>
+                </div>
+            </div>
+        </section>
+
         <!-- Seção Contato -->
         <section id="contato" class="section" aria-labelledby="contato-title">
             <div class="container">
@@ -675,6 +727,11 @@
 
     </main>
     <!-- Scripts modulares -->
+    <script src="js/api-config.js"></script>
+    <script src="js/github-api.js"></script>
+    <script src="js/dynamic-data.js"></script>
+    <script src="js/contact-api.js"></script>
+    <script src="js/api-integration.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/theme.js"></script>
     <script src="js/navigation.js"></script>
