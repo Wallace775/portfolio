@@ -1499,8 +1499,13 @@ main {
     box-shadow: 0 4px 12px rgba(51, 51, 51, 0.3);
 }
 
+.btn-demo {
+    background-color: #28a745;
+}
+
 .btn-demo:hover {
     background-color: #218838;
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
 }
 
 /* Contato */

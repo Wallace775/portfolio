@@ -3,14 +3,14 @@
 ## Sobre
 Olá! Sou Wallace Phellipe Melo de Araújo, **Assistente de TI** com sólida experiência em **suporte técnico**, **monitoramento de sistemas** e **automações operacionais**. Estou em transição de carreira para desenvolvimento Full Stack, combinando minha experiência em TI com habilidades de programação para criar soluções automatizadas e eficientes.
 
-Com habilidades em HTML, CSS, JavaScript e frameworks modernos, busco oportunidades em TI: Suporte, Monitoramento e Automação, contribuindo para projetos significativos enquanto continuo meu aprendizado contínuo.
+Com habilidades em HTML, CSS, JavaScript e frameworks modernos, busco oportunidades como **Desenvolvedor Full Stack Júnior** e **Automação de Sistemas**, contribuindo para projetos significativos enquanto continuo meu aprendizado contínuo.
 
 ## Objetivo do Projeto
 Este projeto tem como objetivo apresentar meu perfil profissional, currículo e evolução como profissional de TI e Desenvolvedor Full Stack. Este site serve como:
 - Currículo online
 - Prova prática de conhecimento em HTML, CSS, JavaScript
 - Demonstração de boas práticas de desenvolvimento web
-- Link direto para recrutadores e vagas de TI: Suporte, Monitoramento e Automação
+- Link direto para recrutadores e vagas de Desenvolvimento e Automação
 
 ## Tecnologias Utilizadas
 - **HTML5** - Estrutura semântica
@@ -19,15 +19,16 @@ Este projeto tem como objetivo apresentar meu perfil profissional, currículo e 
 - **Font Awesome** - Ícones para melhor experiência do usuário
 - **Git & GitHub** - Controle de versão e hospedagem
 - **GitHub Pages** - Deploy e hospedagem
+- **Typebot** - Chatbot de automação de atendimento
 
 ## Funcionalidades
 - **Design responsivo** - Funciona perfeitamente em mobile e desktop
 - **Navegação suave** - Transições agradáveis entre seções
-- **Animações ao rolar a página** - Conteúdo aparece com efeitos
 - **Formulário de contato** - Com validação e feedback visual
 - **Timeline de experiências** - Apresentação visual da trajetória profissional
 - **Barras de habilidades** - Visualização do nível de conhecimento
 - **Cronograma de cursos** - Progresso e status dos estudos
+- **Chatbot integrado** - Demonstração de automação de atendimento
 - **Acessibilidade (a11y)** - Recursos para melhor experiência de todos os usuários
 - **Tema claro/escuro** - Alternância de aparência conforme preferência do usuário
 - **Otimizações de performance** - Carregamento mais rápido e melhor uso de recursos
@@ -270,6 +271,66 @@ Contribuições são bem-vindas! Se você tiver sugestões ou melhorias:
 - Atualize a documentação conforme necessário
 - Teste suas alterações em diferentes navegadores
 - Siga o modelo de commits convencionais
+
+## 🚀 Deploy no GitHub Pages
+
+### Configuração Automática
+
+1. Acesse o repositório no GitHub
+2. Vá em **Settings** > **Pages**
+3. Em **Source**, selecione:
+   - Branch: `main` (ou `master`)
+   - Folder: `/ (root)`
+4. Clique em **Save**
+5. Aguarde alguns minutos e acesse: `https://wallace775.github.io/portfolio/`
+
+### Estrutura de Arquivos para Deploy
+
+```
+portfolio/
+├── index.html          # Página principal
+├── bot.html            # Página do Chatbot (Typebot)
+├── style.css           # Estilos
+├── script.js           # Scripts principais
+├── manifest.json       # PWA manifest
+├── sw.js               # Service Worker
+├── .nojekyll           # Importante para GitHub Pages
+├── .gitignore          # Arquivos ignorados
+└── js/                 # Scripts modularizados
+    ├── animations.js
+    ├── navigation.js
+    ├── search.js
+    └── ...
+```
+
+### ⚠️ Importante para Deploy
+
+- ✅ Todos os caminhos são **relativos** (ex: `style.css`, não `/style.css`)
+- ✅ Arquivo `.nojekyll` presente (evita processamento Jekyll)
+- ✅ `bot.html` integrado com Typebot (ID: botbar-0rppypm)
+- ✅ Links do chatbot apontam para `index.html` (navegação entre páginas)
+
+### Testes Locais
+
+Antes de fazer deploy:
+
+```bash
+# 1. Clone o repositório
+git clone https://github.com/Wallace775/portfolio.git
+
+# 2. Navegue até a pasta
+cd portfolio
+
+# 3. Abra o index.html no navegador
+# Ou use um servidor local:
+npx http-server .
+
+# 4. Teste todas as funcionalidades:
+# - Navegação entre seções
+# - Chatbot (bot.html)
+# - Responsividade (mobile/desktop)
+# - Tema claro/escuro
+```
 
 ### Tecnologias utilizadas:
 - HTML5, CSS3, JavaScript ES6+

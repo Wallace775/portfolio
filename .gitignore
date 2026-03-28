@@ -1,1 +1,43 @@
+# Environment variables
 .env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+
+# Temporary files
+tmp/
+temp/
+
+# Backend server (if not needed for GitHub Pages)
+server.js
+
+# Test files (optional - keep if you want tests in repo)
+__tests__/
+jest.config.js
+
+# Package lock (optional - generally should be committed)
+# package-lock.json
