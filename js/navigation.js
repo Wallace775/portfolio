@@ -42,28 +42,29 @@ class NavigationManager {
         }
     }
 
-    // Smooth scrolling para links de âncora com transição
+    // Scroll instantâneo para links de âncora
     setupSmoothScrolling() {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
 
                 const targetId = this.getAttribute('href');
-                
-                if (targetId === '#') return; // Não fazer nada se for link para o topo
 
-                Utils.animatePageTransition(() => {
-                    Utils.scrollToElement(targetId);
-                });
+                if (targetId === '#') return;
+
+                const target = document.querySelector(targetId);
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'instant'
+                    });
+                }
             });
         });
     }
 
     // Adicionar efeito de scroll para adicionar classe ao header
     setupScrollHighlight() {
-        let ticking = false;
-        let isTransitioning = false; // Flag para evitar múltiplas transições
-
         function updateScrollState() {
             const sections = document.querySelectorAll('.section');
             const scrollPosition = window.scrollY + window.innerHeight / 2;
@@ -73,7 +74,6 @@ class NavigationManager {
                 const sectionBottom = sectionTop + section.offsetHeight;
 
                 if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                    // Destacar o link de navegação correspondente
                     document.querySelectorAll('nav a').forEach(link => {
                         link.classList.remove('active');
                         if (link.getAttribute('href') === `#${section.id}`) {
@@ -84,25 +84,15 @@ class NavigationManager {
             });
         }
 
-        function requestTick() {
-            if (!ticking) {
-                requestAnimationFrame(() => {
-                    updateScrollState();
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        }
+        window.addEventListener('scroll', function() {
+            updateScrollState();
+        });
 
-        window.addEventListener('scroll', Utils.debounce(requestTick, 100));
-
-        // Inicializar estado de scroll
         document.addEventListener('DOMContentLoaded', () => {
             updateScrollState();
         });
 
-        // Adicionar classe ao header quando rolar
-        window.addEventListener('scroll', Utils.debounce(function() {
+        window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (header) {
                 if (window.scrollY > 50) {
@@ -111,7 +101,7 @@ class NavigationManager {
                     header.classList.remove('scrolled');
                 }
             }
-        }, 100));
+        });
     }
 }
 

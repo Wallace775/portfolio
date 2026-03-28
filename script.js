@@ -28,55 +28,6 @@ if (mobileMenu && navMenu) {
     });
 }
 
-// Criar o elemento de transição de página
-function createPageTransition() {
-    const transition = document.createElement('div');
-    transition.className = 'page-transition';
-    document.body.appendChild(transition);
-    return transition;
-}
-
-// Função para animar transição de página
-function animatePageTransition(callback) {
-    const transition = createPageTransition();
-    
-    // Animação de saída
-    transition.classList.add('slide-out');
-    
-    setTimeout(() => {
-        // Executar a callback (navegação)
-        if (callback) callback();
-        
-        // Animação de entrada
-        transition.classList.remove('slide-out');
-        transition.classList.add('slide-in');
-        
-        // Remover o elemento após a animação
-        setTimeout(() => {
-            document.body.removeChild(transition);
-        }, 800);
-    }, 800); // Duração da animação de saída
-}
-
-// Smooth scrolling para links de âncora com transição
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        const target = document.querySelector(targetId);
-        
-        if (target) {
-            animatePageTransition(() => {
-                window.scrollTo({
-                    top: target.offsetTop - 70, // Compensar o header fixo
-                    behavior: 'smooth'
-                });
-            });
-        }
-    });
-});
-
 // Adicionar efeito de scroll para adicionar classe ao header
 window.addEventListener('scroll', function() {
     const header = document.querySelector('header');
@@ -85,24 +36,6 @@ window.addEventListener('scroll', function() {
     } else {
         header.classList.remove('scrolled');
     }
-});
-
-// Efeito para elementos ao aparecerem no viewport
-const observerOptions = {
-    threshold: 0.1
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
-
-// Observar seções para animação
-document.querySelectorAll('.section').forEach(section => {
-    observer.observe(section);
 });
 
 // Validação e envio do formulário de contato
@@ -465,17 +398,15 @@ class SearchSystem {
 
         // Navegar para a seção
         if (url.startsWith('#')) {
-            // Fazer scroll suave para a seção
             const targetElement = document.querySelector(url);
             if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
+                targetElement.scrollIntoView({ behavior: 'instant' });
 
-                // Destacar o item específico se possível
                 if (id) {
                     const targetItem = document.querySelector(`#${id}`) ||
                                       document.querySelector(`[data-id="${id}"]`);
                     if (targetItem) {
-                        targetItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        targetItem.scrollIntoView({ behavior: 'instant', block: 'center' });
                     }
                 }
             }
@@ -647,48 +578,7 @@ class StatsSystem {
 const statsSystem = new StatsSystem();
 window.statsSystem = statsSystem;
 
-// Função para animar barras de habilidades quando visíveis
-const skillObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            // Adicionar classe para ativar a animação
-            const skillLevels = entry.target.querySelectorAll('.skill-level, .progress');
-            skillLevels.forEach((level, index) => {
-                setTimeout(() => {
-                    level.style.width = level.style.width;
-                }, index * 200);
-            });
-            skillObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.5 });
-
-// Observar seções de habilidades
-document.querySelectorAll('.skills-category, .course-item').forEach(section => {
-    skillObserver.observe(section);
-});
-
-// Efeito de digitação no subtítulo (opcional)
-const subtitle = document.querySelector('.subtitle');
-if (subtitle) {
-    const originalText = subtitle.textContent;
-    const texts = [
-        'Desenvolvedor Front-end Júnior | Em transição para desenvolvimento',
-        'Desenvolvedor Web | Aprendiz contínuo',
-        'Desenvolvedor Front-end Júnior | Apaixonado por tecnologia'
-    ];
-    
-    let index = 0;
-    setInterval(() => {
-        subtitle.textContent = texts[index];
-        index = (index + 1) % texts.length;
-    }, 4000);
-}
-
 // Implementar transições de página mais suaves ao rolar
-let ticking = false;
-let isTransitioning = false; // Flag para evitar múltiplas transições
-
 function updateScrollState() {
     const sections = document.querySelectorAll('.section');
     const scrollPosition = window.scrollY + window.innerHeight / 2;
@@ -698,7 +588,6 @@ function updateScrollState() {
         const sectionBottom = sectionTop + section.offsetHeight;
 
         if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-            // Destacar o link de navegação correspondente
             document.querySelectorAll('nav a').forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === `#${section.id}`) {
@@ -709,89 +598,11 @@ function updateScrollState() {
     });
 }
 
-function requestTick() {
-    if (!ticking) {
-        requestAnimationFrame(() => {
-            updateScrollState();
-            ticking = false;
-        });
-        ticking = true;
-    }
-}
-
-window.addEventListener('scroll', requestTick);
+window.addEventListener('scroll', updateScrollState);
 
 // Inicializar estado de scroll
 document.addEventListener('DOMContentLoaded', () => {
     updateScrollState();
-});
-
-// Intro Modal functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const introModal = document.getElementById('intro-modal');
-    const enterBtn = document.getElementById('enter-btn');
-    const skipBtn = document.getElementById('skip-btn');
-
-    // Function to scroll to 'sobre' section
-    function scrollToSobre() {
-        const sobreSection = document.getElementById('sobre');
-        if (sobreSection) {
-            // Rolar diretamente para a seção 'sobre'
-            sobreSection.scrollIntoView({
-                behavior: 'smooth',  // smooth em vez de instant para melhor experiência
-                block: 'start'
-            });
-
-            // Destacar o link 'Sobre' como ativo
-            document.querySelectorAll('nav a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#sobre') {
-                    link.classList.add('active');
-                }
-            });
-        }
-    }
-
-    // Check if modal has been shown in this session
-    const hasSeenIntro = localStorage.getItem('hasSeenIntro');
-
-    if (!hasSeenIntro) {
-        // Mostrar a intro para novos visitantes
-        // Reduzir o tempo para apenas 2.5 segundos
-        setTimeout(() => {
-            if (introModal.style.display !== 'none') {
-                hideIntroModal();
-            }
-        }, 2500); // Reduzido de 3.5s para 2.5s
-    } else {
-        // Se o usuário já viu a intro, esconder imediatamente
-        introModal.style.display = 'none';
-        // E ir direto para a seção 'sobre'
-        scrollToSobre();
-    }
-
-    // Function to hide the intro modal and scroll to 'sobre'
-    function hideIntroModal() {
-        introModal.style.opacity = '0';
-        setTimeout(() => {
-            introModal.style.display = 'none';
-            scrollToSobre();
-        }, 300); // Reduzido o tempo de fade out
-        localStorage.setItem('hasSeenIntro', 'true');
-    }
-
-    // Event listener for the Enter button
-    enterBtn.addEventListener('click', hideIntroModal);
-
-    // Event listener for the Skip button
-    skipBtn.addEventListener('click', hideIntroModal);
-
-    // Also allow clicking anywhere on the modal to enter (except the button area to avoid double action)
-    introModal.addEventListener('click', function(e) {
-        if (e.target === introModal) {
-            hideIntroModal();
-        }
-    });
 });
 
 // Visitor counter functionality using CountAPI

@@ -268,17 +268,15 @@ class SearchSystem {
 
         // Navegar para a seção
         if (url.startsWith('#')) {
-            // Fazer scroll suave para a seção
             const targetElement = document.querySelector(url);
             if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
+                targetElement.scrollIntoView({ behavior: 'instant' });
 
-                // Destacar o item específico se possível
                 if (id) {
                     const targetItem = document.querySelector(`#${id}`) ||
                                       document.querySelector(`[data-id="${id}"]`);
                     if (targetItem) {
-                        targetItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        targetItem.scrollIntoView({ behavior: 'instant', block: 'center' });
                     }
                 }
             }

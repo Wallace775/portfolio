@@ -1,43 +1,13 @@
-// Utilitários gerais para o portfólio
+// Utilitários gerais para o portfólio - Versão simplificada sem animações
 class Utils {
-    // Função para animar transição de página
-    static animatePageTransition(callback) {
-        const transition = this.createPageTransition();
-
-        // Animação de saída
-        transition.classList.add('slide-out');
-
-        setTimeout(() => {
-            // Executar a callback (navegação)
-            if (callback) callback();
-
-            // Animação de entrada
-            transition.classList.remove('slide-out');
-            transition.classList.add('slide-in');
-
-            // Remover o elemento após a animação
-            setTimeout(() => {
-                document.body.removeChild(transition);
-            }, 800);
-        }, 800); // Duração da animação de saída
-    }
-
-    // Criar o elemento de transição de página
-    static createPageTransition() {
-        const transition = document.createElement('div');
-        transition.className = 'page-transition';
-        document.body.appendChild(transition);
-        return transition;
-    }
-
-    // Função para rolar suavemente para um elemento
+    // Função para rolar instantaneamente para um elemento
     static scrollToElement(targetId) {
         const target = document.querySelector(targetId);
         if (target) {
-            const offsetTop = target.offsetTop - 100; // Compensar o header fixo com mais margem
+            const offsetTop = target.offsetTop - 100;
             window.scrollTo({
                 top: offsetTop,
-                behavior: 'smooth'
+                behavior: 'instant'
             });
         }
     }
