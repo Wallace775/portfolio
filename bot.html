@@ -97,64 +97,11 @@
     <!-- Container do Typebot -->
     <div id="typebot-container">
         <typebot-standard
-            id="botbar-0rppypm"
+            id="botbar-Orppypm"
         ></typebot-standard>
     </div>
 
-    <!-- Script do Typebot no final do body para garantir carregamento -->
-    <script type="module">
-        console.log('🤖 Typebot Bot - Iniciando carregamento...');
-        console.log('🤖 Typebot ID: botbar-0rppypm');
-        
-        // Aguarda o DOM estar completamente carregado
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initTypebot);
-        } else {
-            initTypebot();
-        }
-        
-        function initTypebot() {
-            console.log('✅ DOM pronto - Verificando elemento Typebot...');
-            
-            const typebotElement = document.querySelector('typebot-standard');
-            
-            if (typebotElement) {
-                console.log('✅ Elemento typebot-standard encontrado:', typebotElement);
-                console.log('✅ ID do bot:', typebotElement.id);
-                
-                // Verifica se o script do Typebot foi carregado
-                if (window.initStandard) {
-                    console.log('✅ Script do Typebot carregado - initStandard disponível');
-                } else {
-                    console.log('⚠️ Script do Typebot ainda não carregado - aguardando...');
-                    
-                    // Aguarda o script do Typebot carregar
-                    const checkScript = setInterval(() => {
-                        if (window.initStandard) {
-                            console.log('✅ Script do Typebot carregado com sucesso');
-                            clearInterval(checkScript);
-                        }
-                    }, 100);
-                }
-            } else {
-                console.error('❌ Elemento typebot-standard NÃO encontrado no DOM');
-            }
-        }
-        
-        // Log adicional após 2 segundos para verificar se houve algum erro
-        setTimeout(() => {
-            const typebotElement = document.querySelector('typebot-standard');
-            if (typebotElement) {
-                console.log('📊 Status após 2s:');
-                console.log('   - Elemento existe:', !!typebotElement);
-                console.log('   - Display:', window.getComputedStyle(typebotElement).display);
-                console.log('   - Width:', window.getComputedStyle(typebotElement).width);
-                console.log('   - Height:', window.getComputedStyle(typebotElement).height);
-            }
-        }, 2000);
-    </script>
-    
-    <!-- Script do Typebot -->
-    <script type="module" src="https://cdn.typebot.io/standard.js"></script>
+    <!-- Script do Typebot via CDN oficial -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@typebot.io/js@0/dist/web.js"></script>
 </body>
 </html>
