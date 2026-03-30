@@ -270,7 +270,7 @@ class SearchSystem {
         if (url.startsWith('#')) {
             const targetElement = document.querySelector(url);
             if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'instant' });
+                targetElement.scrollIntoView({ behavior: 'instant', block: 'start' });
 
                 if (id) {
                     const targetItem = document.querySelector(`#${id}`) ||

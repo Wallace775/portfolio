@@ -54,9 +54,10 @@ class NavigationManager {
 
                 const target = document.querySelector(targetId);
                 if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 70,
-                        behavior: 'instant'
+                    // Usa scrollIntoView com block: 'start' para respeitar o scroll-margin-top do CSS
+                    target.scrollIntoView({
+                        behavior: 'instant',
+                        block: 'start'
                     });
                 }
             });

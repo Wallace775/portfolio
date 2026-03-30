@@ -35,6 +35,20 @@ body.loaded .container {
     box-sizing: border-box;
 }
 
+/* Scroll suave com offset para header fixo */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 120px;
+}
+
+section {
+    scroll-margin-top: 120px;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 /* Definições de cores para tema claro e escuro */
 :root {
     --primary-color: #00509e;
@@ -416,9 +430,10 @@ main {
 /* Transições de página/section */
 .section {
     padding: 4rem 0;
-    min-height: 100vh;
+    min-height: 80vh;
     display: flex !important;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     position: relative;
     opacity: 1 !important;
     transform: none !important;
@@ -1653,9 +1668,17 @@ footer {
 .cta-section {
     background: linear-gradient(135deg, rgba(0, 80, 158, 0.9), rgba(15, 15, 40, 0.95));
     color: white;
-    padding: 3rem 0;
+    padding: 4rem 0;
     margin: 220px 0 2rem 0; /* Compensar o header fixo */
     text-align: center;
+    min-height: auto;
+    display: block !important;
+}
+
+.cta-section .cta-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .cta-content h2 {
