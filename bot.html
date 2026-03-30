@@ -3,105 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Automação de Atendimento - Chatbot | Wallace Phellipe</title>
-    <meta name="description" content="Chatbot de automação de atendimento desenvolvido por Wallace Phellipe">
-    
-    <!-- Font Awesome para ícones -->
+    <title>Atendimento Automatizado | Wallace Phellipe</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- CSS Interno -->
+
     <style>
-        /* Reset e garantia de altura total */
         html, body {
-            height: 100%;
             margin: 0;
             padding: 0;
+            width: 100%;
+            height: 100vh;
             overflow: hidden;
-            background-color: #0f172a;
-            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a;
         }
 
-        /* Botão flutuante de voltar */
         .back-button {
             position: fixed;
             top: 20px;
             left: 20px;
-            z-index: 9999;
-            display: inline-flex;
+            z-index: 10000;
+            display: flex;
             align-items: center;
-            gap: 8px;
-            background-color: #00509e;
+            gap: 10px;
+            padding: 12px 20px;
+            background-color: rgba(0, 80, 158, 0.9);
             color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
             text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 80, 158, 0.4);
+            border-radius: 8px;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
         }
 
         .back-button:hover {
-            background-color: #00397a;
-            transform: translateX(-3px);
-            box-shadow: 0 6px 20px rgba(0, 80, 158, 0.6);
+            background-color: rgba(0, 63, 122, 0.95);
+            transform: scale(1.05);
         }
 
-        .back-button i {
-            font-size: 1rem;
-        }
-
-        /* Container do Typebot */
-        #typebot-container {
+        iframe {
+            display: block;
             width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            height: 100%;
+            border: none;
         }
 
-        /* Typebot padrão - Garantia de visibilidade */
-        typebot-standard {
-            display: block !important;
-            width: 100% !important;
-            height: 100vh !important;
-            min-height: 100vh;
-        }
-
-        /* Responsivo para mobile */
         @media (max-width: 768px) {
-            .back-button {
-                padding: 10px 16px;
-                font-size: 0.85rem;
-                top: 15px;
-                left: 15px;
-            }
-
             .back-button span {
                 display: none;
             }
 
-            .back-button i {
-                font-size: 1.2rem;
+            .back-button {
+                padding: 12px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Botão flutuante de voltar -->
     <a href="index.html" class="back-button" aria-label="Voltar ao portfólio">
         <i class="fas fa-arrow-left"></i>
         <span>Voltar ao Portfólio</span>
     </a>
 
-    <!-- Container do Typebot -->
-    <div id="typebot-container">
-        <typebot-standard
-            id="botbar-Orppypm"
-        ></typebot-standard>
-    </div>
-
-    <!-- Script do Typebot via CDN oficial -->
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@typebot.io/js@0/dist/web.js"></script>
+    <iframe
+        src="https://typebot.co/botbar-0rppypm"
+        allow="geolocation; microphone; camera; player-presentation; fullscreen; autoplay"
+        loading="lazy"
+        frameborder="0"
+        style="border: none; width: 100%; height: 100%;"
+    ></iframe>
 </body>
 </html>
