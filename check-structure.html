@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação de Estrutura - Portfólio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .check-section {
+            margin-bottom: 30px;
+        }
+        
+        .check-section h2 {
+            color: #555;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .check-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            margin: 5px 0;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+        
+        .check-item.success {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+        }
+        
+        .check-item.error {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .check-item.warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .icon {
+            font-size: 20px;
+            margin-right: 15px;
+            min-width: 25px;
+        }
+        
+        .path {
+            font-family: 'Courier New', monospace;
+            color: #333;
+            flex: 1;
+        }
+        
+        .status {
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        
+        .status.ok {
+            background: #28a745;
+            color: white;
+        }
+        
+        .status.error {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .status.warning {
+            background: #ffc107;
+            color: #333;
+        }
+        
+        .summary {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .summary-item {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        
+        .summary-number {
+            font-size: 32px;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .summary-label {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #5568d3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Verificação de Estrutura do Projeto</h1>
+        <p class="subtitle">Verificando se todos os arquivos e caminhos estão corretos</p>
+        
+        <button onclick="runChecks()">🔄 Executar Verificação Novamente</button>
+        
+        <div id="checks"></div>
+        
+        <div class="summary" id="summary" style="display: none;">
+            <h3>Resumo</h3>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <span class="summary-number" id="success-count" style="color: #28a745;">0</span>
+                    <span class="summary-label">Sucesso</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-number" id="error-count" style="color: #dc3545;">0</span>
+                    <span class="summary-label">Erros</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-number" id="warning-count" style="color: #ffc107;">0</span>
+                    <span class="summary-label">Avisos</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-number" id="total-count">0</span>
+                    <span class="summary-label">Total</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Arquivos e caminhos para verificar
+        const checks = [
+            // HTML Principal
+            { name: 'index.html', path: 'index.html', type: 'file' },
+            
+            // CSS
+            { name: 'style.css', path: 'css/style.css', type: 'file' },
+            
+            // JavaScript - APIs
+            { name: 'api-config.js', path: 'js/api-config.js', type: 'file' },
+            { name: 'api-integration.js', path: 'js/api-integration.js', type: 'file' },
+            { name: 'github-api.js', path: 'js/github-api.js', type: 'file' },
+            { name: 'dynamic-data.js', path: 'js/dynamic-data.js', type: 'file' },
+            { name: 'contact-api.js', path: 'js/contact-api.js', type: 'file' },
+            
+            // JavaScript - Principais
+            { name: 'utils.js', path: 'js/utils.js', type: 'file' },
+            { name: 'theme.js', path: 'js/theme.js', type: 'file' },
+            { name: 'navigation.js', path: 'js/navigation.js', type: 'file' },
+            { name: 'form-validator.js', path: 'js/form-validator.js', type: 'file' },
+            { name: 'contact-form.js', path: 'js/contact-form.js', type: 'file' },
+            { name: 'search.js', path: 'js/search.js', type: 'file' },
+            { name: 'animations.js', path: 'js/animations.js', type: 'file' },
+            { name: 'i18n.js', path: 'js/i18n.js', type: 'file' },
+            
+            // Imagens
+            { name: 'Foto de perfil', path: 'assets/img/Captura de tela 2025-09-22 105501.png', type: 'image' },
+            
+            // Configuração
+            { name: 'package.json', path: 'package.json', type: 'file' },
+            { name: 'manifest.json', path: 'manifest.json', type: 'file' },
+            { name: 'server.js', path: 'server.js', type: 'file' },
+            { name: 'sw.js', path: 'sw.js', type: 'file' },
+            
+            // Documentação
+            { name: 'README.md', path: 'README.md', type: 'file' },
+            { name: 'ESTRUTURA.md', path: 'ESTRUTURA.md', type: 'file' },
+            
+            // Diretórios
+            { name: 'Pasta assets/', path: 'assets/', type: 'dir' },
+            { name: 'Pasta css/', path: 'css/', type: 'dir' },
+            { name: 'Pasta js/', path: 'js/', type: 'dir' }
+        ];
+        
+        async function checkFile(file) {
+            try {
+                const response = await fetch(file.path, { method: 'HEAD' });
+                if (response.ok) {
+                    return { success: true, status: response.status };
+                } else {
+                    return { success: false, status: response.status, error: 'Não encontrado' };
+                }
+            } catch (error) {
+                return { success: false, error: error.message };
+            }
+        }
+        
+        function renderCheck(file, result) {
+            const item = document.createElement('div');
+            item.className = `check-item ${result.success ? 'success' : 'error'}`;
+            
+            const icon = result.success ? '✅' : '❌';
+            const statusClass = result.success ? 'ok' : 'error';
+            const statusText = result.success ? 'OK' : 'ERRO';
+            
+            item.innerHTML = `
+                <span class="icon">${icon}</span>
+                <span class="path">${file.name} <small>(${file.path})</small></span>
+                <span class="status ${statusClass}">${statusText}</span>
+            `;
+            
+            return item;
+        }
+        
+        async function runChecks() {
+            const container = document.getElementById('checks');
+            const summary = document.getElementById('summary');
+            container.innerHTML = '';
+            
+            let success = 0, errors = 0, warnings = 0;
+            
+            // Seções
+            const sections = {
+                'Arquivos Principais': ['index.html', 'package.json', 'manifest.json', 'server.js', 'sw.js'],
+                'CSS': ['css/style.css'],
+                'JavaScript - APIs': ['js/api-config.js', 'js/api-integration.js', 'js/github-api.js', 'js/dynamic-data.js', 'js/contact-api.js'],
+                'JavaScript - Módulos': ['js/utils.js', 'js/theme.js', 'js/navigation.js', 'js/form-validator.js', 'js/contact-form.js', 'js/search.js', 'js/animations.js', 'js/i18n.js'],
+                'Assets': ['assets/img/Captura de tela 2025-09-22 105501.png'],
+                'Documentação': ['README.md', 'ESTRUTURA.md'],
+                'Diretórios': ['assets/', 'css/', 'js/']
+            };
+            
+            for (const [sectionName, sectionFiles] of Object.entries(sections)) {
+                const sectionDiv = document.createElement('div');
+                sectionDiv.className = 'check-section';
+                
+                const title = document.createElement('h2');
+                title.textContent = sectionName;
+                sectionDiv.appendChild(title);
+                
+                for (const filePath of sectionFiles) {
+                    const file = checks.find(c => c.path === filePath);
+                    if (file) {
+                        const result = await checkFile(file);
+                        
+                        if (result.success) success++;
+                        else errors++;
+                        
+                        sectionDiv.appendChild(renderCheck(file, result));
+                    }
+                }
+                
+                container.appendChild(sectionDiv);
+            }
+            
+            // Atualizar resumo
+            document.getElementById('success-count').textContent = success;
+            document.getElementById('error-count').textContent = errors;
+            document.getElementById('warning-count').textContent = warnings;
+            document.getElementById('total-count').textContent = success + errors + warnings;
+            summary.style.display = 'block';
+            
+            // Rolar para o resumo
+            summary.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Executar verificação ao carregar
+        window.addEventListener('load', runChecks);
+    </script>
+</body>
+</html>
